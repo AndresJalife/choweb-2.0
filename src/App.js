@@ -1,19 +1,25 @@
-import React, {Component} from 'react';
-import './App.css'; 
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 import LandingPage from "./views/LandingPage";
-import { Routes, Route} from "react-router-dom";
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <div className='myBody'>
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-          </Routes>
-        </div>
-      </div>
-    );
-  }
+function App(){
+  return (
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingPage />}>
+            {/*<Route index element={<Home />} />*/}
+            {/*<Route path="teams" element={<Teams />}>*/}
+            {/*  <Route path=":teamId" element={<Team />} />*/}
+            {/*  <Route path="new" element={<NewTeamForm />} />*/}
+            {/*  <Route index element={<LeagueStandings />} />*/}
+            {/*</Route>*/}
+          </Route>
+        </Routes>
+      </BrowserRouter>
+  )
 }
-export default App; 
+
+export default App;

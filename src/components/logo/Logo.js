@@ -1,13 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import "./logo.css";
 
-export default class Logo extends Component {
-    render() {
-        return (
-            <div className="logoContainer">
-               <p id="about">ABOUT</p>
-               <p id="contact">CONTACT</p>
-            </div>
-        )
-    }
+export default function Logo(props) {
+    return (
+        <div className="logoContainer">
+        </div>
+    )
 }
