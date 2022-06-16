@@ -1,24 +1,36 @@
 import {
-  BrowserRouter,
-  Routes,
-  Route,
+    BrowserRouter,
+    Routes,
+    Route, useNavigate, Link,
 } from "react-router-dom";
-import LandingPage from "./views/LandingPage";
+import LandingPage from "./views/landingPage/LandingPage";
+import Project from "./views/project/Project";
+import Advertising from "./views/advertising/Advertising";
+import Videoclips from "./views/videoclips/Videoclips";
+import Ours from "./views/ours/Ours";
+import Us from "./views/us/Us";
+import React from "react";
+import Logo from './resoruces/chowLogo.jpeg';
 
 function App(){
   return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LandingPage />}>
-            {/*<Route index element={<Home />} />*/}
-            {/*<Route path="teams" element={<Teams />}>*/}
-            {/*  <Route path=":teamId" element={<Team />} />*/}
-            {/*  <Route path="new" element={<NewTeamForm />} />*/}
-            {/*  <Route index element={<LeagueStandings />} />*/}
-            {/*</Route>*/}
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <div>
+          <BrowserRouter>
+              <div className="logo">
+                  <Link to="/">
+                      <img className="logo-image" src={Logo}/>
+                  </Link>
+              </div>
+              <Routes>
+                  <Route path="/" element={<LandingPage />}/>
+                  <Route path=":projectName" element={<Project />} />
+                  <Route path="/publicidad" element={<Advertising />} />
+                  <Route path="/videoclips" element={<Videoclips />} />
+                  <Route path="/propio" element={<Ours />} />
+                  <Route path="/nosotros" element={<Us />} />
+              </Routes>
+          </BrowserRouter>
+      </div>
   )
 }
 
