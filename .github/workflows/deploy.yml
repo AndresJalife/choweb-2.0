@@ -13,6 +13,6 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "Chow Juan"
+          heroku_app_name: "chowjuan"
           heroku_email: "ajalife@fi.uba.ar"
           procfile: "web: npm install -g serve && serve -s build"
