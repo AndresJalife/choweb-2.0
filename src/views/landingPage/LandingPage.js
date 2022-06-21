@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import "./landingPage.css"
 // import MainImage from "../../resoruces/Reel0.jpg"
-import Header from "../../components/header/Header";
 import {Box, Grid} from "@mui/material";
 import $ from 'jquery'
 import SpeedOfSound from "../../resoruces/SPEED OF SOUND0.jpg"
