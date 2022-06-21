@@ -2,18 +2,12 @@ import React from 'react';
 import "./landingPage.css";
 import {Box, Grid} from "@mui/material";
 import SpeedOfSound from "../../resoruces/SPEED OF SOUND0.jpg";
-import SpeedOfSoundGIF from '../../resoruces/Speed of sound.gif';
-import AdidasGIF from '../../resoruces/Adidas.gif';
 import Adidas from '../../resoruces/Adidas0.jpg'
 import JuegoDeNinos from '../../resoruces/juego de niños0.jpg'
-import PolvoGIF from '../../resoruces/Polvo.gif';
 import Polvo from '../../resoruces/polvo0.jpg'
 import BigBang from '../../resoruces/Bigbang0.jpg';
-import CepillosGIF from '../../resoruces/cepillos.gif';
 import Cepillos from '../../resoruces/cepillos.jpg';
 import WachoPistola from '../../resoruces/WACHO PISTOLA0.jpg';
-import WachoPistolaGIF from '../../resoruces/WachoPistola.gif';
-import ReelVID from '../../resoruces/CHOWJUAN-REEL.mp4';
 import Video from "../../components/video/Video";
 import Gif from "../../components/gif/Gif";
 
