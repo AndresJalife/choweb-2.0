@@ -2,9 +2,9 @@ export default function BurgerButton({ open, setOpen, size }){
     return(
         <div onClick={() => setOpen(!open)} className="burger-2">
             <div className="hamburger">
-                <div className="burger burger1" />
-                <div className="burger burger2" />
-                <div className="burger burger3" />
+                <div className="burger burger1"/>
+                <div className="burger burger2"/>
+                <div className="burger burger3"/>
             </div>
 
             <style jsx>{`
