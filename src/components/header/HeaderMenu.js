@@ -5,7 +5,7 @@ const HeaderMenu = ({isOpen}) => {
     let navigate = useNavigate();
 
     return (
-        <div className={isOpen? "menu-options show" : "menu-options hide"}>
+        <div id="menu-options" className={isOpen? "menu-options show" : "menu-options hide"}>
                 <p className={isOpen? "menu-option show" : "menu-option hide"}
                     onClick={() => navigate("videoclips")} > VIDEOCLIPS </p>
 
