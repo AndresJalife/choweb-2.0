@@ -29,7 +29,7 @@ export default function Header(){
                 </div>
                 <img        src={InstagramLogo}
                             className="instagram"
-                            alt="Instagram Logo"
+                            alt="Instagram Logos"
                              onClick={() => {
                                  window.open("https://www.instagram.com/chowjuan.co/", '_blank', 'noopener,noreferrer');
                              }}
