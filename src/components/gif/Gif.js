@@ -1,0 +1,19 @@
+import $ from "jquery";
+import React, {useEffect} from "react";
+
+export default function Gif({gifSrc, imgSrc, id}){
+    useEffect(() => {
+        $("#" + id).hover(
+            function() {
+                $(this).attr("src", gifSrc);
+            },
+            function() {
+                $(this).attr("src", imgSrc);
+            }
+        );
+    }, [id, gifSrc, imgSrc])
+
+    return (<div>
+                <img id={id} src={imgSrc} className="image" alt="Loading"/>
+            </div>)
+}

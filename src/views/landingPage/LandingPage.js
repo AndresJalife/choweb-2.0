@@ -1,7 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import "./landingPage.css";
 import {Box, Grid} from "@mui/material";
-import $ from 'jquery';
 import SpeedOfSound from "../../resoruces/SPEED OF SOUND0.jpg";
 import SpeedOfSoundGIF from '../../resoruces/Speed of sound.gif';
 import AdidasGIF from '../../resoruces/Adidas.gif';
@@ -18,74 +17,9 @@ import WachoPistola from '../../resoruces/WACHO PISTOLA0.jpg';
 import WachoPistolaGIF from '../../resoruces/WachoPistola.gif';
 import ReelVID from '../../resoruces/CHOWJUAN-REEL.mp4';
 import Video from "../../components/video/Video";
+import Gif from "../../components/gif/Gif";
 
 export default function LandingPage(props){
-
-    useEffect(() => {
-        $("#bigBang").hover(
-            function() {
-                $(this).attr("src", BigBangGIF);
-            },
-            function() {
-                $(this).attr("src", BigBang);
-            }
-        );
-
-        $("#wachoPistola").hover(
-            function() {
-                $(this).attr("src", WachoPistolaGIF);
-            },
-            function() {
-                $(this).attr("src", WachoPistola);
-            }
-        );
-        $("#speedOfSound").hover(
-            function() {
-                $(this).attr("src", SpeedOfSoundGIF);
-            },
-            function() {
-                $(this).attr("src", SpeedOfSound);
-            }
-        );
-
-        $("#adidas").hover(
-            function() {
-                $(this).attr("src", AdidasGIF);
-            },
-            function() {
-                $(this).attr("src", Adidas);
-            }
-        );
-
-        $("#juegoDeNinos").hover(
-            function() {
-                $(this).attr("src", JuegoDeNinosGIF);
-            },
-            function() {
-                $(this).attr("src", JuegoDeNinos);
-            }
-        );
-
-        $("#polvo").hover(
-            function() {
-                $(this).attr("src", PolvoGIF);
-            },
-            function() {
-                $(this).attr("src", Polvo);
-            }
-        );
-
-        $("#cepillos").hover(
-            function() {
-                $(this).attr("src", CepillosGIF);
-            },
-            function() {
-                $(this).attr("src", Cepillos);
-            }
-        );
-    }, [])
-
-
 
     return (
         <div>
@@ -93,29 +27,28 @@ export default function LandingPage(props){
                     <Box sx={{ flexGrow: 1 }}>
                         <Grid container spacing={1}>
                             <Grid item xs={12}>
-                                {/*<img src={MainImage} className="image" alt="Logo Chow Juan"/>*/}
                                 <Video class="video" mp4={ReelVID} />
                             </Grid>
                             <Grid item xs={12} sm={6} md={4}>
-                                <img id="speedOfSound" src={SpeedOfSound} className="image" alt="Logo Speed of Sound"/>
+                                <Gif id="speedOfSound" gifSrc={SpeedOfSoundGIF} imgSrc={SpeedOfSound} />
                             </Grid>
                             <Grid item xs={12} sm={6} md={4}>
-                                <img id="adidas" src={Adidas} className="image" alt="Logo Adidas"/>
+                                <Gif id="adidas" gifSrc={AdidasGIF} imgSrc={Adidas} />
                             </Grid>
                             <Grid item xs={12} sm={12} md={4}>
-                                <img id="juegoDeNinos" src={JuegoDeNinos} className="image" alt="Logo Head"/>
+                                <Gif id="juegoDeNinos" gifSrc={JuegoDeNinosGIF} imgSrc={JuegoDeNinos} />
                             </Grid>
                             <Grid item xs={12}>
-                                <img id="polvo" src={Polvo} className="image" alt="Logo Polvo"/>
+                                <Gif id="polvo" gifSrc={PolvoGIF} imgSrc={Polvo} />
                             </Grid>
                             <Grid item xs={12} sm={6} md={6}>
-                                <img id="wachoPistola" src={WachoPistola} className="image" alt="Logo Wacho Pistola"/>
+                                <Gif id="wachoPistola" gifSrc={WachoPistolaGIF} imgSrc={WachoPistola} />
                             </Grid>
                             <Grid item xs={12} sm={6} md={6}>
-                                <img id="bigBang" src={BigBang} className="image" alt="Logo Big Bang"/>
+                                <Gif id="bigBang" gifSrc={BigBangGIF} imgSrc={BigBang} />
                             </Grid>
                             <Grid item xs={12}>
-                                <img id="cepillos" src={Cepillos} className="image" alt="Logo Cepillos"/>
+                                <Gif id="cepillos" gifSrc={CepillosGIF} imgSrc={Cepillos} />
                             </Grid>
                         </Grid>
                     </Box>
