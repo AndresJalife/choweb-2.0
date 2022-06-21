@@ -3,20 +3,20 @@ import "./landingPage.css";
 import {Box, Grid} from "@mui/material";
 import $ from 'jquery';
 import SpeedOfSound from "../../resoruces/SPEED OF SOUND0.jpg";
-import SpeedOfSoundGIF from '../../resoruces/GIFS/Speed of sound.gif';
-import AdidasGIF from '../../resoruces/GIFS/Adidas.gif';
+import SpeedOfSoundGIF from '../../resoruces/Speed of sound.gif';
+import AdidasGIF from '../../resoruces/Adidas.gif';
 import Adidas from '../../resoruces/Adidas0.jpg'
 import JuegoDeNinos from '../../resoruces/juego de niños0.jpg'
-import JuegoDeNinosGIF from '../../resoruces/GIFS/Juego de niños.gif';
-import PolvoGIF from '../../resoruces/GIFS/Polvo.gif';
+import JuegoDeNinosGIF from '../../resoruces/Juego de niños.gif';
+import PolvoGIF from '../../resoruces/Polvo.gif';
 import Polvo from '../../resoruces/polvo0.jpg'
-import BigBangGIF from '../../resoruces/GIFS/Big bang.gif';
+import BigBangGIF from '../../resoruces/Big bang.gif';
 import BigBang from '../../resoruces/Bigbang0.jpg';
-import CepillosGIF from '../../resoruces/GIFS/cepillos.gif';
+import CepillosGIF from '../../resoruces/cepillos.gif';
 import Cepillos from '../../resoruces/cepillos.jpg';
 import WachoPistola from '../../resoruces/WACHO PISTOLA0.jpg';
-import WachoPistolaGIF from '../../resoruces/GIFS/WachoPistola.gif';
-import ReelVID from '../../resoruces/VIDS/CHOWJUAN-REEL.mp4';
+import WachoPistolaGIF from '../../resoruces/WachoPistola.gif';
+import ReelVID from '../../resoruces/CHOWJUAN-REEL.mp4';
 import Video from "../../components/video/Video";
 
 export default function LandingPage(props){
