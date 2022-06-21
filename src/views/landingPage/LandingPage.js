@@ -1,9 +1,8 @@
 import React, {useEffect} from 'react';
-import "./landingPage.css"
-// import MainImage from "../../resoruces/Reel0.jpg"
+import "./landingPage.css";
 import {Box, Grid} from "@mui/material";
-import $ from 'jquery'
-import SpeedOfSound from "../../resoruces/SPEED OF SOUND0.jpg"
+import $ from 'jquery';
+import SpeedOfSound from "../../resoruces/SPEED OF SOUND0.jpg";
 import SpeedOfSoundGIF from '../../resoruces/GIFS/Speed of sound.gif';
 import AdidasGIF from '../../resoruces/GIFS/Adidas.gif';
 import Adidas from '../../resoruces/Adidas0.jpg'
@@ -14,8 +13,9 @@ import Polvo from '../../resoruces/polvo0.jpg'
 import BigBangGIF from '../../resoruces/GIFS/Big bang.gif';
 import BigBang from '../../resoruces/Bigbang0.jpg';
 import CepillosGIF from '../../resoruces/GIFS/cepillos.gif';
+import Cepillos from '../../resoruces/cepillos.jpg';
 import WachoPistola from '../../resoruces/WACHO PISTOLA0.jpg';
-import WachoPistolaGIF from '../../resoruces/GIFS/WachoPistola.gif'
+import WachoPistolaGIF from '../../resoruces/GIFS/WachoPistola.gif';
 import ReelVID from '../../resoruces/VIDS/CHOWJUAN-REEL.mp4';
 import Video from "../../components/video/Video";
 
@@ -74,6 +74,15 @@ export default function LandingPage(props){
                 $(this).attr("src", Polvo);
             }
         );
+
+        $("#cepillos").hover(
+            function() {
+                $(this).attr("src", CepillosGIF);
+            },
+            function() {
+                $(this).attr("src", Cepillos);
+            }
+        );
     }, [])
 
 
@@ -106,7 +115,7 @@ export default function LandingPage(props){
                                 <img id="bigBang" src={BigBang} className="image" alt="Logo Big Bang"/>
                             </Grid>
                             <Grid item xs={12}>
-                                <img id="cepillos" src={CepillosGIF} className="image" alt="Logo Cepillos"/>
+                                <img id="cepillos" src={Cepillos} className="image" alt="Logo Cepillos"/>
                             </Grid>
                         </Grid>
                     </Box>

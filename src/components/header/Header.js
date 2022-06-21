@@ -15,6 +15,7 @@ export default function Header(){
 
     $(window).scroll(function(){
         $('.header').css("opacity", $(window).scrollTop() / 500)
+        $('.menu-options').css("opacity", $(window).scrollTop() / 500)
     });
     return (
         <div>
