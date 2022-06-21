@@ -6,10 +6,8 @@ import SpeedOfSoundGIF from '../../resoruces/Speed of sound.gif';
 import AdidasGIF from '../../resoruces/Adidas.gif';
 import Adidas from '../../resoruces/Adidas0.jpg'
 import JuegoDeNinos from '../../resoruces/juego de niños0.jpg'
-import JuegoDeNinosGIF from '../../resoruces/Juego de niños.gif';
 import PolvoGIF from '../../resoruces/Polvo.gif';
 import Polvo from '../../resoruces/polvo0.jpg'
-import BigBangGIF from '../../resoruces/Big bang.gif';
 import BigBang from '../../resoruces/Bigbang0.jpg';
 import CepillosGIF from '../../resoruces/cepillos.gif';
 import Cepillos from '../../resoruces/cepillos.jpg';
@@ -27,28 +25,28 @@ export default function LandingPage(props){
                     <Box sx={{ flexGrow: 1 }}>
                         <Grid container spacing={1}>
                             <Grid item xs={12}>
-                                <Video class="video" mp4={ReelVID} />
+                                <Video class="video" mp4={"https://d2njbbkhc1pb2y.cloudfront.net/static/media/CHOWJUAN-REEL.6c684c593c951a17336e.mp4"} />
                             </Grid>
                             <Grid item xs={12} sm={6} md={4}>
-                                <Gif id="speedOfSound" gifSrc={SpeedOfSoundGIF} imgSrc={SpeedOfSound} />
+                                <Gif id="speedOfSound" gifSrc={"https://d2njbbkhc1pb2y.cloudfront.net/static/media/Speed%20of%20sound.1fed768ce075d982a7db.gif"} imgSrc={SpeedOfSound} />
                             </Grid>
                             <Grid item xs={12} sm={6} md={4}>
-                                <Gif id="adidas" gifSrc={AdidasGIF} imgSrc={Adidas} />
+                                <Gif id="adidas" gifSrc={"https://d2njbbkhc1pb2y.cloudfront.net/static/media/Adidas.b8ce8a3432583b8007e0.gif"} imgSrc={Adidas} />
                             </Grid>
                             <Grid item xs={12} sm={12} md={4}>
-                                <Gif id="juegoDeNinos" gifSrc={JuegoDeNinosGIF} imgSrc={JuegoDeNinos} />
+                                <Gif id="juegoDeNinos" gifSrc={"https://d2njbbkhc1pb2y.cloudfront.net/static/media/Juego%20de%20ni%C3%B1os.e93eb89f19b6712c44f2.gif"} imgSrc={JuegoDeNinos} />
                             </Grid>
                             <Grid item xs={12}>
-                                <Gif id="polvo" gifSrc={PolvoGIF} imgSrc={Polvo} />
+                                <Gif id="polvo" gifSrc={"https://d2njbbkhc1pb2y.cloudfront.net/static/media/Polvo.dba91fcc611e959f0f45.gif"} imgSrc={Polvo} />
                             </Grid>
                             <Grid item xs={12} sm={6} md={6}>
-                                <Gif id="wachoPistola" gifSrc={WachoPistolaGIF} imgSrc={WachoPistola} />
+                                <Gif id="wachoPistola" gifSrc={"https://d2njbbkhc1pb2y.cloudfront.net/static/media/WachoPistola.84528fb586946b8a8d3f.gif"} imgSrc={WachoPistola} />
                             </Grid>
                             <Grid item xs={12} sm={6} md={6}>
-                                <Gif id="bigBang" gifSrc={BigBangGIF} imgSrc={BigBang} />
+                                <Gif id="bigBang" gifSrc={"https://d2njbbkhc1pb2y.cloudfront.net/static/media/Big%20bang.29b2b9ff9918f6cb1dba.gif"} imgSrc={BigBang} />
                             </Grid>
                             <Grid item xs={12}>
-                                <Gif id="cepillos" gifSrc={CepillosGIF} imgSrc={Cepillos} />
+                                <Gif id="cepillos" gifSrc={"https://d2njbbkhc1pb2y.cloudfront.net/static/media/cepillos.573d8554abc2c7e7ecdd.gif"} imgSrc={Cepillos} />
                             </Grid>
                         </Grid>
                     </Box>
