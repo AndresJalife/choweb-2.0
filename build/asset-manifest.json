@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a3aa44c3.css",
+    "main.js": "/static/js/main.634fd33b.js",
+    "static/js/787.a79eb0f8.chunk.js": "/static/js/787.a79eb0f8.chunk.js",
+    "static/media/WachoPistola.gif": "/static/media/WachoPistola.84528fb586946b8a8d3f.gif",
+    "static/media/cepillos.gif": "/static/media/cepillos.573d8554abc2c7e7ecdd.gif",
+    "static/media/Adidas.gif": "/static/media/Adidas.b8ce8a3432583b8007e0.gif",
+    "static/media/CHOWJUAN-REEL.mp4": "/static/media/CHOWJUAN-REEL.6c684c593c951a17336e.mp4",
+    "static/media/Speed of sound.gif": "/static/media/Speed of sound.1fed768ce075d982a7db.gif",
+    "static/media/Juego de niños.gif": "/static/media/Juego de niños.e93eb89f19b6712c44f2.gif",
+    "static/media/Big bang.gif": "/static/media/Big bang.29b2b9ff9918f6cb1dba.gif",
+    "static/media/Polvo.gif": "/static/media/Polvo.dba91fcc611e959f0f45.gif",
+    "static/media/cepillos.jpg": "/static/media/cepillos.cdd8a3aa13794091e5dc.jpg",
+    "static/media/juego de niños0.jpg": "/static/media/juego de niños0.8242ac36638f613bab14.jpg",
+    "static/media/WACHO PISTOLA0.jpg": "/static/media/WACHO PISTOLA0.0b6f099a273071aa3597.jpg",
+    "static/media/SPEED OF SOUND0.jpg": "/static/media/SPEED OF SOUND0.1ed5252227f8acbabb40.jpg",
+    "static/media/Bigbang0.jpg": "/static/media/Bigbang0.445d3b9fb8812e7673a1.jpg",
+    "static/media/polvo0.jpg": "/static/media/polvo0.dd46f2fad121a3d02daa.jpg",
+    "static/media/Adidas0.jpg": "/static/media/Adidas0.718c3d4e813a9414eb0a.jpg",
+    "static/media/instagram.png": "/static/media/instagram.459d14acdbfb7db227e0.png",
+    "static/media/chowLogo.png": "/static/media/chowLogo.70933126551e6e2dac84.png",
+    "index.html": "/index.html",
+    "main.a3aa44c3.css.map": "/static/css/main.a3aa44c3.css.map",
+    "main.634fd33b.js.map": "/static/js/main.634fd33b.js.map",
+    "787.a79eb0f8.chunk.js.map": "/static/js/787.a79eb0f8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a3aa44c3.css",
+    "static/js/main.634fd33b.js"
+  ]
+}
