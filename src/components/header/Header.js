@@ -5,6 +5,7 @@ import HeaderMenu from "./HeaderMenu";
 import {Link} from "react-router-dom";
 import Logo from "../../resoruces/chowLogo.png";
 import InstagramLogo from "../../resoruces/instagram.png"
+import $ from 'jquery';
 
 export default function Header(){
     const [isOpen, setIsOpen] = React.useState(false);
@@ -12,6 +13,9 @@ export default function Header(){
         setIsOpen(!isOpen);
     };
 
+    $(window).scroll(function(){
+        $('.header').css("opacity", $(window).scrollTop() / 500)
+    });
     return (
         <div>
             <div className="header">

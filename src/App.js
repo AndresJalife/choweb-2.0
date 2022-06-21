@@ -10,11 +10,13 @@ import Videoclips from "./views/videoclips/Videoclips";
 import Ours from "./views/ours/Ours";
 import Us from "./views/us/Us";
 import React from "react";
+import Header from "./components/header/Header";
 
 function App(){
   return (
       <div>
           <BrowserRouter>
+              <Header/>
               <Routes>
                   <Route path="/" element={<LandingPage />}/>
                   <Route path=":projectName" element={<Project />} />
