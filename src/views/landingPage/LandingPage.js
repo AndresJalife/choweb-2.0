@@ -19,7 +19,7 @@ export default function LandingPage(props){
                     <Box sx={{ flexGrow: 1 }}>
                         <Grid container spacing={1}>
                             <Grid item xs={12}>
-                                <Video class="video" mp4={"https://d2njbbkhc1pb2y.cloudfront.net/static/media/CHOWJUAN-REEL.6c684c593c951a17336e.mp4"} />
+                                <Video className="video" id="reel" mp4={"https://d2njbbkhc1pb2y.cloudfront.net/static/media/CHOWJUAN-REEL.6c684c593c951a17336e.mp4"} />
                             </Grid>
                             <Grid item xs={12} sm={6} md={4}>
                                 <Gif id="speedOfSound" gifSrc={"https://d2njbbkhc1pb2y.cloudfront.net/static/media/Speed%20of%20sound.1fed768ce075d982a7db.gif"} imgSrc={SpeedOfSound} />
