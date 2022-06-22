@@ -1,11 +1,11 @@
 import {useNavigate} from "react-router-dom";
 
 
-const HeaderMenu = ({isOpen}) => {
+const HeaderMenu = ({isOpen, className}) => {
     let navigate = useNavigate();
 
     return (
-        <div id="menu-options" className={isOpen? "menu-options show" : "menu-options hide"}>
+        <div id="menu-options" className={ isOpen? "menu-options show " + className : "menu-options hide " + className}>
                 <p className={isOpen? "menu-option show" : "menu-option hide"}
                     onClick={() => navigate("videoclips")} > VIDEOCLIPS </p>
 

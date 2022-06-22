@@ -1,30 +1,47 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Header.css"
 import BurgerButton from "./BurgerButton";
 import HeaderMenu from "./HeaderMenu";
-import {Link} from "react-router-dom";
+import {Link, Outlet} from "react-router-dom";
 import Logo from "../../resoruces/chowLogo.png";
 import InstagramLogo from "../../resoruces/instagram.png"
 import $ from 'jquery';
 
-export default function Header(){
-    const [isOpen, setIsOpen] = React.useState(false);
+export default function Header({someClass}){
+    const [burgerIsOpen, setBurgerIsOpen] = useState(false);
     const handleClick = () => {
-        setIsOpen(!isOpen);
+        setBurgerIsOpen(!burgerIsOpen);
     };
 
+    $("#header").mouseenter(() => {
+        $('.opaque').css("opacity", 1)
+    })
+
+    $("#header").mouseleave(() => {
+        $('.opaque').css("opacity", $(window).scrollTop() / 500)
+    })
+
+    $("#menu-options").mouseenter(() => {
+        if (burgerIsOpen){
+            $('.opaque').css("opacity", 1)
+        }
+    })
+
+    $("#menu-options").mouseleave(() => {
+        if (burgerIsOpen){
+            $('.opaque').css("opacity", $(window).scrollTop() / 500)
+        }
+    })
+
     $(window).scroll(function(){
-        $('.header').css("opacity", $(window).scrollTop() / 500)
-        $('.menu-options').css("opacity", $(window).scrollTop() / 500)
+        $('.opaque').css("opacity", $(window).scrollTop() / 500)
     });
+
     return (
         <div>
-            <div className="header">
-                <div className="header-button">
-                    <BurgerButton open={isOpen}
-                                   setOpen={handleClick}
-                                  size={3}
-                                   />
+            <div id="header" className={"header " + someClass}>
+                <div className="header-button" onClick={() => handleClick(!burgerIsOpen)}>
+                    <BurgerButton open={burgerIsOpen} size={3}/>
                 </div>
 
                 <div className="logo">
@@ -40,7 +57,8 @@ export default function Header(){
                              }}
                 />
             </div>
-            <HeaderMenu isOpen={isOpen}/>
+            <HeaderMenu isOpen={burgerIsOpen} className={someClass}/>
+            <Outlet/>
         </div>
     )
 }

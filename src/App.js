@@ -16,14 +16,19 @@ function App(){
   return (
       <div>
           <BrowserRouter>
-              <Header/>
+              {/*<Header/>*/}
               <Routes>
-                  <Route path="/" element={<LandingPage />}/>
-                  <Route path=":projectName" element={<Project />} />
-                  <Route path="/publicidad" element={<Advertising />} />
-                  <Route path="/videoclips" element={<Videoclips />} />
-                  <Route path="/propio" element={<Ours />} />
-                  <Route path="/nosotros" element={<Us />} />
+                  <Route path="/" element={<Header someClass={"opaque"} />}>
+                      <Route path="" element={<LandingPage />}/>
+                  </Route>
+                  <Route path="/" element={<Header someClass={""} />}>
+                      <Route path="proyecto/:projectName" element={<Project />} />
+                      <Route path="publicidad" element={<Advertising />} />
+                      <Route path="videoclips" element={<Videoclips />} />
+                      <Route path="propio" element={<Ours />} />
+                      <Route path="nosotros" element={<Us />} />
+                  </Route>
+
               </Routes>
           </BrowserRouter>
       </div>
