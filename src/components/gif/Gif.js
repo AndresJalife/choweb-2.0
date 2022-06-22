@@ -14,7 +14,7 @@ export default function Gif({gifSrc, imgSrc, id}){
     }, [id, gifSrc, imgSrc])
 
     return (<div>
-                {/*<img id={id} src={gifSrc} className="image" alt="Loading"/>*/}
-                <img id={id + 'Gif'} src={gifSrc} hidden className="image hide" alt="Loading"/>
+                <img id={id} src={imgSrc} className="image" alt="Loading"/>
+                {/*<img id={id + 'Gif'} src={gifSrc} hidden className="image hide" alt="Loading"/>*/}
             </div>)
 }
