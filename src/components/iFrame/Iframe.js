@@ -4,12 +4,12 @@ import './Iframe.css'
 export default function Iframe(props) {
     return (
         <iframe src={props.src}
-                    className={'iframe-general'}
+                    className={'iframe-general ' + props.className}
                     id={props.id}
                     allowFullScreen
-                    title={props.src}
-                    width={"100%"}
-                    heigth={"100%"}
+                    title={props.title}
+                    width={"60"}
+                    heigth={"60"}
                     autoPlay
         />
     )

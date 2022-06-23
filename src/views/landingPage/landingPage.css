@@ -4,10 +4,10 @@ body, html {
     background-color: black;
 }
 
-#main {
-    height: 100vh;        /* Viewport-relative units */
-    width: 100vw;
-}
+/*#main {*/
+/*    height: 100vh;        !* Viewport-relative units *!*/
+/*    width: 100vw;*/
+/*}*/
 
 #second{
     height: 60vh;        /* Viewport-relative units */
