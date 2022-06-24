@@ -12,7 +12,7 @@
 }
 
 .opaque{
-    opacity: 0;
+    opacity: 0.3;
 }
 
 .logo-image{
@@ -39,6 +39,7 @@
 .menu-option{
     color: white;
     cursor: pointer;
+    /*text-shadow: black 2px 2px;*/
 }
 
 .hide{

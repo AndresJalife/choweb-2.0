@@ -24,6 +24,7 @@ export default function BurgerButton({ open, size }){
                     background-color: white;
                     transform-origin: 1px;
                     transition: all 0.3s linear;
+                    //box-shadow: rgba(0, 0, 0, 1) 0px 0px 0px, rgb(0, 0, 0) 0px 2px 0px 0px;
                 }
                 .burger1{
                     transform: ${ open ? 'rotate(45deg)' : 'rotate(0)'};

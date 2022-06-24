@@ -11,7 +11,7 @@ const Proyectos = {
     "imgSrc" : Adidas,
     "gifSrc" : "https://d2njbbkhc1pb2y.cloudfront.net/static/media/Adidas.b8ce8a3432583b8007e0.gif",
     "vidSrc" : "https://www.youtube.com/embed/xBzi5SBa5QY",
-    "bgColor" : "#000000",
+    "bgColor" : "#2b2b2b",
     "description" : "",
     "fontColor" : "#FFFFFF",
     "borderColor" : "#FFFFFF",
@@ -46,8 +46,8 @@ const Proyectos = {
   "Polvo" : {
     "imgSrc" : Polvo,
     "gifSrc" : "https://d2njbbkhc1pb2y.cloudfront.net/static/media/Polvo.dba91fcc611e959f0f45.gif",
-    "vidSrc" : "https://player.vimeo.com/video/474714273?h=93d64306b0&loop=1&byline=0&portrait=0&autoplay=1&loop=1&sidedock=0",
-    "bgColor" : "#000000",
+    "vidSrc" : "https://player.vimeo.com/video/474714273?h=93d64306b0&loop=1",
+    "bgColor" : "#2b2b2b",
     "description" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\"",
     "fontColor" : "#FFFFFF",
     "borderColor" : "#FFFFFF",
@@ -55,7 +55,7 @@ const Proyectos = {
   "SpeedOfSound" : {
     "imgSrc" : SpeedOfSound,
     "gifSrc" : "https://d2njbbkhc1pb2y.cloudfront.net/static/media/Speed%20of%20sound.1fed768ce075d982a7db.gif",
-    "vidSrc" : "https://player.vimeo.com/video/395705889?h=edb7d9308b&loop=1&byline=0&portrait=0&autoplay=1&loop=1&sidedock=0",
+    "vidSrc" : "https://www.youtube.com/embed/PQFd7PcE2AI",
     "bgColor" : "#e99103",
     "description" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\"",
     "fontColor" : "#FFFFFF",
