@@ -1,3 +1,9 @@
 .gif-container{
     cursor: pointer;
+    transition: all .2s ease-in-out;
+    /*border-radius: 40px;*/
+}
+
+.gif-container:hover{
+    /*transform: scale(1.15);*/
 }

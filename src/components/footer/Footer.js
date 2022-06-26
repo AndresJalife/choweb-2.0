@@ -1,18 +1,24 @@
 import React from 'react';
 import "./footer.css";
-import { useNavigate } from "react-router-dom";
+import {FaAngleDown} from "react-icons/fa";
+import $ from "jquery";
 
-export default function Footer(props){
-    let navigate = useNavigate();
+export default function Footer(){
+
+    $(window).scroll(function(){
+        $('#angle-down').css("opacity", 1 - $(window).scrollTop() / 500)
+    });
+
+    const handleClick = () => {
+        // $(window).scrollTo(200)
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $("#SpeedOfSound").offset().top - 10
+        }, 1000);
+    }
 
     return (
         <div className="footerContainer">
-            <p id="about" onClick={() => {
-                navigate("/about");
-            }}>ABOUT</p>
-            <p id="contact" onClick={() => {
-                navigate("/contact");
-            }}>CONTACT</p>
+            <FaAngleDown onClick={handleClick} id="angle-down" color="white" title="Scroll down" />
         </div>
     )
 }
