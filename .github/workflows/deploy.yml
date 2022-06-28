@@ -20,6 +20,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
+      - name: Clean cache
+        run: npm cache clean --force && npm cache verify
       - name: Install dependencies
         run: npm install
       - name: Build
