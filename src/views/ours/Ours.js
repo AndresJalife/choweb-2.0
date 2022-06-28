@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Ours = () => {
     return (
         <div style={{"color":"white"}}>

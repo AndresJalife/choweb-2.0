@@ -1,3 +1,4 @@
+import React from 'react';
 const Videoclips = () => {
     return (
         <div style={{"color": "white"}}>

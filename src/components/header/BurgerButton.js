@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function BurgerButton({ open, size }){
     return(
         <div className="burger-2">
