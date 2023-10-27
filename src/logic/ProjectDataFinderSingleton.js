@@ -1,6 +1,6 @@
 import GridLayout from "../resources/gridLayout";
 
-class ProjectDataFinder {
+class ProjectDataFinderSingleton {
 
     constructor() {
         this.projectData = this.parseProjects();
@@ -22,4 +22,4 @@ class ProjectDataFinder {
     }
 }
 
-export default new ProjectDataFinder();
+export default new ProjectDataFinderSingleton();

@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import './Project.css';
 import {useParams} from "react-router-dom";
 import Iframe from "../../components/iFrame/Iframe";
-import ProjectDataFinder from "../../logic/ProjectDataFinder";
+import ProjectDataFinder from "../../logic/ProjectDataFinderSingleton";
 
 export default function Project(){
     const params = useParams();
