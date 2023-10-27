@@ -3,8 +3,8 @@ import "./Header.css"
 import BurgerButton from "./BurgerButton";
 import HeaderMenu from "./HeaderMenu";
 import {Link, Outlet} from "react-router-dom";
-import Logo from "../../resoruces/chowLogo2.png";
-import InstagramLogo from "../../resoruces/instagram.png"
+import Logo from "../../resources/chowLogo2.png";
+import InstagramLogo from "../../resources/instagram.png"
 import $ from 'jquery';
 
 export default function Header({someClass}){

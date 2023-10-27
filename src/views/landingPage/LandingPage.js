@@ -3,38 +3,46 @@ import "./landingPage.css";
 import {Box, Grid} from "@mui/material";
 import Video from "../../components/video/Video";
 import Gif from "../../components/gif/Gif";
-import Proyectos from "../../proyectos";
+import GridLayout from "../../resources/gridLayout";
 
 export default function LandingPage(){
+
+    const getGrid = () => {
+        return Object.keys(GridLayout).map((column) => {
+            const columnLen = Object.keys(GridLayout[column]).length;
+            return Object.keys(GridLayout[column]).map((row) => {
+                const item = GridLayout[column][row];
+                return (
+                    <Grid
+                        key={item.id}
+                        xs={12}
+                        sm={Math.min(6, Math.ceil(12 / Math.ceil(columnLen / 2)))}
+                        md={Math.ceil(12 / columnLen)}>
+                        {item.type === 'video' ? (
+                            <Video
+                                className={item.className}
+                                id={item.id}
+                                mp4={item.videoUrl}
+                            />
+                        ) : item.type === 'gif' ? (
+                            <Gif
+                                id={row}
+                                gifSrc={item.gifSrc}
+                                imgSrc={item.imgSrc}
+                            />
+                        ) : null}
+                    </Grid>
+                );
+            });
+        })
+    }
+
     return (
         <div>
             <div className="video-container">
                     <Box sx={{ flexGrow: 1 }}>
-                        <Grid container spacing={1}>
-                            <Grid item xs={12}>
-                                <Video className="video" id="reel" mp4={"https://d2njbbkhc1pb2y.cloudfront.net/static/media/CHOWJUAN-REEL.6c684c593c951a17336e.mp4"} />
-                            </Grid>
-                            <Grid item xs={12} sm={6} md={4}>
-                                <Gif id="SpeedOfSound" gifSrc={Proyectos["SpeedOfSound"].gifSrc} imgSrc={Proyectos["SpeedOfSound"].imgSrc} />
-                            </Grid>
-                            <Grid item xs={12} sm={6} md={4}>
-                                <Gif id="Adidas" gifSrc={Proyectos["Adidas"].gifSrc} imgSrc={Proyectos["Adidas"].imgSrc} />
-                            </Grid>
-                            <Grid item xs={12} sm={12} md={4}>
-                                <Gif id="JuegoDeNinos" gifSrc={Proyectos["JuegoDeNinos"].gifSrc} imgSrc={Proyectos["JuegoDeNinos"].imgSrc} />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Gif id="Polvo" gifSrc={Proyectos["Polvo"].gifSrc} imgSrc={Proyectos["Polvo"].imgSrc} />
-                            </Grid>
-                            <Grid item xs={12} sm={6} md={6}>
-                                <Gif id="WachoPistola" gifSrc={Proyectos["WachoPistola"].gifSrc} imgSrc={Proyectos["WachoPistola"].imgSrc} />
-                            </Grid>
-                            <Grid item xs={12} sm={6} md={6}>
-                                <Gif id="BigBang" gifSrc={Proyectos["BigBang"].gifSrc} imgSrc={Proyectos["BigBang"].imgSrc} />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Gif id="Cepillos" gifSrc={Proyectos["Cepillos"].gifSrc} imgSrc={Proyectos["Cepillos"].imgSrc} />
-                            </Grid>
+                        <Grid id={"landing-grid"} container spacing={1}>
+                            {getGrid()}
                         </Grid>
                     </Box>
                 </div>
