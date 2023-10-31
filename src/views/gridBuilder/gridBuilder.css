@@ -1,0 +1,71 @@
+/*GRID BUILDER*/
+#grid-builder {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    margin-top: -1.1%;
+    padding-bottom: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#grid-container {
+    width: 80%;
+}
+
+/* GRID ROW*/
+
+.grid-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 1%;
+    border: #282c34 1px solid;
+}
+
+.add-element-button{
+    font-size: 2em;
+    cursor: pointer;
+    border: none;
+    margin: 0 1%;
+}
+
+.grid-row-elements-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* GRID ELEMENT*/
+
+.grid-element {
+    width: 100%;
+    margin: 1%;
+    border: #282c34 1px solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /*cursor: pointer;*/
+}
+
+.box-new-element-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: #282c34 1px solid;
+    border-radius: 5px;
+    margin: 5% auto;
+    max-width: 50%;
+}
+
+.select-input{
+    width: 30%;
+}
