@@ -8,7 +8,12 @@ import {SelectChangeEvent} from "@mui/material";
 import {useEffect} from "react";
 
 export default function NewElementModal({open, setOpen, row, setNewElement, actualElement}) {
-    const handleClose = () => setOpen(false);
+    const handleClose = () => {
+        setVidSrc(null);
+        setGifSrc(null);
+        setImgSrc(null);
+        setOpen(false);
+    }
     const [name, setName] = React.useState(actualElement == null ? '' : actualElement.id);
     const [type, setType] = React.useState(actualElement == null ? '' : actualElement.type);
     const [imgSrc, setImgSrc] = React.useState(actualElement == null ? '' : actualElement.imgSrc);
@@ -107,7 +112,7 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
                         <Input id="name-input" aria-describedby="my-helper-text" value={name} onChange={handleNameChange}/>
                     </FormControl>
                      {/*Input select for 'type' with options 'gif' and 'video'/*/}
-                    <FormControl fullWidth={true} classes={"select-input"}>
+                    <FormControl style={{minWidth: '30%', margin: '1%'}}>
                         <InputLabel error>Type</InputLabel>
                         <Select
                             labelId="type-input"
@@ -119,17 +124,50 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
                             <MenuItem value={'video'}>Video</MenuItem>
                         </Select>
                     </FormControl>
-                    <FormControl>
-                        <InputLabel htmlFor="img-src-input">Imagen</InputLabel>
-                        <Input id="img-src-input" aria-describedby="my-helper-text" value={imgSrc} onChange={handleImgSrcChange}/>
-                    </FormControl>
-                    <FormControl>
-                        <InputLabel htmlFor="gif-src-input">Gif</InputLabel>
-                        <Input id="gif-src-input" aria-describedby="my-helper-text" value={gifSrc} onChange={handleGifSrcChange}/>
-                    </FormControl>
-                    <FormControl>
-                        <InputLabel htmlFor="vid-src-input">Video</InputLabel>
-                        <Input id="vid-src-input" aria-describedby="my-helper-text" value={vidSrc} onChange={handleVidSrcChange}/>
+                     <FormControl style={{margin: '1%'}}>
+                         {imgSrc == null ?
+                             <Button
+                                 variant="contained"
+                                 component="label"
+                             >
+                                 Upload Image
+                                 <input
+                                     type="file"
+                                     accept="image/png, image/jpeg"
+                                     onChange={handleImgSrcChange}
+                                     hidden
+                                 />
+                             </Button> : 'Image Ok'}
+                     </FormControl>
+                     <FormControl style={{margin: '1%'}}>
+                         {gifSrc == null ?
+                             <Button
+                                 variant="contained"
+                                 component="label"
+                             >
+                                 Upload Gif
+                                 <input
+                                     type="file"
+                                     accept=".gif"
+                                     hidden
+                                     onChange={handleGifSrcChange}
+                                 />
+                             </Button> : 'Gif Ok'}
+                     </FormControl>
+                    <FormControl style={{margin: '1%'}}>
+                        {vidSrc == null ?
+                            <Button
+                                variant="contained"
+                                component="label"
+                            >
+                            Upload Video
+                            <input
+                                type="file"
+                                accept=".mp4"
+                                hidden
+                                onChange={handleVidSrcChange}
+                            />
+                        </Button> : 'Video Ok'}
                     </FormControl>
                     <FormControl>
                         <InputLabel htmlFor="bg-color-input">Color de fondo</InputLabel>
@@ -148,6 +186,7 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
                         <Input id="border-color-input" aria-describedby="my-helper-text" value={borderColor} onChange={handleBorderColorChange}/>
                     </FormControl>
                      <Button onClick={create}>Guardar</Button>
+                     <Button onClick={handleClose}>Cancelar</Button>
                 </Box>
             </Modal>
         </div>

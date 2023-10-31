@@ -1,9 +1,9 @@
-import {Auth, Storage} from 'aws-amplify';
+import {Storage} from 'aws-amplify';
 
 
 export async function fetchFileFromS3(fileKey) {
     try {
-        await Auth.currentAuthenticatedUser();
+        // await Auth.currentAuthenticatedUser();
         const fileUrl = await Storage.get(fileKey, {level: "public", download: true });
         const file = await new Response(fileUrl.Body).json();
         return file;
@@ -15,8 +15,7 @@ export async function fetchFileFromS3(fileKey) {
 export async function updateS3File(fileName, fileContent) {
     try {
         const fileUrl = await Storage.put(fileName, fileContent, {
-            level: 'public', // Set access level as needed
-            contentType: 'image/png'
+            level: 'public'
         });
         console.log('File updated successfully.');
         console.log('File URL:', fileUrl);

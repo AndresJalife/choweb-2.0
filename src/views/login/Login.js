@@ -7,16 +7,18 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
     return (
-        <ThemeProvider theme={defaultTheme}>
-            <Authenticator
-                hideSignUp={true}>
-                {({ signOut, user }) => (
-                    <main>
-                        <button onClick={signOut}>Sign out</button>
-                        <GridBuilder/>
-                    </main>
-                )}
-            </Authenticator>
-        </ThemeProvider>
+        <div  style={{marginTop: '25vh'}}>
+            <ThemeProvider theme={defaultTheme} >
+                <Authenticator
+                    hideSignUp={true}>
+                    {({ signOut, user }) => (
+                        <main>
+                            <button onClick={signOut}>Sign out</button>
+                            <GridBuilder/>
+                        </main>
+                    )}
+                </Authenticator>
+            </ThemeProvider>
+        </div>
     );
 }

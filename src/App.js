@@ -11,12 +11,10 @@ import Ours from "./views/ours/Ours";
 import Us from "./views/us/Us";
 import React from "react";
 import Header from "./components/header/Header";
-import GridBuilder from "./views/gridBuilder/GridBuilder";
 import Login from "./views/login/Login";
 
 function App(){
     // const { isAuthenticated } = useAuth(); // Use your authentication context or hook
-    const isAuthenticated = false;
     return (
       <div>
           <BrowserRouter>
@@ -31,7 +29,7 @@ function App(){
                       <Route path="propio" element={<Ours />} />
                       <Route path="nosotros" element={<Us />} />
                   </Route>
-                  <Route path="gridBuilder" element={isAuthenticated ? <GridBuilder/> : <Login/>} />
+                  <Route path="gridBuilder" element={<Login/>} />
               </Routes>
           </BrowserRouter>
       </div>

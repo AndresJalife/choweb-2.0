@@ -1,5 +1,5 @@
 // import GridLayout from "../resources/gridLayout";
-import {fetchFileFromS3, updateS3File} from "./S3Handler";
+import {updateS3File} from "./S3Handler";
 
 class ProjectDataSingleton {
     constructor() {
@@ -9,10 +9,12 @@ class ProjectDataSingleton {
     }
 
     async init() {
-        const gridLayout = await fetchFileFromS3('gridLayout.json');
-        this.gridLayout = gridLayout;
-        this.fastAccesibleProjects = this._parseProjects(gridLayout);
-        this.initiated = true;
+        await fetch("https://d2njbbkhc1pb2y.cloudfront.net/public/json/gridLayout.json")
+            .then((response) => response.json())
+            .then((gridLayout) => {
+                this.gridLayout = gridLayout;
+                this.fastAccesibleProjects = this._parseProjects(gridLayout);
+            })
     }
 
     _parseProjects(gridLayout) {
@@ -57,7 +59,7 @@ class ProjectDataSingleton {
     }
 
     async upload() {
-        await updateS3File('gridLayout.json', this.gridLayout);
+        await updateS3File('json/gridLayout.json', this.gridLayout);
     }
 }
 

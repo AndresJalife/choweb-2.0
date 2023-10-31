@@ -18,7 +18,7 @@ function GridBuilder(){
         setRowIds(allRows);
     };
     const onClickUpload = () => {
-        ProjectDataSingleton.upload().then(r => alert("Subido correctamente"));
+        ProjectDataSingleton.upload().then(r => alert("Subido correctamente. Esperar 5 segundos para verlo reflejado."));
     };
 
     return (
