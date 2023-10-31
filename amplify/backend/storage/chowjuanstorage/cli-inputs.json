@@ -1,0 +1,14 @@
+{
+  "resourceName": "chowjuanstorage",
+  "policyUUID": "7958bb6d",
+  "bucketName": "chowebstorage",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

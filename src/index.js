@@ -3,7 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import awsconfig from './aws-exports';
+import Amplify from '@aws-amplify/core';
+import ProjectDataSingleton from "./logic/ProjectDataSingleton";
 
+Amplify.configure(awsconfig);
+await ProjectDataSingleton.init();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

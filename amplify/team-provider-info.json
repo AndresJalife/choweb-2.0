@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-choweb-dev-153537-authRole",
+      "UnauthRoleArn": "arn:aws:iam::101758295797:role/amplify-choweb-dev-153537-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::101758295797:role/amplify-choweb-dev-153537-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-choweb-dev-153537-deployment",
+      "UnauthRoleName": "amplify-choweb-dev-153537-unauthRole",
+      "StackName": "amplify-choweb-dev-153537",
+      "StackId": "arn:aws:cloudformation:us-east-1:101758295797:stack/amplify-choweb-dev-153537/a1022300-74f7-11ee-946c-0a47e6ce1d0b",
+      "AmplifyAppId": "d2n95mrj62hsjm"
+    },
+    "categories": {
+      "auth": {
+        "choweb5ba14cf1": {}
+      },
+      "storage": {
+        "chowjuanstorage": {}
+      }
+    }
+  }
+}

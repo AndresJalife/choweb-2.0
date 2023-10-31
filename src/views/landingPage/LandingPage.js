@@ -3,30 +3,32 @@ import "./landingPage.css";
 import {Box, Grid} from "@mui/material";
 import Video from "../../components/video/Video";
 import Gif from "../../components/gif/Gif";
-import GridLayout from "../../resources/gridLayout";
+import ProjectDataSingleton from "../../logic/ProjectDataSingleton";
+// import gridLayout from "../../resources/gridLayout";
 
 export default function LandingPage(){
 
     const getGrid = () => {
-        return Object.keys(GridLayout).map((column) => {
-            const columnLen = Object.keys(GridLayout[column]).length;
-            return Object.keys(GridLayout[column]).map((row) => {
-                const item = GridLayout[column][row];
+        const gridLayout = ProjectDataSingleton.getGridLayout();
+        return Object.keys(gridLayout).map((row) => {
+            const rowLen = Object.keys(gridLayout[row]).length;
+            return Object.keys(gridLayout[row]).map((col) => {
+                const item = gridLayout[row][col];
                 return (
                     <Grid
                         key={item.id}
                         xs={12}
-                        sm={Math.min(6, Math.ceil(12 / Math.ceil(columnLen / 2)))}
-                        md={Math.ceil(12 / columnLen)}>
+                        sm={12 / rowLen}
+                        md={12 / rowLen}>
                         {item.type === 'video' ? (
                             <Video
                                 className={item.className}
                                 id={item.id}
-                                mp4={item.videoUrl}
+                                mp4={item.vidSrc}
                             />
                         ) : item.type === 'gif' ? (
                             <Gif
-                                id={row}
+                                id={col}
                                 gifSrc={item.gifSrc}
                                 imgSrc={item.imgSrc}
                             />

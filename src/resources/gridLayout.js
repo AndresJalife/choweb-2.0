@@ -7,15 +7,15 @@ import Cepillos from './cepillos.jpg';
 import WachoPistola from './WACHO PISTOLA0.jpg';
 
 const grid = {
-    "1" : {
+    1 : {
         "main_video" : {
             "type" : 'video',
-            "videoUrl" : "https://d2njbbkhc1pb2y.cloudfront.net/static/media/CHOWJUAN-REEL.6c684c593c951a17336e.mp4",
+            "vidSrc" : "https://d2njbbkhc1pb2y.cloudfront.net/static/media/CHOWJUAN-REEL.6c684c593c951a17336e.mp4",
             "id" : "reel",
             "className" : "video"
         }
       },
-    "2" : {
+    2 : {
         "SpeedOfSound" : {
             "type" : 'gif',
             "imgSrc" : SpeedOfSound,
@@ -47,7 +47,7 @@ const grid = {
             "borderColor" : "#670101",
         },
     },
-    "3" : {
+    3 : {
         "Polvo" : {
             "type" : 'gif',
             "imgSrc" : Polvo,
@@ -59,7 +59,7 @@ const grid = {
             "borderColor" : "#FFFFFF",
         },
     },
-    "4" : {
+    4 : {
         "WachoPistola" : {
             "type" : 'gif',
             "imgSrc" : WachoPistola,
@@ -81,7 +81,7 @@ const grid = {
             "borderColor" : "",
         },
     },
-    "5" : {
+    5 : {
         "Cepillos" : {
             "type" : 'gif',
             "imgSrc" : Cepillos,
