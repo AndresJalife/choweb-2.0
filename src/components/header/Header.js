@@ -3,8 +3,6 @@ import "./Header.css"
 import BurgerButton from "./BurgerButton";
 import HeaderMenu from "./HeaderMenu";
 import {Link, Outlet} from "react-router-dom";
-import Logo from "../../resources/chowLogo2.png";
-import InstagramLogo from "../../resources/instagram.png"
 import $ from 'jquery';
 
 export default function Header({someClass}){
@@ -47,10 +45,10 @@ export default function Header({someClass}){
 
                     <div className="logo">
                         <Link to="/">
-                            <img className="logo-image" src={Logo} alt="Main Logo"/>
+                            <img className="logo-image" src={"https://d2njbbkhc1pb2y.cloudfront.net/public/resources/chowLogo2.png"} alt="Main Logo"/>
                         </Link>
                     </div>
-                    <img        src={InstagramLogo}
+                    <img        src={"https://d2njbbkhc1pb2y.cloudfront.net/public/resources/instagram.png"}
                                 className="instagram"
                                 alt="Instagram Logos"
                                 onClick={() => {

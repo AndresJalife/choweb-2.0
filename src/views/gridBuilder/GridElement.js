@@ -2,14 +2,16 @@ import React from 'react';
 import { GrFormTrash } from "react-icons/gr";
 import ProjectDataSingleton from "../../logic/ProjectDataSingleton";
 
-export default function GridElement({id, row, setElements, elements, setOpen, setActualElement}){
+export default function GridElement({id, row, setElements, elements, setOpen, setActualElement, setIsEditing}){
     function onClickDeleteElement() {
         ProjectDataSingleton.deleteProject(row, id);
         setElements(elements.filter((col) => col !== id));
     }
 
     function onClickEdit() {
-        setActualElement(ProjectDataSingleton.getProjectData(id));
+        setIsEditing(true);
+        const element = ProjectDataSingleton.getProjectData(id);
+        setActualElement(element);
         setOpen(true);
     }
 

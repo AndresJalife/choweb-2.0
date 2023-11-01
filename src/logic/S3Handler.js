@@ -12,13 +12,14 @@ export async function fetchFileFromS3(fileKey) {
         console.error('Error fetching file from S3:', error);
     }
 }
-export async function updateS3File(fileName, fileContent) {
+export async function createOrUpdateS3File(fileName, fileContent, fileFolder) {
     try {
-        const fileUrl = await Storage.put(fileName, fileContent, {
+        const fileUrl = await Storage.put(fileFolder + '/' + fileName, fileContent, {
             level: 'public'
         });
         console.log('File updated successfully.');
         console.log('File URL:', fileUrl);
+        return fileUrl.key;
     } catch (error) {
         console.error('Error updating file:', error);
     }

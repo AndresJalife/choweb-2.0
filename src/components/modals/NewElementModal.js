@@ -6,14 +6,10 @@ import ProjectDataSingleton from "../../logic/ProjectDataSingleton";
 import {FormControl, Input, InputLabel, MenuItem, Select} from "@mui/material";
 import {SelectChangeEvent} from "@mui/material";
 import {useEffect} from "react";
-
-export default function NewElementModal({open, setOpen, row, setNewElement, actualElement}) {
-    const handleClose = () => {
-        setVidSrc(null);
-        setGifSrc(null);
-        setImgSrc(null);
-        setOpen(false);
-    }
+import './NewElementModal.css';
+import {createOrUpdateS3File} from "../../logic/S3Handler";
+import {normalizeAndUnSpace} from "../../logic/Util";
+export default function NewElementModal({open, setOpen, row, setNewElement, actualElement, isEditing}) {
     const [name, setName] = React.useState(actualElement == null ? '' : actualElement.id);
     const [type, setType] = React.useState(actualElement == null ? '' : actualElement.type);
     const [imgSrc, setImgSrc] = React.useState(actualElement == null ? '' : actualElement.imgSrc);
@@ -51,13 +47,14 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
         setType(event.target.value);
     };
     const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setName(event.target.value);
+        const name = event.target.value;
+        setName(normalizeAndUnSpace(name));
     };
     const handleImgSrcChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setImgSrc(event.target.value);
+        setImgSrc(event.target.files[0]);
     };
     const handleGifSrcChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setGifSrc(event.target.value);
+        setGifSrc(event.target.files[0]);
     };
     const handleVidSrcChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setVidSrc(event.target.value);
@@ -75,13 +72,31 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
         setBorderColor(event.target.value);
     };
 
-    const create = () => {
+    const handleClose = () => {
+        setVidSrc(null);
+        setGifSrc(null);
+        setImgSrc(null);
+        setOpen(false);
+    }
+
+    const saveFile = async (file) => {
+        if (file != null && file !== '' && isEditing != true) {
+            const fileName = normalizeAndUnSpace(file.name);
+            file.name = fileName;
+            const fileUrl =  await createOrUpdateS3File(fileName, file, 'resources');
+            return "https://d2njbbkhc1pb2y.cloudfront.net/public/" + fileUrl;
+        }
+    }
+
+    const create = async () => {
         if (name === '' || type === '') return;
+        const imgUrl = await saveFile(imgSrc);
+        const gifUrl = await saveFile(gifSrc);
         const data = {
             id: name,
             type: type,
-            imgSrc: imgSrc,
-            gifSrc: gifSrc,
+            imgSrc: imgUrl,
+            gifSrc: gifUrl,
             vidSrc: vidSrc,
             bgColor: bgColor,
             description: description,
@@ -105,13 +120,13 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
+                style={{overflow: 'scroll'}}
             >
                  <Box className="box-new-element-modal">
-                    <FormControl>
+                    <FormControl className="formControl" style={{marginTop: '3%'}} variant="standard">
                         <InputLabel error htmlFor="name-input">Nombre</InputLabel>
                         <Input id="name-input" aria-describedby="my-helper-text" value={name} onChange={handleNameChange}/>
                     </FormControl>
-                     {/*Input select for 'type' with options 'gif' and 'video'/*/}
                     <FormControl style={{minWidth: '30%', margin: '1%'}}>
                         <InputLabel error>Type</InputLabel>
                         <Select
@@ -120,73 +135,55 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
                             value={type}
                             label="Age"
                             onChange={handleTypeChange}>
-                            <MenuItem value={'gif'}>Gif</MenuItem>
+                            <MenuItem value={'gif'}>GIF</MenuItem>
                             <MenuItem value={'video'}>Video</MenuItem>
                         </Select>
                     </FormControl>
                      <FormControl style={{margin: '1%'}}>
-                         {imgSrc == null ?
-                             <Button
-                                 variant="contained"
-                                 component="label"
-                             >
-                                 Upload Image
-                                 <input
-                                     type="file"
-                                     accept="image/png, image/jpeg"
-                                     onChange={handleImgSrcChange}
-                                     hidden
-                                 />
-                             </Button> : 'Image Ok'}
+                         {imgSrc == null || imgSrc === '' ?
+                             <Button variant="contained" component="label">Upload Image
+                                 <input type="file" accept="image/png, image/jpeg" onChange={handleImgSrcChange} hidden/>
+                             </Button> :
+                                 <Button component="label">
+                                     Edit Image
+                                     <input type="file" accept="image/png, image/jpeg" onChange={handleImgSrcChange} hidden/>
+                                 </Button>}
                      </FormControl>
-                     <FormControl style={{margin: '1%'}}>
-                         {gifSrc == null ?
+                     <FormControl>
+                         {gifSrc == null || gifSrc === ''?
                              <Button
-                                 variant="contained"
-                                 component="label"
-                             >
-                                 Upload Gif
-                                 <input
-                                     type="file"
-                                     accept=".gif"
-                                     hidden
-                                     onChange={handleGifSrcChange}
-                                 />
-                             </Button> : 'Gif Ok'}
+                                 variant="contained" component="label">Upload Gif
+                                 <input type="file" accept=".gif" hidden onChange={handleGifSrcChange}/>
+                             </Button> :
+                                 <Button component="label">
+                                     Edit GIF
+                                     <input type="file" accept=".gif" hidden onChange={handleGifSrcChange}/>
+                                 </Button>}
                      </FormControl>
-                    <FormControl style={{margin: '1%'}}>
-                        {vidSrc == null ?
-                            <Button
-                                variant="contained"
-                                component="label"
-                            >
-                            Upload Video
-                            <input
-                                type="file"
-                                accept=".mp4"
-                                hidden
-                                onChange={handleVidSrcChange}
-                            />
-                        </Button> : 'Video Ok'}
-                    </FormControl>
-                    <FormControl>
+                     <FormControl className="formControl" variant="standard">
+                         <InputLabel className="margin-top-label" htmlFor="bg-color-input">URL del video</InputLabel>
+                         <Input id="bg-color-input" aria-describedby="my-helper-text" value={vidSrc} onChange={handleVidSrcChange}/>
+                     </FormControl>
+                    <FormControl className="formControl" variant="standard">
                         <InputLabel htmlFor="bg-color-input">Color de fondo</InputLabel>
                         <Input id="bg-color-input" aria-describedby="my-helper-text" value={bgColor} onChange={handleBgColorChange}/>
                     </FormControl>
-                    <FormControl>
-                        <InputLabel htmlFor="description-input">Descripción</InputLabel>
-                        <Input id="description-input" aria-describedby="my-helper-text" value={description} onChange={handleDescriptionChange}/>
-                    </FormControl>
-                    <FormControl>
+                    <FormControl className="formControl" variant="standard">
                         <InputLabel htmlFor="font-color-input">Color de fuente</InputLabel>
                         <Input id="font-color-input" aria-describedby="my-helper-text" value={fontColor} onChange={handleFontColorChange}/>
                     </FormControl>
-                    <FormControl>
+                    <FormControl className="formControl" variant="standard">
                         <InputLabel htmlFor="border-color-input">Color de borde</InputLabel>
                         <Input id="border-color-input" aria-describedby="my-helper-text" value={borderColor} onChange={handleBorderColorChange}/>
                     </FormControl>
-                     <Button onClick={create}>Guardar</Button>
-                     <Button onClick={handleClose}>Cancelar</Button>
+                     <FormControl className="formControl" style={{height: '15%'}} variant="standard">
+                         <InputLabel htmlFor="description-input">Descripción</InputLabel>
+                         <Input multiline="true" minRows="5" id="description-input" aria-describedby="my-helper-text" value={description} onChange={handleDescriptionChange}/>
+                     </FormControl>
+                     <div>
+                         <Button onClick={handleClose}>Cancelar</Button>
+                         <Button onClick={create}>Guardar</Button>
+                     </div>
                 </Box>
             </Modal>
         </div>

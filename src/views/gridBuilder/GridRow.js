@@ -3,20 +3,21 @@ import GridElement from "./GridElement";
 import NewElementModal from "../../components/modals/NewElementModal";
 import ProjectDataSingleton from "../../logic/ProjectDataSingleton";
 
-// (<GridElement key={col} row={id} id={col}></GridElement>)
 export default function GridRow({id, setRowIds, rowIds}){
     const [elements, setElements] = useState(Object.keys(ProjectDataSingleton.getGridLayout()[id]).map((col) => col));
     const [open, setOpen] = React.useState(false);
     const [actualElement, setActualElement] = React.useState(null);
+    const [isEditing, setIsEditing] = React.useState(false);
 
     const parseElements = () => {
         return elements.map((col) => {
-            return (<GridElement key={col} row={id} id={col} elements={elements} setElements={setElements} setOpen={setOpen} setActualElement={setActualElement}></GridElement>)
+            return (<GridElement key={col} row={id} id={col} elements={elements} setElements={setElements} setOpen={setOpen} setActualElement={setActualElement} setIsEditing={setIsEditing}></GridElement>)
         });
     }
 
     const onClickAddNewElement = () => {
         if (elements.length > 3) return;
+        setIsEditing(false);
         setActualElement(null);
         setOpen(true);
     };
@@ -40,7 +41,7 @@ export default function GridRow({id, setRowIds, rowIds}){
             <div className="add-element-button">
                 <h1 onClick={onClickAddNewElement}>+</h1>
             </div>
-            <NewElementModal actualElement={actualElement} setOpen={setOpen} open={open} row={id} setNewElement={setNewElement}/>
+            <NewElementModal actualElement={actualElement} setOpen={setOpen} open={open} row={id} setNewElement={setNewElement} isEditing={isEditing}/>
         </div>
     );
 }

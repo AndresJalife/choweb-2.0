@@ -1,11 +1,9 @@
 // import GridLayout from "../resources/gridLayout";
-import {updateS3File} from "./S3Handler";
+import {createOrUpdateS3File} from "./S3Handler";
 
 class ProjectDataSingleton {
     constructor() {
         this.gridLayout = {};
-        this.fastAccesibleProjects = {};
-        this.initiated = false;
     }
 
     async init() {
@@ -13,23 +11,20 @@ class ProjectDataSingleton {
             .then((response) => response.json())
             .then((gridLayout) => {
                 this.gridLayout = gridLayout;
-                this.fastAccesibleProjects = this._parseProjects(gridLayout);
             })
     }
 
-    _parseProjects(gridLayout) {
-        const projects = {};
-        Object.keys(gridLayout).forEach((column) => {
-            Object.keys(gridLayout[column]).forEach((row) => {
-                const item = gridLayout[column][row];
-                projects[row] = item;
+    getProjectData(projectName) {
+        let project = null;
+        Object.keys(this.gridLayout).forEach((column) => {
+            Object.keys(this.gridLayout[column]).forEach((row) => {
+                const item = this.gridLayout[column][row];
+                if (item.id === projectName) {
+                    project = item;
+                }
             });
         });
-        return projects;
-    }
-
-    getProjectData(projectName) {
-        return this.fastAccesibleProjects[projectName];
+        return project;
     }
 
     newRow() {
@@ -59,7 +54,7 @@ class ProjectDataSingleton {
     }
 
     async upload() {
-        await updateS3File('json/gridLayout.json', this.gridLayout);
+        await createOrUpdateS3File('gridLayout.json', this.gridLayout, 'json');
     }
 }
 
