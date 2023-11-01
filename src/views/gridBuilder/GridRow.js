@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import GridElement from "./GridElement";
 import NewElementModal from "../../components/modals/NewElementModal";
 import ProjectDataSingleton from "../../logic/ProjectDataSingleton";
+import {GrFormTrash} from "react-icons/gr";
 
 export default function GridRow({id, setRowIds, rowIds}){
     const [elements, setElements] = useState(Object.keys(ProjectDataSingleton.getGridLayout()[id]).map((col) => col));
@@ -34,7 +35,7 @@ export default function GridRow({id, setRowIds, rowIds}){
 
     return (
         <div className="grid-row">
-            <p style={{cursor:"pointer"}} onClick={onClickDeleteRow}>ELIMINAR</p>
+            <GrFormTrash style={{cursor: "pointer",fontSize: "50"}} onClick={onClickDeleteRow}>ELIMINAR</GrFormTrash>
             <div className="grid-row-elements-container" id={`grid-elements-container-${id}`}>
                 {parseElements()}
             </div>

@@ -7,14 +7,13 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
     return (
-        <div  style={{marginTop: '25vh'}}>
+        <div style={{backgroundColor: 'lightgray'}}>
             <ThemeProvider theme={defaultTheme} >
                 <Authenticator
                     hideSignUp={true}>
                     {({ signOut, user }) => (
                         <main>
-                            <button onClick={signOut}>Sign out</button>
-                            <GridBuilder/>
+                            <GridBuilder signOut={signOut}/>
                         </main>
                     )}
                 </Authenticator>

@@ -14,7 +14,6 @@ import Header from "./components/header/Header";
 import Login from "./views/login/Login";
 
 function App(){
-    // const { isAuthenticated } = useAuth(); // Use your authentication context or hook
     return (
       <div>
           <BrowserRouter>

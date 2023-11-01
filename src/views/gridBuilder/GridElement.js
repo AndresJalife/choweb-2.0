@@ -1,6 +1,7 @@
 import React from 'react';
 import { GrFormTrash } from "react-icons/gr";
 import ProjectDataSingleton from "../../logic/ProjectDataSingleton";
+import {AiFillEdit} from "react-icons/ai";
 
 export default function GridElement({id, row, setElements, elements, setOpen, setActualElement, setIsEditing}){
     function onClickDeleteElement() {
@@ -17,10 +18,11 @@ export default function GridElement({id, row, setElements, elements, setOpen, se
 
     return (
         <div className="grid-element">
-
             <h1>{id}</h1>
-            <GrFormTrash onClick={onClickDeleteElement} style={{cursor: "pointer",fontSize: "32"}}/>
-            <p onClick={onClickEdit}>edit</p>
+            <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+                <GrFormTrash onClick={onClickDeleteElement} style={{cursor: "pointer",fontSize: "32"}}/>
+                <AiFillEdit onClick={onClickEdit} style={{cursor: "pointer",fontSize: "32"}} >edit</AiFillEdit>
+            </div>
         </div>
     )
 }
