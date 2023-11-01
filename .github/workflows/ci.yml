@@ -25,13 +25,13 @@ jobs:
       - name: configure amplify
         uses: ambientlight/amplify-cli-action@0.3.0
         with:
-            amplify_command: configure
-            amplify_env: dev
-            amplify_cli_version: 12.7.1
+          amplify_command: configure
+          amplify_env: dev
+          amplify_cli_version: 12.7.1
         env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            AWS_REGION: us-west-1
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: us-east-1
       - run: npm cache clean --force && npm cache verify
       - run: npm install
       - run: npm run build

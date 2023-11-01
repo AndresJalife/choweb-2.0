@@ -1,4 +1,4 @@
-name: 'Amplify Deploy'
+name: 'Amplify Push'
 on:
   push:
     branches: [ main ]
@@ -36,10 +36,10 @@ jobs:
       - name: install
         run: npm install
 
-      - name: deploy
+      - name: push
         uses: ambientlight/amplify-cli-action@0.3.0
         with:
-          amplify_command: publish
+          amplify_command: push
           amplify_env: dev
           amplify_cli_version: 12.7.1
         env:
