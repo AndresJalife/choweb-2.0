@@ -16,9 +16,13 @@ function GridBuilder({signOut}) {
 
     // initialize rows
     useEffect(() => {
-        setRows(parseRows());
-        // eslint-disable-next-line no-use-before-define
-    }, [parseRows, rowIds]);
+        const parse = () => {
+            return rowIds.map((row) => {
+                return <GridRow key={row} id={row} rowIds={rowIds} setRowIds={setRowIds} layoutHandler={layoutHandler}/>
+            })
+        }
+        setRows(parse());
+    }, [layoutHandler, rowIds]);
 
     const refreshRowsIds = (handler) => {
         setRowIds(Object.keys(handler.getGridLayout()).map((row) => row));
@@ -46,13 +50,6 @@ function GridBuilder({signOut}) {
                 break;
         }
     };
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    const parseRows = () => {
-        return rowIds.map((row) => {
-            return <GridRow key={row} id={row} rowIds={rowIds} setRowIds={setRowIds} layoutHandler={layoutHandler}/>
-        })
-    }
     const onClickAddNewRow = () => {
         const newRowId = layoutHandler.newRow();
         const allRows = [...rowIds, newRowId];

@@ -43,33 +43,12 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
         setFontColor(actualElement.fontColor);
         setBorderColor(actualElement.borderColor);
     }, [actualElement]);
-    const handleTypeChange = (event: SelectChangeEvent) => {
-        setType(event.target.value);
-    };
     const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const name = event.target.value;
         setName(normalizeAndUnSpace(name));
     };
-    const handleImgSrcChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setImgSrc(event.target.files[0]);
-    };
-    const handleGifSrcChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setGifSrc(event.target.files[0]);
-    };
-    const handleVidSrcChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setVidSrc(event.target.value);
-    };
-    const handleBgColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setBgColor(event.target.value);
-    };
-    const handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setDescription(event.target.value);
-    };
-    const handleFontColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setFontColor(event.target.value);
-    };
-    const handleBorderColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setBorderColor(event.target.value);
+    const handleGeneric = (event: React.ChangeEvent<HTMLInputElement>, setFn) => {
+        setFn(event.target.files[0]);
     };
 
     const handleClose = () => {
@@ -129,7 +108,7 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
                          </FormControl>
                          <FormControl style={{minWidth: '30%', margin: '1%'}}>
                          <InputLabel error>Type</InputLabel>
-                         <Select labelId="type-input" id="demo-simple-select" value={type} label="Age" onChange={handleTypeChange}>
+                         <Select labelId="type-input" id="demo-simple-select" value={type} label="Age" onChange={(event) => handleGeneric(event, setType)}>
                              <MenuItem value={'gif'}>GIF</MenuItem>
                              <MenuItem value={'video'}>Video</MenuItem>
                          </Select>
@@ -137,43 +116,43 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
                          <FormControl style={{margin: '1%'}}>
                              {imgSrc == null || imgSrc === '' ?
                                  <Button variant="contained" component="label">Upload Image
-                                     <input type="file" accept="image/png, image/jpeg" onChange={handleImgSrcChange} hidden/>
+                                     <input type="file" accept="image/png, image/jpeg" onChange={(event) => handleGeneric(event, setImgSrc)} hidden/>
                                  </Button> :
                                  <Button component="label">
                                      Edit Image
-                                     <input type="file" accept="image/png, image/jpeg" onChange={handleImgSrcChange} hidden/>
+                                     <input type="file" accept="image/png, image/jpeg" onChange={(event) => handleGeneric(event, setImgSrc)} hidden/>
                                  </Button>}
                          </FormControl>
                          <FormControl>
                              {gifSrc == null || gifSrc === ''?
                                  <Button
                                      variant="contained" component="label">Upload Gif
-                                     <input type="file" accept=".gif" hidden onChange={handleGifSrcChange}/>
+                                     <input type="file" accept=".gif" hidden onChange={(event) => handleGeneric(event, setGifSrc)}/>
                                  </Button> :
                                  <Button component="label">
                                      Edit GIF
-                                     <input type="file" accept=".gif" hidden onChange={handleGifSrcChange}/>
+                                     <input type="file" accept=".gif" hidden onChange={(event) => handleGeneric(event, setGifSrc)}/>
                                  </Button>}
                          </FormControl>
                          <FormControl className="formControl" variant="standard">
                              <InputLabel className="margin-top-label" htmlFor="bg-color-input">URL del video (modo 'embed')</InputLabel>
-                             <Input id="bg-color-input" aria-describedby="my-helper-text" value={vidSrc} onChange={handleVidSrcChange}/>
+                             <Input id="bg-color-input" aria-describedby="my-helper-text" value={vidSrc} onChange={(event) => handleGeneric(event, setVidSrc)}/>
                          </FormControl>
                          <FormControl className="formControl" variant="standard">
                              <InputLabel htmlFor="bg-color-input">Color de fondo (en hexa, incluir '#')</InputLabel>
-                             <Input id="bg-color-input" aria-describedby="my-helper-text" value={bgColor} onChange={handleBgColorChange}/>
+                             <Input id="bg-color-input" aria-describedby="my-helper-text" value={bgColor} onChange={(event) => handleGeneric(event, setBgColor)}/>
                          </FormControl>
                          <FormControl className="formControl" variant="standard">
                              <InputLabel htmlFor="font-color-input">Color de fuente (en hexa, incluir '#')</InputLabel>
-                             <Input id="font-color-input" aria-describedby="my-helper-text" value={fontColor} onChange={handleFontColorChange}/>
+                             <Input id="font-color-input" aria-describedby="my-helper-text" value={fontColor} onChange={(event) => handleGeneric(event, setFontColor)}/>
                          </FormControl>
                          <FormControl className="formControl" variant="standard">
                              <InputLabel htmlFor="border-color-input">Color de borde (en hexa, incluir '#')</InputLabel>
-                             <Input id="border-color-input" aria-describedby="my-helper-text" value={borderColor} onChange={handleBorderColorChange}/>
+                             <Input id="border-color-input" aria-describedby="my-helper-text" value={borderColor} onChange={(event) => handleGeneric(event, setBorderColor)}/>
                          </FormControl>
                          <FormControl className="formControl" style={{height: '15%'}} variant="standard">
                              <InputLabel htmlFor="description-input">Descripción</InputLabel>
-                             <Input multiline={true} minRows="5" id="description-input" aria-describedby="my-helper-text" value={description} onChange={handleDescriptionChange}/>
+                             <Input multiline={true} minRows="5" id="description-input" aria-describedby="my-helper-text" value={description} onChange={(event) => handleGeneric(event, setDescription)}/>
                          </FormControl>
                          <div>
                              <Button onClick={handleClose}>Cancelar</Button>
