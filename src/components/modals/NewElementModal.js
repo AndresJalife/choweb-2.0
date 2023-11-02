@@ -47,8 +47,12 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
         const name = event.target.value;
         setName(normalizeAndUnSpace(name));
     };
-    const handleGeneric = (event: React.ChangeEvent<HTMLInputElement>, setFn) => {
+    const handleGenericFile = (event: React.ChangeEvent<HTMLInputElement>, setFn) => {
         setFn(event.target.files[0]);
+    };
+
+    const handleGeneric = (event: React.ChangeEvent<HTMLInputElement>, setFn) => {
+        setFn(event.target.value);
     };
 
     const handleClose = () => {
@@ -58,29 +62,13 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
         setOpen(false);
     }
 
-    const saveFile = async (file) => {
-        if (file != null && file !== '' && isEditing !== true) {
-            const fileName = normalizeAndUnSpace(file.name);
-            const fileUrl =  await createOrUpdateS3File(fileName, file, 'resources');
-            return "https://d2njbbkhc1pb2y.cloudfront.net/public/" + fileUrl;
-        }
-    }
-
     const create = async () => {
         if (name === '' || type === '') return;
-        // let imgUrl = null;
-        // let gifUrl = null;
-        // if (imgSrc !== null || gifSrc !== null) {
-        //     setLoading(true);
-        //     imgUrl = await saveFile(imgSrc);
-        //     gifUrl = await saveFile(gifSrc);
-        //     setLoading(false);
-        // }
         const data = {
             id: name,
             type: type,
             imgSrc: imgSrc,
-            gifSrc: gifSrc,
+            gifSrc: 'https://d2njbbkhc1pb2y.cloudfront.net/public/' + gifSrc,
             vidSrc: vidSrc,
             bgColor: bgColor,
             description: description,
@@ -113,10 +101,16 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
                                  <MenuItem value={'video'}>Video</MenuItem>
                              </Select>
                          </FormControl>
-                         <FormControl className="formControl">
-                             <InputLabel className="margin-top-label" htmlFor="bg-color-input">URL de la imagen</InputLabel>
-                             <Input id="bg-color-input" aria-describedby="my-helper-text" value={imgSrc} onChange={(event) => handleGeneric(event, setImgSrc)}/>
-                         </FormControl>
+                        <FormControl style={{margin: '1%'}}>
+                            {imgSrc == null || imgSrc === '' ?
+                                <Button variant="contained" component="label">Upload Image
+                                    <input type="file" accept="image/png, image/jpeg" onChange={(event) => handleGenericFile(event, setImgSrc)} hidden/>
+                                </Button> :
+                                <Button component="label">
+                                    Edit Image
+                                    <input type="file" accept="image/png, image/jpeg" onChange={(event) => handleGenericFile(event, setImgSrc)} hidden/>
+                                </Button>}
+                        </FormControl>
                          <FormControl className="formControl">
                              <InputLabel className="margin-top-label" htmlFor="bg-color-input">URL del GIF</InputLabel>
                              <Input id="bg-color-input" aria-describedby="my-helper-text" value={gifSrc} onChange={(event) => handleGeneric(event, setGifSrc)}/>
