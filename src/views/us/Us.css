@@ -1,0 +1,30 @@
+html {
+    overflow-x: hidden;
+}
+
+.img-faces{
+    position: relative;
+}
+
+.juan-eyes {
+    margin: -21% 38% !important;
+}
+
+.eyes-container {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    margin: -22% 11%;
+}
+
+.eye {
+    width: 5.3%;
+}
+
+.right-eye {
+    margin-left: 4%;
+}
+
+.juan-right-eye {
+    margin-left: 5.5% !important;
+}
