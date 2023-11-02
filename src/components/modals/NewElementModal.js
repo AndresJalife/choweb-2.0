@@ -19,8 +19,10 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
     const [fontColor, setFontColor] = React.useState(actualElement == null ? '' : actualElement.fontColor);
     const [borderColor, setBorderColor] = React.useState(actualElement == null ? '' : actualElement.borderColor);
     const [isLoading, setLoading] = React.useState(false);
+    const [imageChanged, setImageChanged] = React.useState(false);
 
     useEffect(() => {
+        setImageChanged(false);
         if (actualElement == null) {
             setName('');
             setType('');
@@ -48,6 +50,7 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
         setName(normalizeAndUnSpace(name));
     };
     const handleGenericFile = (event: React.ChangeEvent<HTMLInputElement>, setFn) => {
+        setImageChanged(true);
         setFn(event.target.files[0]);
     };
 
