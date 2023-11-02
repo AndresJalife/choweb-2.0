@@ -43,7 +43,7 @@ export default function Project() {
                     :
                     <div className="project-container" style={{backgroundColor: projectInfo.bgColor}}>
                         <div className="project-video" style={{backgroundColor: projectInfo.borderColor}}>
-                            <Iframe  className="project-iframe" src={projectInfo.vidSrc} title={projectName}></Iframe>
+                            <Iframe className="project-iframe" src={projectInfo.vidSrc} title={projectName}></Iframe>
                         </div>
                         <p className="project-description" style={{color: projectInfo.fontColor}}>
                             {projectInfo.description}

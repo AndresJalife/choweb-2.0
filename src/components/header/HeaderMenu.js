@@ -1,10 +1,15 @@
-import React, {useState} from 'react';
-import {useNavigate} from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+import {useLocation, useNavigate} from "react-router-dom";
 
 
 const HeaderMenu = ({isOpen, className}) => {
     let navigate = useNavigate();
+    const location = useLocation();
     const [buttonNameSelected, setButtonNameSelected] = useState("")
+
+    useEffect(() => {
+        setButtonNameSelected(location.pathname.replace("/", ""));
+    }, [navigate]);
 
     let getClasses = (buttonName) => {
         return `menu-option ${isOpen ? 'show' : 'hide'} ${buttonName === buttonNameSelected ? 'button-selected' : ''}`
