@@ -6,7 +6,7 @@ import LandingPageGridDataHandler from "../../logic/GridDataHandler/LandingPageG
 export default function LandingPage() {
     return (
         <div>
-            <GridDisplay layoutHandler={LandingPageGridDataHandler}/>
+            <GridDisplay layoutHandler={LandingPageGridDataHandler} view={'inicio'}/>
         </div>
     )
 }

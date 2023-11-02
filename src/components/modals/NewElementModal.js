@@ -99,16 +99,6 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
                                  <MenuItem value={'video'}>Video</MenuItem>
                              </Select>
                          </FormControl>
-                        {/*<FormControl style={{margin: '1%'}}>*/}
-                        {/*    {imgSrc == null || imgSrc === '' ?*/}
-                        {/*        <Button variant="contained" component="label">Upload Image*/}
-                        {/*            <input type="file" accept="image/png, image/jpeg" onChange={(event) => handleGenericFile(event, setImgSrc)} hidden/>*/}
-                        {/*        </Button> :*/}
-                        {/*        <Button component="label">*/}
-                        {/*            Edit Image*/}
-                        {/*            <input type="file" accept="image/png, image/jpeg" onChange={(event) => handleGenericFile(event, setImgSrc)} hidden/>*/}
-                        {/*        </Button>}*/}
-                        {/*</FormControl>*/}
                         <FormControl className="formControl" variant='standard'>
                             <InputLabel className="margin-top-label" htmlFor="bg-color-input">URL de una imagen</InputLabel>
                             <Input id="bg-color-input" aria-describedby="my-helper-text" value={imgSrc} onChange={(event) => handleGeneric(event, setImgSrc)}/>

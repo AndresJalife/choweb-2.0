@@ -5,7 +5,7 @@ import VideoclipsGridDataHandler from "../../logic/GridDataHandler/VideoclipsGri
 const Videoclips = () => {
     return (
         <div>
-            <GridDisplay layoutHandler={VideoclipsGridDataHandler}/>
+            <GridDisplay layoutHandler={VideoclipsGridDataHandler} view={'videoclips'}/>
         </div>
     )
 }

@@ -39,24 +39,26 @@
 .menu-option {
     color: white;
     cursor: pointer;
-    /*text-shadow: black 2px 2px;*/
 }
 
 .hide {
-    visibility: hidden;
+    animation: growUp 200ms ease-in-out forwards;
+    transform-origin: top center;
 }
 
 .show {
-    visibility: visible;
+    animation: growDown 500ms ease-in-out forwards;
+    transform-origin: top center;
+
 }
 
 .menu-options {
     font-size: 2em;
     position: fixed;
-    opacity: 0;
     left: 3%;
     top: 6%;
     z-index: 99998;
+
 }
 
 .menu-option:hover, .button-selected {
@@ -70,5 +72,23 @@
 
     .header {
         margin-top: 6%;
+    }
+}
+
+@keyframes growUp {
+    0% {
+        transform: scaleY(1)
+    }
+    100% {
+        transform: scaleY(0)
+    }
+}
+
+@keyframes growDown {
+    0% {
+        transform: scaleY(0)
+    }
+    100% {
+        transform: scaleY(1)
     }
 }
