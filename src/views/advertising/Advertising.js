@@ -5,7 +5,7 @@ import AdvertisementGridDataHandler from "../../logic/GridDataHandler/Advertisem
 const Advertising = () => {
     return (
         <div>
-            <GridDisplay layoutHandler={AdvertisementGridDataHandler}/>
+            <GridDisplay layoutHandler={AdvertisementGridDataHandler} view={'publicidad'}/>
         </div>
     )
 }

@@ -3,7 +3,7 @@ import React, {useEffect} from "react";
 import './gif.css';
 import {useNavigate} from "react-router-dom";
 
-export default function Gif({gifSrc, imgSrc, id}) {
+export default function Gif({gifSrc, imgSrc, id, view}) {
     let navigate = useNavigate();
     const containerId = "#" + id + "-container";
 
@@ -28,7 +28,7 @@ export default function Gif({gifSrc, imgSrc, id}) {
     }, [id, gifSrc, imgSrc, containerId])
 
     const goToProyect = () => {
-        navigate("./proyecto/" + id);
+        navigate(`/${view}/proyecto/${id}`);
     }
 
     return (

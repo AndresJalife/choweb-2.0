@@ -3,7 +3,7 @@ import {Box, Grid} from "@mui/material";
 import Video from "../../components/video/Video";
 import Gif from "../../components/gif/Gif";
 
-export default function GridDisplay({layoutHandler}){
+export default function GridDisplay({layoutHandler, view}){
 
     const getGrid = () => {
         const gridLayout = layoutHandler.getGridLayout();
@@ -16,7 +16,7 @@ export default function GridDisplay({layoutHandler}){
                         {item.type === 'video' ? (
                             <Video className={item.className} id={item.id} mp4={item.vidSrc}/>
                         ) : item.type === 'gif' ? (
-                            <Gif id={col} gifSrc={item.gifSrc} imgSrc={item.imgSrc}/>
+                            <Gif id={col} gifSrc={item.gifSrc} imgSrc={item.imgSrc} view={view}/>
                         ) : null}
                     </Grid>
                 );

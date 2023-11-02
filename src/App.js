@@ -18,7 +18,7 @@ function App() {
                         <Route path="" element={<LandingPage/>}/>
                     </Route>
                     <Route path="/" element={<Header someClass={""}/>}>
-                        <Route path="proyecto/:projectName" element={<Project/>}/>
+                        <Route path=":view/proyecto/:projectName" element={<Project/>}/>
                         <Route path="publicidad" element={<Advertising/>}/>
                         <Route path="videoclips" element={<Videoclips/>}/>
                         <Route path="propio" element={<Ours/>}/>

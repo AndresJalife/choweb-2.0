@@ -7,9 +7,9 @@ import $ from 'jquery';
 
 export default function Header({someClass}) {
     const [burgerIsOpen, setBurgerIsOpen] = useState(false);
-    const handleClick = () => {
-        setBurgerIsOpen(!burgerIsOpen);
-    };
+    // const handleClick = () => {
+    //
+    // };
 
     $("#header").mouseenter(() => {
         $('.opaque').css("opacity", 1)
@@ -39,7 +39,7 @@ export default function Header({someClass}) {
         <div>
             <div className="header-container">
                 <div id="header" className={"header " + someClass}>
-                    <div className="header-button" onClick={() => handleClick(!burgerIsOpen)}>
+                    <div className="header-button" onClick={() => setBurgerIsOpen(!burgerIsOpen)}>
                         <BurgerButton open={burgerIsOpen} size={3}/>
                     </div>
 
