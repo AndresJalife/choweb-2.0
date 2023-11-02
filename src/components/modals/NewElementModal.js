@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import {CircularProgress, FormControl, Input, InputLabel, MenuItem, Select} from "@mui/material";
-import {SelectChangeEvent} from "@mui/material";
 import {useEffect} from "react";
 import './Modal.css';
 import {createOrUpdateS3File} from "../../logic/S3Handler";
@@ -46,8 +45,11 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
         setBorderColor(actualElement.borderColor);
     }, [actualElement]);
     const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const name = event.target.value;
-        setName(normalizeAndUnSpace(name));
+        let actName = event.target.value;
+        if (actName !== '') {
+            actName = normalizeAndUnSpace(actName);
+        }
+        setName(actName);
     };
     const handleGenericFile = (event: React.ChangeEvent<HTMLInputElement>, setFn) => {
         setImageChanged(true);
@@ -65,13 +67,30 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
         setOpen(false);
     }
 
+    const saveFile = async (file) => {
+        if (file != null && file !== '') {
+            const fileName = normalizeAndUnSpace(file.name);
+            const fileUrl =  await createOrUpdateS3File(fileName, file, 'resources');
+            return "https://d2njbbkhc1pb2y.cloudfront.net/public/" + fileUrl;
+        }
+    }
+
     const create = async () => {
         if (name === '' || type === '') return;
+        let imgUrl = null;
+        if (imageChanged) {
+            setLoading(true);
+            imgUrl = await saveFile(imgSrc);
+            setLoading(false);
+        }
+        if (gifSrc != null && gifSrc !== '' && !gifSrc.includes('https')) {
+            setGifSrc('https://d2njbbkhc1pb2y.cloudfront.net/public/resources' + gifSrc);
+        }
         const data = {
             id: name,
             type: type,
-            imgSrc: imgSrc,
-            gifSrc: 'https://d2njbbkhc1pb2y.cloudfront.net/public/' + gifSrc,
+            imgSrc: imgUrl,
+            gifSrc: gifSrc,
             vidSrc: vidSrc,
             bgColor: bgColor,
             description: description,
