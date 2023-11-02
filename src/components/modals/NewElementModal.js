@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import {CircularProgress, FormControl, Input, InputLabel, MenuItem, Select} from "@mui/material";
-import {SelectChangeEvent} from "@mui/material";
 import {useEffect} from "react";
 import './Modal.css';
 import {createOrUpdateS3File} from "../../logic/S3Handler";
@@ -47,8 +46,12 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
         const name = event.target.value;
         setName(normalizeAndUnSpace(name));
     };
-    const handleGeneric = (event: React.ChangeEvent<HTMLInputElement>, setFn) => {
+    const handleGenericFile = (event: React.ChangeEvent<HTMLInputElement>, setFn) => {
         setFn(event.target.files[0]);
+    };
+
+    const handleGeneric = (event: React.ChangeEvent<HTMLInputElement>, setFn) => {
+        setFn(event.target.value);
     };
 
     const handleClose = () => {
@@ -116,22 +119,22 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
                          <FormControl style={{margin: '1%'}}>
                              {imgSrc == null || imgSrc === '' ?
                                  <Button variant="contained" component="label">Upload Image
-                                     <input type="file" accept="image/png, image/jpeg" onChange={(event) => handleGeneric(event, setImgSrc)} hidden/>
+                                     <input type="file" accept="image/png, image/jpeg" onChange={(event) => handleGenericFile(event, setImgSrc)} hidden/>
                                  </Button> :
                                  <Button component="label">
                                      Edit Image
-                                     <input type="file" accept="image/png, image/jpeg" onChange={(event) => handleGeneric(event, setImgSrc)} hidden/>
+                                     <input type="file" accept="image/png, image/jpeg" onChange={(event) => handleGenericFile(event, setImgSrc)} hidden/>
                                  </Button>}
                          </FormControl>
                          <FormControl>
                              {gifSrc == null || gifSrc === ''?
                                  <Button
                                      variant="contained" component="label">Upload Gif
-                                     <input type="file" accept=".gif" hidden onChange={(event) => handleGeneric(event, setGifSrc)}/>
+                                     <input type="file" accept=".gif" hidden onChange={(event) => handleGenericFile(event, setGifSrc)}/>
                                  </Button> :
                                  <Button component="label">
                                      Edit GIF
-                                     <input type="file" accept=".gif" hidden onChange={(event) => handleGeneric(event, setGifSrc)}/>
+                                     <input type="file" accept=".gif" hidden onChange={(event) => handleGenericFile(event, setGifSrc)}/>
                                  </Button>}
                          </FormControl>
                          <FormControl className="formControl" variant="standard">
