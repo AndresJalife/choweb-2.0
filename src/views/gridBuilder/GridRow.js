@@ -3,12 +3,14 @@ import GridElement from "./GridElement";
 import NewElementModal from "../../components/modals/NewElementModal";
 import {GrFormTrash} from "react-icons/gr";
 import LandingPageGridDataHandler from "../../logic/GridDataHandler/LandingPageGridDataHandler";
+import SureToDeleteModal from "../../components/modals/SureToDeleteModal";
 
 export default function GridRow({id, setRowIds, rowIds, layoutHandler}){
     const [elements, setElements] = useState();
     const [open, setOpen] = React.useState(false);
     const [actualElement, setActualElement] = React.useState(null);
     const [isEditing, setIsEditing] = React.useState(false);
+    const [deleteModalOpen, setDeleteModalOpen] = React.useState(false);
 
     useEffect(() => {
         setElements(Object.keys(layoutHandler.getGridLayout()[id]).map((col) => col))
@@ -33,14 +35,18 @@ export default function GridRow({id, setRowIds, rowIds, layoutHandler}){
         setElements(newElementList);
     }
 
-    function onClickDeleteRow() {
+    const deleteRow = () => {
         layoutHandler.deleteRow(id);
         setRowIds(rowIds.filter((row) => row !== id));
     }
 
+    const handleDeleteRow = () => {
+        setDeleteModalOpen(true);
+    }
+
     return (
         <div className="grid-row">
-            <GrFormTrash style={{cursor: "pointer",fontSize: "50"}} onClick={onClickDeleteRow}>ELIMINAR</GrFormTrash>
+            <GrFormTrash style={{cursor: "pointer",fontSize: "50"}} onClick={handleDeleteRow}>ELIMINAR</GrFormTrash>
             <div className="grid-row-elements-container" id={`grid-elements-container-${id}`}>
                 {parseElements()}
             </div>
@@ -48,6 +54,7 @@ export default function GridRow({id, setRowIds, rowIds, layoutHandler}){
                 <h1 onClick={onClickAddNewElement}>+</h1>
             </div>
             <NewElementModal layoutHandler={layoutHandler} actualElement={actualElement} setOpen={setOpen} open={open} row={id} setNewElement={setNewElement} isEditing={isEditing}/>
+            <SureToDeleteModal open={deleteModalOpen} setOpen={setDeleteModalOpen} fnApply={deleteRow}/>
         </div>
     );
 }

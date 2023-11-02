@@ -1,4 +1,3 @@
-// import GridLayout from "../resources/gridLayout";
 import {createOrUpdateS3File} from "../S3Handler";
 
 class GridDataHandler {

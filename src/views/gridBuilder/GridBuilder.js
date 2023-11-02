@@ -15,7 +15,6 @@ function GridBuilder({signOut}){
 
     // initialize rows
     useEffect(() => {
-        console.log("Initializing rows")
         setRows(parseRows());
     }, [rowIds]);
 
