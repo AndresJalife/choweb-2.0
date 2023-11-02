@@ -1,8 +1,10 @@
 import React from 'react';
+import GridDisplay from "../../components/gridDisplay/GridDisplay";
+import VideoclipsGridDataHandler from "../../logic/GridDataHandler/VideoclipsGridDataHandler";
 const Videoclips = () => {
     return (
-        <div style={{"color": "white"}}>
-            Videoclips
+        <div>
+            <GridDisplay layoutHandler={VideoclipsGridDataHandler} />
         </div>
     )
 }

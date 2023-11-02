@@ -1,9 +1,11 @@
 import React from 'react';
+import GridDisplay from "../../components/gridDisplay/GridDisplay";
+import OursGridDataHandler from "../../logic/GridDataHandler/OursGridDataHandler";
 
 const Ours = () => {
     return (
-        <div style={{"color":"white"}}>
-            Propio
+        <div>
+            <GridDisplay layoutHandler={OursGridDataHandler} />
         </div>
     )
 }
