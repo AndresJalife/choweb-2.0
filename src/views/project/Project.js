@@ -6,7 +6,6 @@ import LandingPageGridDataHandler from "../../logic/GridDataHandler/LandingPageG
 import OursGridDataHandler from "../../logic/GridDataHandler/OursGridDataHandler";
 import AdvertisementGridDataHandler from "../../logic/GridDataHandler/AdvertisementGridDataHandler";
 import VideoclipsGridDataHandler from "../../logic/GridDataHandler/VideoclipsGridDataHandler";
-import {CircularProgress} from "@mui/material";
 
 export default function Project() {
     const params = useParams();
