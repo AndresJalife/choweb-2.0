@@ -31,7 +31,7 @@
 }
 
 
-.add-element-button{
+.add-element-button {
     font-size: 2em;
     cursor: pointer;
     border: none;
@@ -49,7 +49,7 @@
 
 /* GRID ELEMENT*/
 
-.grid-element-container{
+.grid-element-container {
     width: 100%;
     margin: 1%;
 }

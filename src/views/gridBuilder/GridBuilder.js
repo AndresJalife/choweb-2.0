@@ -6,7 +6,8 @@ import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import VideoclipsGridDataHandler from "../../logic/GridDataHandler/VideoclipsGridDataHandler";
 import OursGridDataHandler from "../../logic/GridDataHandler/OursGridDataHandler";
 import AdvertisementGridDataHandler from "../../logic/GridDataHandler/AdvertisementGridDataHandler";
-function GridBuilder({signOut}){
+
+function GridBuilder({signOut}) {
 
     const [rowIds, setRowIds] = useState(Object.keys(LandingPageGridDataHandler.getGridLayout()).map((row) => row));
     const [rows, setRows] = useState();
@@ -64,7 +65,7 @@ function GridBuilder({signOut}){
             <button onClick={signOut}>Cerrar Sesión</button>
             <h1>GENERADOR DE GRILLA</h1>
             <FormControl style={{minWidth: '30%', margin: '1%'}} variant='standard'>
-                <InputLabel >Pantalla a editar</InputLabel>
+                <InputLabel>Pantalla a editar</InputLabel>
                 <Select
                     labelId="type-input"
                     id="demo-simple-select"

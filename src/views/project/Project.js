@@ -4,7 +4,7 @@ import {useParams} from "react-router-dom";
 import Iframe from "../../components/iFrame/Iframe";
 import LandingPageGridDataHandler from "../../logic/GridDataHandler/LandingPageGridDataHandler";
 
-export default function Project(){
+export default function Project() {
     const params = useParams();
     const projectName = params.projectName;
     let projectInfo = LandingPageGridDataHandler.getProjectData(projectName);

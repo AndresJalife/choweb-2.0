@@ -3,7 +3,7 @@
   "name": "Chow Juan Web",
   "icons": [
     {
-      "src" : "chowLogo2.png"
+      "src": "chowLogo2.png"
     }
   ],
   "start_url": ".",

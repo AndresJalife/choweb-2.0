@@ -4,7 +4,7 @@ import {Storage} from 'aws-amplify';
 export async function fetchFileFromS3(fileKey) {
     try {
         // await Auth.currentAuthenticatedUser();
-        const fileUrl = await Storage.get(fileKey, {level: "public", download: true });
+        const fileUrl = await Storage.get(fileKey, {level: "public", download: true});
         const file = await new Response(fileUrl.Body).json();
         return file;
         // Do something with the file URL, such as displaying it in the app or fetching the file
@@ -12,6 +12,7 @@ export async function fetchFileFromS3(fileKey) {
         console.error('Error fetching file from S3:', error);
     }
 }
+
 export async function createOrUpdateS3File(fileName, fileContent, fileFolder) {
     try {
         const fileUrl = await Storage.put(fileFolder + '/' + fileName, fileContent, {

@@ -1,7 +1,6 @@
-
-export default function Contact(){
+export default function Contact() {
     return (
-        <div style={{"color":"white"}}>
+        <div style={{"color": "white"}}>
 
         </div>
     )

@@ -5,7 +5,7 @@ import OursGridDataHandler from "../../logic/GridDataHandler/OursGridDataHandler
 const Ours = () => {
     return (
         <div>
-            <GridDisplay layoutHandler={OursGridDataHandler} />
+            <GridDisplay layoutHandler={OursGridDataHandler}/>
         </div>
     )
 }

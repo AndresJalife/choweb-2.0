@@ -5,7 +5,7 @@ import HeaderMenu from "./HeaderMenu";
 import {Link, Outlet} from "react-router-dom";
 import $ from 'jquery';
 
-export default function Header({someClass}){
+export default function Header({someClass}) {
     const [burgerIsOpen, setBurgerIsOpen] = useState(false);
     const handleClick = () => {
         setBurgerIsOpen(!burgerIsOpen);
@@ -20,18 +20,18 @@ export default function Header({someClass}){
     })
 
     $("#menu-options").mouseenter(() => {
-        if (burgerIsOpen){
+        if (burgerIsOpen) {
             $('.opaque').css("opacity", 1)
         }
     })
 
     $("#menu-options").mouseleave(() => {
-        if (burgerIsOpen){
+        if (burgerIsOpen) {
             $('.opaque').css("opacity", 0.3 + $(window).scrollTop() / 500)
         }
     })
 
-    $(window).scroll(function(){
+    $(window).scroll(function () {
         $('.opaque').css("opacity", 0.3 + $(window).scrollTop() / 500)
     });
 
@@ -45,15 +45,17 @@ export default function Header({someClass}){
 
                     <div className="logo">
                         <Link to="/">
-                            <img className="logo-image" src={"https://d2njbbkhc1pb2y.cloudfront.net/public/resources/chowLogo2.png"} alt="Main Logo"/>
+                            <img className="logo-image"
+                                 src={"https://d2njbbkhc1pb2y.cloudfront.net/public/resources/chowLogo2.png"}
+                                 alt="Main Logo"/>
                         </Link>
                     </div>
-                    <img        src={"https://d2njbbkhc1pb2y.cloudfront.net/public/resources/instagram.png"}
-                                className="instagram"
-                                alt="Instagram Logos"
-                                onClick={() => {
-                                    window.open("https://www.instagram.com/chowjuan.co/", '_blank', 'noopener,noreferrer');
-                                }}
+                    <img src={"https://d2njbbkhc1pb2y.cloudfront.net/public/resources/instagram.png"}
+                         className="instagram"
+                         alt="Instagram Logos"
+                         onClick={() => {
+                             window.open("https://www.instagram.com/chowjuan.co/", '_blank', 'noopener,noreferrer');
+                         }}
                     />
                 </div>
                 <HeaderMenu isOpen={burgerIsOpen} className={someClass}/>

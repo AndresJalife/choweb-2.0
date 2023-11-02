@@ -1,13 +1,13 @@
 import * as React from 'react';
+import {useEffect} from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import {CircularProgress, FormControl, Input, InputLabel, MenuItem, Select} from "@mui/material";
-import {SelectChangeEvent} from "@mui/material";
-import {useEffect} from "react";
+import {CircularProgress, FormControl, Input, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
 import './Modal.css';
 import {createOrUpdateS3File} from "../../logic/S3Handler";
 import {normalizeAndUnSpace} from "../../logic/Util";
+
 export default function NewElementModal({open, setOpen, row, setNewElement, actualElement, isEditing, layoutHandler}) {
     const [name, setName] = React.useState(actualElement == null ? '' : actualElement.id);
     const [type, setType] = React.useState(actualElement == null ? '' : actualElement.type);
@@ -82,7 +82,7 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
     const saveFile = async (file) => {
         if (file != null && file !== '' && isEditing !== true) {
             const fileName = normalizeAndUnSpace(file.name);
-            const fileUrl =  await createOrUpdateS3File(fileName, file, 'resources');
+            const fileUrl = await createOrUpdateS3File(fileName, file, 'resources');
             return "https://d2njbbkhc1pb2y.cloudfront.net/public/" + fileUrl;
         }
     }
@@ -119,67 +119,81 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
 
     return (
         <div>
-            <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description" style={{overflow: 'scroll'}}>
-                 <Box className="box-new-element-modal">
-                     {isLoading ? <CircularProgress /> :
-                    <div className="container-new-element-modal">
-                         <FormControl className="formControl" style={{marginTop: '3%'}} variant="standard">
-                             <InputLabel error htmlFor="name-input">Nombre</InputLabel>
-                             <Input id="name-input" aria-describedby="my-helper-text" value={name} onChange={handleNameChange}/>
-                         </FormControl>
-                         <FormControl style={{minWidth: '30%', margin: '1%'}}>
-                         <InputLabel error>Type</InputLabel>
-                         <Select labelId="type-input" id="demo-simple-select" value={type} label="Age" onChange={handleTypeChange}>
-                             <MenuItem value={'gif'}>GIF</MenuItem>
-                             <MenuItem value={'video'}>Video</MenuItem>
-                         </Select>
-                         </FormControl>
-                         <FormControl style={{margin: '1%'}}>
-                             {imgSrc == null || imgSrc === '' ?
-                                 <Button variant="contained" component="label">Upload Image
-                                     <input type="file" accept="image/png, image/jpeg" onChange={handleImgSrcChange} hidden/>
-                                 </Button> :
-                                 <Button component="label">
-                                     Edit Image
-                                     <input type="file" accept="image/png, image/jpeg" onChange={handleImgSrcChange} hidden/>
-                                 </Button>}
-                         </FormControl>
-                         <FormControl>
-                             {gifSrc == null || gifSrc === ''?
-                                 <Button
-                                     variant="contained" component="label">Upload Gif
-                                     <input type="file" accept=".gif" hidden onChange={handleGifSrcChange}/>
-                                 </Button> :
-                                 <Button component="label">
-                                     Edit GIF
-                                     <input type="file" accept=".gif" hidden onChange={handleGifSrcChange}/>
-                                 </Button>}
-                         </FormControl>
-                         <FormControl className="formControl" variant="standard">
-                             <InputLabel className="margin-top-label" htmlFor="bg-color-input">URL del video (modo 'embed')</InputLabel>
-                             <Input id="bg-color-input" aria-describedby="my-helper-text" value={vidSrc} onChange={handleVidSrcChange}/>
-                         </FormControl>
-                         <FormControl className="formControl" variant="standard">
-                             <InputLabel htmlFor="bg-color-input">Color de fondo (en hexa, incluir '#')</InputLabel>
-                             <Input id="bg-color-input" aria-describedby="my-helper-text" value={bgColor} onChange={handleBgColorChange}/>
-                         </FormControl>
-                         <FormControl className="formControl" variant="standard">
-                             <InputLabel htmlFor="font-color-input">Color de fuente (en hexa, incluir '#')</InputLabel>
-                             <Input id="font-color-input" aria-describedby="my-helper-text" value={fontColor} onChange={handleFontColorChange}/>
-                         </FormControl>
-                         <FormControl className="formControl" variant="standard">
-                             <InputLabel htmlFor="border-color-input">Color de borde (en hexa, incluir '#')</InputLabel>
-                             <Input id="border-color-input" aria-describedby="my-helper-text" value={borderColor} onChange={handleBorderColorChange}/>
-                         </FormControl>
-                         <FormControl className="formControl" style={{height: '15%'}} variant="standard">
-                             <InputLabel htmlFor="description-input">Descripción</InputLabel>
-                             <Input multiline={true} minRows="5" id="description-input" aria-describedby="my-helper-text" value={description} onChange={handleDescriptionChange}/>
-                         </FormControl>
-                         <div>
-                             <Button onClick={handleClose}>Cancelar</Button>
-                             <Button onClick={create}>Guardar</Button>
-                         </div>
-                    </div>}
+            <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title"
+                   aria-describedby="modal-modal-description" style={{overflow: 'scroll'}}>
+                <Box className="box-new-element-modal">
+                    {isLoading ? <CircularProgress/> :
+                        <div className="container-new-element-modal">
+                            <FormControl className="formControl" style={{marginTop: '3%'}} variant="standard">
+                                <InputLabel error htmlFor="name-input">Nombre</InputLabel>
+                                <Input id="name-input" aria-describedby="my-helper-text" value={name}
+                                       onChange={handleNameChange}/>
+                            </FormControl>
+                            <FormControl style={{minWidth: '30%', margin: '1%'}}>
+                                <InputLabel error>Type</InputLabel>
+                                <Select labelId="type-input" id="demo-simple-select" value={type} label="Age"
+                                        onChange={handleTypeChange}>
+                                    <MenuItem value={'gif'}>GIF</MenuItem>
+                                    <MenuItem value={'video'}>Video</MenuItem>
+                                </Select>
+                            </FormControl>
+                            <FormControl style={{margin: '1%'}}>
+                                {imgSrc == null || imgSrc === '' ?
+                                    <Button variant="contained" component="label">Upload Image
+                                        <input type="file" accept="image/png, image/jpeg" onChange={handleImgSrcChange}
+                                               hidden/>
+                                    </Button> :
+                                    <Button component="label">
+                                        Edit Image
+                                        <input type="file" accept="image/png, image/jpeg" onChange={handleImgSrcChange}
+                                               hidden/>
+                                    </Button>}
+                            </FormControl>
+                            <FormControl>
+                                {gifSrc == null || gifSrc === '' ?
+                                    <Button
+                                        variant="contained" component="label">Upload Gif
+                                        <input type="file" accept=".gif" hidden onChange={handleGifSrcChange}/>
+                                    </Button> :
+                                    <Button component="label">
+                                        Edit GIF
+                                        <input type="file" accept=".gif" hidden onChange={handleGifSrcChange}/>
+                                    </Button>}
+                            </FormControl>
+                            <FormControl className="formControl" variant="standard">
+                                <InputLabel className="margin-top-label" htmlFor="bg-color-input">URL del video (modo
+                                    'embed')</InputLabel>
+                                <Input id="bg-color-input" aria-describedby="my-helper-text" value={vidSrc}
+                                       onChange={handleVidSrcChange}/>
+                            </FormControl>
+                            <FormControl className="formControl" variant="standard">
+                                <InputLabel htmlFor="bg-color-input">Color de fondo (en hexa, incluir '#')</InputLabel>
+                                <Input id="bg-color-input" aria-describedby="my-helper-text" value={bgColor}
+                                       onChange={handleBgColorChange}/>
+                            </FormControl>
+                            <FormControl className="formControl" variant="standard">
+                                <InputLabel htmlFor="font-color-input">Color de fuente (en hexa, incluir
+                                    '#')</InputLabel>
+                                <Input id="font-color-input" aria-describedby="my-helper-text" value={fontColor}
+                                       onChange={handleFontColorChange}/>
+                            </FormControl>
+                            <FormControl className="formControl" variant="standard">
+                                <InputLabel htmlFor="border-color-input">Color de borde (en hexa, incluir
+                                    '#')</InputLabel>
+                                <Input id="border-color-input" aria-describedby="my-helper-text" value={borderColor}
+                                       onChange={handleBorderColorChange}/>
+                            </FormControl>
+                            <FormControl className="formControl" style={{height: '15%'}} variant="standard">
+                                <InputLabel htmlFor="description-input">Descripción</InputLabel>
+                                <Input multiline={true} minRows="5" id="description-input"
+                                       aria-describedby="my-helper-text" value={description}
+                                       onChange={handleDescriptionChange}/>
+                            </FormControl>
+                            <div>
+                                <Button onClick={handleClose}>Cancelar</Button>
+                                <Button onClick={create}>Guardar</Button>
+                            </div>
+                        </div>}
                 </Box>
             </Modal>
         </div>

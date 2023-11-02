@@ -1,7 +1,7 @@
-.header{
+.header {
     position: fixed;
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     height: 3rem;
     justify-content: space-between;
     width: 97%;
@@ -11,24 +11,24 @@
     z-index: 99999;
 }
 
-.opaque{
+.opaque {
     opacity: 0.3;
 }
 
-.logo-image{
+.logo-image {
     height: 175%;
 }
 
-.logo{
+.logo {
     cursor: pointer;
 }
 
-.instagram{
+.instagram {
     cursor: pointer;
     height: 100%;
 }
 
-.header-button{
+.header-button {
     height: 100%;
     color: white;
     font-size: large;
@@ -36,21 +36,21 @@
     z-index: 99999;
 }
 
-.menu-option{
+.menu-option {
     color: white;
     cursor: pointer;
     /*text-shadow: black 2px 2px;*/
 }
 
-.hide{
+.hide {
     visibility: hidden;
 }
 
-.show{
+.show {
     visibility: visible;
 }
 
-.menu-options{
+.menu-options {
     font-size: 2em;
     position: fixed;
     opacity: 0;
@@ -64,10 +64,11 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .logo-image{
+    .logo-image {
         height: 100%;
     }
-    .header{
+
+    .header {
         margin-top: 6%;
     }
 }

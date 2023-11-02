@@ -1,19 +1,19 @@
-.footerContainer{
+.footerContainer {
     z-index: 10000;
     position: fixed;
     bottom: 0;
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
 }
 
-#about{
+#about {
     font-size: large;
     padding-left: 1vh;
     color: white;
     cursor: pointer;
 }
 
-#contact{
+#contact {
     position: fixed;
     font-size: large;
     right: 0;

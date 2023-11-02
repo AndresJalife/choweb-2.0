@@ -16,21 +16,21 @@ const HeaderMenu = ({isOpen, className}) => {
     }
 
     return (
-        <div id="menu-options" className={ isOpen? "menu-options show " + className : "menu-options hide " + className}>
-                <p className={getClasses("")}
-                    onClick={() => onClick("")} > INICIO </p>
+        <div id="menu-options" className={isOpen ? "menu-options show " + className : "menu-options hide " + className}>
+            <p className={getClasses("")}
+               onClick={() => onClick("")}> INICIO </p>
 
-                <p className={getClasses("videoclips")}
-                    onClick={() => onClick("videoclips")} > VIDEOCLIPS </p>
+            <p className={getClasses("videoclips")}
+               onClick={() => onClick("videoclips")}> VIDEOCLIPS </p>
 
-                <p className={getClasses("publicidad")}
-                   onClick={() => onClick("publicidad")} > PUBLICIDAD </p>
+            <p className={getClasses("publicidad")}
+               onClick={() => onClick("publicidad")}> PUBLICIDAD </p>
 
-                <p className={getClasses("propio")}
-                   onClick={() => onClick("propio")} > PROPIO </p>
+            <p className={getClasses("propio")}
+               onClick={() => onClick("propio")}> PROPIO </p>
 
-                <p className={getClasses("nosotros")}
-                   onClick={() => onClick("nosotros")}  > NOSOTROS </p>
+            <p className={getClasses("nosotros")}
+               onClick={() => onClick("nosotros")}> NOSOTROS </p>
         </div>
     )
 }

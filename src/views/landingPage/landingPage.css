@@ -4,8 +4,8 @@ body, html {
     background-color: black;
 }
 
-#second{
-    height: 60vh;        /* Viewport-relative units */
+#second {
+    height: 60vh; /* Viewport-relative units */
     width: 100vw;
     margin-left: 0;
 }
@@ -15,6 +15,6 @@ body, html {
     height: 100%;
 }
 
-.image{
+.image {
     width: 100%;
 }

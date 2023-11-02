@@ -2,10 +2,9 @@ import React, {useEffect, useState} from 'react';
 import GridElement from "./GridElement";
 import NewElementModal from "../../components/modals/NewElementModal";
 import {GrFormTrash} from "react-icons/gr";
-import LandingPageGridDataHandler from "../../logic/GridDataHandler/LandingPageGridDataHandler";
 import SureToDeleteModal from "../../components/modals/SureToDeleteModal";
 
-export default function GridRow({id, setRowIds, rowIds, layoutHandler}){
+export default function GridRow({id, setRowIds, rowIds, layoutHandler}) {
     const [elements, setElements] = useState();
     const [open, setOpen] = React.useState(false);
     const [actualElement, setActualElement] = React.useState(null);
@@ -19,7 +18,9 @@ export default function GridRow({id, setRowIds, rowIds, layoutHandler}){
     const parseElements = () => {
         if (!elements) return;
         return elements.map((col) => {
-            return (<GridElement layoutHandler={layoutHandler} key={col} row={id} id={col} elements={elements} setElements={setElements} setOpen={setOpen} setActualElement={setActualElement} setIsEditing={setIsEditing}></GridElement>)
+            return (<GridElement layoutHandler={layoutHandler} key={col} row={id} id={col} elements={elements}
+                                 setElements={setElements} setOpen={setOpen} setActualElement={setActualElement}
+                                 setIsEditing={setIsEditing}></GridElement>)
         });
     }
 
@@ -46,14 +47,15 @@ export default function GridRow({id, setRowIds, rowIds, layoutHandler}){
 
     return (
         <div className="grid-row">
-            <GrFormTrash style={{cursor: "pointer",fontSize: "50"}} onClick={handleDeleteRow}>ELIMINAR</GrFormTrash>
+            <GrFormTrash style={{cursor: "pointer", fontSize: "50"}} onClick={handleDeleteRow}>ELIMINAR</GrFormTrash>
             <div className="grid-row-elements-container" id={`grid-elements-container-${id}`}>
                 {parseElements()}
             </div>
             <div className="add-element-button">
                 <h1 onClick={onClickAddNewElement}>+</h1>
             </div>
-            <NewElementModal layoutHandler={layoutHandler} actualElement={actualElement} setOpen={setOpen} open={open} row={id} setNewElement={setNewElement} isEditing={isEditing}/>
+            <NewElementModal layoutHandler={layoutHandler} actualElement={actualElement} setOpen={setOpen} open={open}
+                             row={id} setNewElement={setNewElement} isEditing={isEditing}/>
             <SureToDeleteModal open={deleteModalOpen} setOpen={setDeleteModalOpen} fnApply={deleteRow}/>
         </div>
     );
