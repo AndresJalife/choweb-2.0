@@ -4,6 +4,7 @@ import './Iframe.css'
 export default function Iframe(props) {
     return (
         <iframe src={props.src}
+                style={{backgroundColor: 'white'}}
                 className={'iframe-general ' + props.className}
                 id={props.id}
                 allowFullScreen

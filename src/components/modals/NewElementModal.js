@@ -9,8 +9,8 @@ import {normalizeAndUnSpace} from "../../logic/Util";
 export default function NewElementModal({open, setOpen, row, setNewElement, actualElement, isEditing, layoutHandler}) {
     const [name, setName] = React.useState(actualElement == null ? '' : actualElement.id);
     const [type, setType] = React.useState(actualElement == null ? '' : actualElement.type);
-    const [imgSrc, setImgSrc] = React.useState(actualElement == null ? '' : actualElement.imgSrc);
-    const [gifSrc, setGifSrc] = React.useState(actualElement == null ? '' : actualElement.gifSrc);
+    const [imgSrc, setImgSrc] = React.useState(actualElement == null ? 'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/' : actualElement.imgSrc);
+    const [gifSrc, setGifSrc] = React.useState(actualElement == null ? 'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/' : actualElement.gifSrc);
     const [vidSrc, setVidSrc] = React.useState(actualElement == null ? '' : actualElement.vidSrc);
     const [bgColor, setBgColor] = React.useState(actualElement == null ? '' : actualElement.bgColor);
     const [description, setDescription] = React.useState(actualElement == null ? '' : actualElement.description);
@@ -22,8 +22,8 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
         if (actualElement == null) {
             setName('');
             setType('');
-            setImgSrc('');
-            setGifSrc('');
+            setImgSrc('https://d2njbbkhc1pb2y.cloudfront.net/public/resources/');
+            setGifSrc('https://d2njbbkhc1pb2y.cloudfront.net/public/resources/');
             setVidSrc('');
             setBgColor('');
             setDescription('');
