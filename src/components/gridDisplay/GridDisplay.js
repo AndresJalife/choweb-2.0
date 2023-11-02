@@ -3,7 +3,7 @@ import {Box, Grid} from "@mui/material";
 import Video from "../../components/video/Video";
 import Gif from "../../components/gif/Gif";
 
-export default function GridDisplay({layoutHandler}) {
+export default function GridDisplay({layoutHandler}){
 
     const getGrid = () => {
         const gridLayout = layoutHandler.getGridLayout();
@@ -27,7 +27,7 @@ export default function GridDisplay({layoutHandler}) {
     return (
         <div>
             <div className="video-container">
-                <Box sx={{flexGrow: 1}}>
+                <Box sx={{ flexGrow: 1 }}>
                     <Grid id={"landing-grid"} container spacing={1}>
                         {getGrid()}
                     </Grid>

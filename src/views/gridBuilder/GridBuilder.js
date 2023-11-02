@@ -17,7 +17,8 @@ function GridBuilder({signOut}) {
     // initialize rows
     useEffect(() => {
         setRows(parseRows());
-    }, [rowIds]);
+        // eslint-disable-next-line no-use-before-define
+    }, [parseRows, rowIds]);
 
     const refreshRowsIds = (handler) => {
         setRowIds(Object.keys(handler.getGridLayout()).map((row) => row));
@@ -46,6 +47,7 @@ function GridBuilder({signOut}) {
         }
     };
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const parseRows = () => {
         return rowIds.map((row) => {
             return <GridRow key={row} id={row} rowIds={rowIds} setRowIds={setRowIds} layoutHandler={layoutHandler}/>

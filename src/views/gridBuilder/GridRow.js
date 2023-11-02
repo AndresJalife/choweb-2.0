@@ -13,7 +13,7 @@ export default function GridRow({id, setRowIds, rowIds, layoutHandler}) {
 
     useEffect(() => {
         setElements(Object.keys(layoutHandler.getGridLayout()[id]).map((col) => col))
-    }, [layoutHandler]);
+    }, [id, layoutHandler]);
 
     const parseElements = () => {
         if (!elements) return;
