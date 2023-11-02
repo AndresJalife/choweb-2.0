@@ -5,10 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import awsconfig from './aws-exports';
 import Amplify from '@aws-amplify/core';
-import ProjectDataSingleton from "./logic/ProjectDataSingleton";
+import LandingPageGridDataHandler from "./logic/GridDataHandler/LandingPageGridDataHandler";
+import AdvertisementGridDataHandler from "./logic/GridDataHandler/AdvertisementGridDataHandler";
+import OursGridDataHandler from "./logic/GridDataHandler/OursGridDataHandler";
+import VideoclipsGridDataHandler from "./logic/GridDataHandler/VideoclipsGridDataHandler";
 
 Amplify.configure(awsconfig);
-await ProjectDataSingleton.init();
+await LandingPageGridDataHandler.init();
+await AdvertisementGridDataHandler.init();
+await OursGridDataHandler.init();
+await VideoclipsGridDataHandler.init();
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

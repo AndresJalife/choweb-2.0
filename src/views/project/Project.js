@@ -2,12 +2,12 @@ import React, {useEffect} from "react";
 import './Project.css';
 import {useParams} from "react-router-dom";
 import Iframe from "../../components/iFrame/Iframe";
-import ProjectDataFinder from "../../logic/ProjectDataSingleton";
+import LandingPageGridDataHandler from "../../logic/GridDataHandler/LandingPageGridDataHandler";
 
 export default function Project(){
     const params = useParams();
     const projectName = params.projectName;
-    let projectInfo = ProjectDataFinder.getProjectData(projectName);
+    let projectInfo = LandingPageGridDataHandler.getProjectData(projectName);
 
     useEffect(() => {
         window.scrollTo(0, 0);

@@ -2,14 +2,14 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import ProjectDataSingleton from "../../logic/ProjectDataSingleton";
 import {FormControl, Input, InputLabel, MenuItem, Select} from "@mui/material";
 import {SelectChangeEvent} from "@mui/material";
 import {useEffect} from "react";
 import './NewElementModal.css';
 import {createOrUpdateS3File} from "../../logic/S3Handler";
 import {normalizeAndUnSpace} from "../../logic/Util";
-export default function NewElementModal({open, setOpen, row, setNewElement, actualElement, isEditing}) {
+// import LandingPageGridDataHandler from "../../logic/GridDataHandler/LandingPageGridDataHandler";
+export default function NewElementModal({open, setOpen, row, setNewElement, actualElement, isEditing, layoutHandler}) {
     const [name, setName] = React.useState(actualElement == null ? '' : actualElement.id);
     const [type, setType] = React.useState(actualElement == null ? '' : actualElement.type);
     const [imgSrc, setImgSrc] = React.useState(actualElement == null ? '' : actualElement.imgSrc);
@@ -80,9 +80,8 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
     }
 
     const saveFile = async (file) => {
-        if (file != null && file !== '' && isEditing != true) {
+        if (file != null && file !== '' && isEditing !== true) {
             const fileName = normalizeAndUnSpace(file.name);
-            file.name = fileName;
             const fileUrl =  await createOrUpdateS3File(fileName, file, 'resources');
             return "https://d2njbbkhc1pb2y.cloudfront.net/public/" + fileUrl;
         }
@@ -104,13 +103,13 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
             borderColor: borderColor
         };
         if (actualElement == null) {
-            ProjectDataSingleton.newProject(row, data);
+            layoutHandler.newProject(row, data);
             setNewElement(name);
         } else {
-            ProjectDataSingleton.updateProject(row, data);
+            layoutHandler.updateProject(row, data);
         }
         setOpen(false);
-        console.log(ProjectDataSingleton.getGridLayout());
+        console.log(layoutHandler.getGridLayout());
     }
 
     return (
@@ -129,12 +128,7 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
                     </FormControl>
                     <FormControl style={{minWidth: '30%', margin: '1%'}}>
                         <InputLabel error>Type</InputLabel>
-                        <Select
-                            labelId="type-input"
-                            id="demo-simple-select"
-                            value={type}
-                            label="Age"
-                            onChange={handleTypeChange}>
+                        <Select labelId="type-input" id="demo-simple-select" value={type} label="Age" onChange={handleTypeChange}>
                             <MenuItem value={'gif'}>GIF</MenuItem>
                             <MenuItem value={'video'}>Video</MenuItem>
                         </Select>

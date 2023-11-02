@@ -1,17 +1,16 @@
 import React from 'react';
 import { GrFormTrash } from "react-icons/gr";
-import ProjectDataSingleton from "../../logic/ProjectDataSingleton";
 import {AiFillEdit} from "react-icons/ai";
 
-export default function GridElement({id, row, setElements, elements, setOpen, setActualElement, setIsEditing}){
+export default function GridElement({id, row, setElements, elements, setOpen, setActualElement, setIsEditing, layoutHandler}){
     function onClickDeleteElement() {
-        ProjectDataSingleton.deleteProject(row, id);
+        layoutHandler.deleteProject(row, id);
         setElements(elements.filter((col) => col !== id));
     }
 
     function onClickEdit() {
         setIsEditing(true);
-        const element = ProjectDataSingleton.getProjectData(id);
+        const element = layoutHandler.getProjectData(id);
         setActualElement(element);
         setOpen(true);
     }
