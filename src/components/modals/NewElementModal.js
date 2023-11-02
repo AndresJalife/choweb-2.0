@@ -68,19 +68,19 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
 
     const create = async () => {
         if (name === '' || type === '') return;
-        let imgUrl = null;
-        let gifUrl = null;
-        if (imgSrc !== null || gifSrc !== null) {
-            setLoading(true);
-            imgUrl = await saveFile(imgSrc);
-            gifUrl = await saveFile(gifSrc);
-            setLoading(false);
-        }
+        // let imgUrl = null;
+        // let gifUrl = null;
+        // if (imgSrc !== null || gifSrc !== null) {
+        //     setLoading(true);
+        //     imgUrl = await saveFile(imgSrc);
+        //     gifUrl = await saveFile(gifSrc);
+        //     setLoading(false);
+        // }
         const data = {
             id: name,
             type: type,
-            imgSrc: imgUrl,
-            gifSrc: gifUrl,
+            imgSrc: imgSrc,
+            gifSrc: gifSrc,
             vidSrc: vidSrc,
             bgColor: bgColor,
             description: description,
@@ -107,32 +107,19 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
                              <Input id="name-input" aria-describedby="my-helper-text" value={name} onChange={handleNameChange}/>
                          </FormControl>
                          <FormControl style={{minWidth: '30%', margin: '1%'}}>
-                         <InputLabel error>Type</InputLabel>
-                         <Select labelId="type-input" id="demo-simple-select" value={type} label="Age" onChange={(event) => handleGeneric(event, setType)}>
-                             <MenuItem value={'gif'}>GIF</MenuItem>
-                             <MenuItem value={'video'}>Video</MenuItem>
-                         </Select>
+                             <InputLabel error>Type</InputLabel>
+                             <Select labelId="type-input" id="demo-simple-select" value={type} label="Age" onChange={(event) => handleGeneric(event, setType)}>
+                                 <MenuItem value={'gif'}>GIF</MenuItem>
+                                 <MenuItem value={'video'}>Video</MenuItem>
+                             </Select>
                          </FormControl>
-                         <FormControl style={{margin: '1%'}}>
-                             {imgSrc == null || imgSrc === '' ?
-                                 <Button variant="contained" component="label">Upload Image
-                                     <input type="file" accept="image/png, image/jpeg" onChange={(event) => handleGeneric(event, setImgSrc)} hidden/>
-                                 </Button> :
-                                 <Button component="label">
-                                     Edit Image
-                                     <input type="file" accept="image/png, image/jpeg" onChange={(event) => handleGeneric(event, setImgSrc)} hidden/>
-                                 </Button>}
+                         <FormControl className="formControl">
+                             <InputLabel className="margin-top-label" htmlFor="bg-color-input">URL de la imagen</InputLabel>
+                             <Input id="bg-color-input" aria-describedby="my-helper-text" value={imgSrc} onChange={(event) => handleGeneric(event, setImgSrc)}/>
                          </FormControl>
-                         <FormControl>
-                             {gifSrc == null || gifSrc === ''?
-                                 <Button
-                                     variant="contained" component="label">Upload Gif
-                                     <input type="file" accept=".gif" hidden onChange={(event) => handleGeneric(event, setGifSrc)}/>
-                                 </Button> :
-                                 <Button component="label">
-                                     Edit GIF
-                                     <input type="file" accept=".gif" hidden onChange={(event) => handleGeneric(event, setGifSrc)}/>
-                                 </Button>}
+                         <FormControl className="formControl">
+                             <InputLabel className="margin-top-label" htmlFor="bg-color-input">URL del GIF</InputLabel>
+                             <Input id="bg-color-input" aria-describedby="my-helper-text" value={gifSrc} onChange={(event) => handleGeneric(event, setGifSrc)}/>
                          </FormControl>
                          <FormControl className="formControl" variant="standard">
                              <InputLabel className="margin-top-label" htmlFor="bg-color-input">URL del video (modo 'embed')</InputLabel>
