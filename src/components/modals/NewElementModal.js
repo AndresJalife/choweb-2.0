@@ -5,7 +5,6 @@ import Modal from '@mui/material/Modal';
 import {CircularProgress, FormControl, Input, InputLabel, MenuItem, Select} from "@mui/material";
 import {useEffect} from "react";
 import './Modal.css';
-import {createOrUpdateS3File} from "../../logic/S3Handler";
 import {normalizeAndUnSpace} from "../../logic/Util";
 export default function NewElementModal({open, setOpen, row, setNewElement, actualElement, isEditing, layoutHandler}) {
     const [name, setName] = React.useState(actualElement == null ? '' : actualElement.id);
@@ -18,10 +17,8 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
     const [fontColor, setFontColor] = React.useState(actualElement == null ? '' : actualElement.fontColor);
     const [borderColor, setBorderColor] = React.useState(actualElement == null ? '' : actualElement.borderColor);
     const [isLoading, setLoading] = React.useState(false);
-    const [imageChanged, setImageChanged] = React.useState(false);
 
     useEffect(() => {
-        setImageChanged(false);
         if (actualElement == null) {
             setName('');
             setType('');
@@ -51,10 +48,6 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
         }
         setName(actName);
     };
-    const handleGenericFile = (event: React.ChangeEvent<HTMLInputElement>, setFn) => {
-        setImageChanged(true);
-        setFn(event.target.files[0]);
-    };
 
     const handleGeneric = (event: React.ChangeEvent<HTMLInputElement>, setFn) => {
         setFn(event.target.value);
@@ -67,29 +60,12 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
         setOpen(false);
     }
 
-    const saveFile = async (file) => {
-        if (file != null && file !== '') {
-            const fileName = normalizeAndUnSpace(file.name);
-            const fileUrl =  await createOrUpdateS3File(fileName, file, 'resources');
-            return "https://d2njbbkhc1pb2y.cloudfront.net/public/" + fileUrl;
-        }
-    }
-
     const create = async () => {
         if (name === '' || type === '') return;
-        let imgUrl = null;
-        if (imageChanged) {
-            setLoading(true);
-            imgUrl = await saveFile(imgSrc);
-            setLoading(false);
-        }
-        if (gifSrc != null && gifSrc !== '' && !gifSrc.includes('https')) {
-            setGifSrc('https://d2njbbkhc1pb2y.cloudfront.net/public/resources' + gifSrc);
-        }
         const data = {
             id: name,
             type: type,
-            imgSrc: imgUrl,
+            imgSrc: imgSrc,
             gifSrc: gifSrc,
             vidSrc: vidSrc,
             bgColor: bgColor,
@@ -123,17 +99,21 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
                                  <MenuItem value={'video'}>Video</MenuItem>
                              </Select>
                          </FormControl>
-                        <FormControl style={{margin: '1%'}}>
-                            {imgSrc == null || imgSrc === '' ?
-                                <Button variant="contained" component="label">Upload Image
-                                    <input type="file" accept="image/png, image/jpeg" onChange={(event) => handleGenericFile(event, setImgSrc)} hidden/>
-                                </Button> :
-                                <Button component="label">
-                                    Edit Image
-                                    <input type="file" accept="image/png, image/jpeg" onChange={(event) => handleGenericFile(event, setImgSrc)} hidden/>
-                                </Button>}
+                        {/*<FormControl style={{margin: '1%'}}>*/}
+                        {/*    {imgSrc == null || imgSrc === '' ?*/}
+                        {/*        <Button variant="contained" component="label">Upload Image*/}
+                        {/*            <input type="file" accept="image/png, image/jpeg" onChange={(event) => handleGenericFile(event, setImgSrc)} hidden/>*/}
+                        {/*        </Button> :*/}
+                        {/*        <Button component="label">*/}
+                        {/*            Edit Image*/}
+                        {/*            <input type="file" accept="image/png, image/jpeg" onChange={(event) => handleGenericFile(event, setImgSrc)} hidden/>*/}
+                        {/*        </Button>}*/}
+                        {/*</FormControl>*/}
+                        <FormControl className="formControl" variant='standard'>
+                            <InputLabel className="margin-top-label" htmlFor="bg-color-input">URL de una imagen</InputLabel>
+                            <Input id="bg-color-input" aria-describedby="my-helper-text" value={imgSrc} onChange={(event) => handleGeneric(event, setImgSrc)}/>
                         </FormControl>
-                         <FormControl className="formControl">
+                         <FormControl className="formControl" variant='standard'>
                              <InputLabel className="margin-top-label" htmlFor="bg-color-input">URL del GIF</InputLabel>
                              <Input id="bg-color-input" aria-describedby="my-helper-text" value={gifSrc} onChange={(event) => handleGeneric(event, setGifSrc)}/>
                          </FormControl>
