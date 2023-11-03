@@ -31,7 +31,6 @@
 .header-button {
     height: 100%;
     color: white;
-    font-size: large;
     cursor: pointer;
     z-index: 99999;
 }

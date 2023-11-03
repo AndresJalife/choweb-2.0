@@ -9,7 +9,7 @@ const HeaderMenu = ({isOpen, className}) => {
 
     useEffect(() => {
         setButtonNameSelected(location.pathname.replace("/", ""));
-    }, [navigate]);
+    }, [location.pathname]);
 
     let getClasses = (buttonName) => {
         return `menu-option ${isOpen ? 'show' : 'hide'} ${buttonName === buttonNameSelected ? 'button-selected' : ''}`

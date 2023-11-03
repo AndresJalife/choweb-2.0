@@ -7,9 +7,6 @@ import $ from 'jquery';
 
 export default function Header({someClass}) {
     const [burgerIsOpen, setBurgerIsOpen] = useState(false);
-    // const handleClick = () => {
-    //
-    // };
 
     $("#header").mouseenter(() => {
         $('.opaque').css("opacity", 1)
