@@ -1,11 +1,12 @@
 import * as React from 'react';
+import {useEffect} from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import {CircularProgress, FormControl, Input, InputLabel, MenuItem, Select} from "@mui/material";
-import {useEffect} from "react";
 import './Modal.css';
 import {normalizeAndUnSpace} from "../../logic/Util";
+
 export default function NewElementModal({open, setOpen, row, setNewElement, actualElement, isEditing, layoutHandler}) {
     const [name, setName] = React.useState(actualElement == null ? '' : actualElement.id);
     const [type, setType] = React.useState(actualElement == null ? '' : actualElement.type);

@@ -8,6 +8,7 @@ import Us from "./views/us/Us";
 import React from "react";
 import Header from "./components/header/Header";
 import Login from "./views/login/Login";
+import Footer from "./components/footer/Footer";
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                     </Route>
                     <Route path="gridBuilder" element={<Login/>}/>
                 </Routes>
+                <Footer/>
             </BrowserRouter>
         </div>
     )
