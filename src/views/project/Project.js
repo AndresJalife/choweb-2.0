@@ -33,7 +33,7 @@ export default function Project() {
         setLayoutHandler(determineLayoutHandler());
     }, [view]);
 
-    let projectInfo =  layoutHandler == null ? null : layoutHandler.getProjectData(projectName);
+    let projectInfo = layoutHandler == null ? null : layoutHandler.getProjectData(projectName);
 
     return (
         <div>

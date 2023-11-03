@@ -14,21 +14,19 @@ export default function Footer() {
             <div id='footer-image'>
                 <img className="logo-image-footer"
                      src={"https://d2njbbkhc1pb2y.cloudfront.net/public/resources/chowLogo2.png"}
-                     style={{height: "80%"}}
                      alt="Main Logo"/>
             </div>
             <div id='footer-media'>
-                <a style={{marginRight: '4%'}} href={'https://vimeo.com/chowjuan'} target="_blank" rel="noreferrer" >
+                <a style={{marginRight: '4%'}} href={'https://vimeo.com/chowjuan'} target="_blank" rel="noreferrer">
                     <BsVimeo className='footer-icon'></BsVimeo>
                 </a>
-                <a href={'https://www.instagram.com/chowjuan.co/?hl=es-la'} target="_blank" rel="noreferrer" >
+                <a href={'https://www.instagram.com/chowjuan.co/?hl=es-la'} target="_blank" rel="noreferrer">
                     <AiOutlineInstagram className='footer-icon'/>
                 </a>
-                <a href={'https://www.youtube.com/channel/UCPGXqp9TYsS6OOHFK7rZX8w'} target="_blank" rel="noreferrer" >
+                <a href={'https://www.youtube.com/channel/UCPGXqp9TYsS6OOHFK7rZX8w'} target="_blank" rel="noreferrer">
                     <AiFillYoutube className='footer-icon'/>
                 </a>
             </div>
-
         </div>
     )
 }

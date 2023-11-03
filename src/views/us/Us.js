@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import './Us.css';
+
 const Us = () => {
     useEffect(() => {
         function attachToEyes() {
@@ -16,23 +17,31 @@ const Us = () => {
                 });
             }
         }
+
         attachToEyes();
     }, []);
     return (
         <div className={'us-container'}>
-            <img style={{width: '100%'}} src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/Nosotros1.png'} alt={"Ours"}/>
+            <img style={{width: '100%'}} src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/Nosotros1.png'}
+                 alt={"Ours"}/>
             <div className='faces-container'>
-                <img className='img-faces' style={{width: '100%'}} src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/Nastys.png'} alt={"Ours"}/>
+                <img className='img-faces' style={{width: '100%'}}
+                     src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/Nastys.png'} alt={"Ours"}/>
                 <div className={'eyes-container'}>
-                    <img className='eye left-eye' src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/pupila.png'} alt={"Ours"}/>
-                    <img className='eye right-eye' src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/pupila.png'} alt={"Ours"}/>
+                    <img className='eye left-eye'
+                         src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/pupila.png'} alt={"Ours"}/>
+                    <img className='eye right-eye'
+                         src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/pupila.png'} alt={"Ours"}/>
                 </div>
                 <div className={'eyes-container juan-eyes'}>
-                    <img className='eye left-eye' src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/pupila.png'} alt={"Ours"}/>
-                    <img className='eye right-eye juan-right-eye' src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/pupila.png'} alt={"Ours"}/>
+                    <img className='eye left-eye'
+                         src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/pupila.png'} alt={"Ours"}/>
+                    <img className='eye right-eye juan-right-eye'
+                         src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/pupila.png'} alt={"Ours"}/>
                 </div>
             </div>
-            <img style={{width: '100%'}} src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/Nosotros2.png'} alt={"Ours"}/>
+            <img style={{width: '100%'}} src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/Nosotros2.png'}
+                 alt={"Ours"}/>
         </div>
     )
 }
