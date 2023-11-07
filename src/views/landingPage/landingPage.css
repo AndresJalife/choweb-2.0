@@ -1,6 +1,9 @@
 body, html {
     background-color: black;
 }
+* {
+    margin: 0;
+}
 
 #second {
     height: 60vh; /* Viewport-relative units */

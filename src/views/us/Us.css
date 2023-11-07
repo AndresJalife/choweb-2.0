@@ -6,15 +6,27 @@ html {
     position: relative;
 }
 
-.juan-eyes {
-    margin: -21% 38% !important;
+.img-faces-cejas {
+    position: absolute;
+    left: 0;
+    margin: 16.5% 0 0 33.5%;
+    width: 21.5%;
+    z-index: 3;
+}
+.img-faces-parpado {
+    position: absolute;
+    left: 0;
+    margin: 17.3% 0 0 11%;
+    width: 14.5%;
+    z-index: 3;
 }
 
 .eyes-container {
-    width: 100%;
+    width: 60%;
     position: absolute;
     display: flex;
-    margin: -22% 11%;
+    margin: -21% 12%;
+    z-index: 1;
 }
 
 .eye {
@@ -22,9 +34,20 @@ html {
 }
 
 .right-eye {
-    margin-left: 4%;
+    margin-left: 11%;
+}
+.pomo-eyes {
+    margin: -20% 39% !important;
 }
 
-.juan-right-eye {
-    margin-left: 5.5% !important;
+.pomo-right-eye {
+    margin-left: 12.5% !important;
+}
+
+.tarro-eyes {
+    margin: -21.5% 76.3% !important;
+}
+
+.tarro-right-eye {
+    margin-left: 10.5% !important;
 }
