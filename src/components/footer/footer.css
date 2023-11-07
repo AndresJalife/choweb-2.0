@@ -41,3 +41,24 @@
     width: 12vw;
     justify-content: space-between;
 }
+
+@media only screen and (max-width: 600px) {
+    .footerContainer {
+        height: 6vw;
+        width: unset;
+    }
+
+    #footer-contact {
+        width: unset;
+        font-size: 2vw;
+    }
+
+    #footer-media {
+        width: unset;
+    }
+
+    .footer-icon {
+        font-size: 7vw;
+        margin-right: 2vw;
+    }
+}
