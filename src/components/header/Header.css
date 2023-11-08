@@ -16,7 +16,7 @@
 }
 
 .logo-image {
-    height: 175%;
+    height: 5.5vw;
 }
 
 .logo {
@@ -36,6 +36,7 @@
 }
 
 .menu-option {
+    margin-top: 8%;
     color: white;
     cursor: pointer;
 }
@@ -55,7 +56,7 @@
     font-size: 2em;
     position: fixed;
     left: 3%;
-    top: 6%;
+    top: 7%;
     z-index: 99998;
     visibility: hidden;
 }
@@ -66,7 +67,7 @@
 
 @media only screen and (max-width: 600px) {
     .logo-image {
-        height: 100%;
+        height: 12vw;
     }
 
     .header {

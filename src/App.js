@@ -27,8 +27,8 @@ function App() {
                     </Route>
                     <Route path="gridBuilder" element={<Login/>}/>
                 </Routes>
-                <Footer/>
             </BrowserRouter>
+            <Footer/>
         </div>
     )
 }
