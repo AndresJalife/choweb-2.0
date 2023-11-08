@@ -1,10 +1,9 @@
 @font-face {
     font-family: "ChowFont";
-    src: url("https://d2njbbkhc1pb2y.cloudfront.net/public/resources/go3v2.ttf");
+    src: url("../../resources/go3v2.ttf");
 }
 
 .screen-loader-container {
-
     flex-direction: column;
     width: 100vw;
     height: 102vh;
@@ -21,6 +20,11 @@
     z-index: 9999; /* Ensures the loader is on top */
 }
 
-#screen-loader {
-    width: 20%;
+#screen-loader-image {
+    margin-top: -10%;
+    width: 50%;
+}
+
+#screen-loader-text{
+    margin-top: -10%;
 }
