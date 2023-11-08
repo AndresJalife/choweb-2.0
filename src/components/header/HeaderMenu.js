@@ -18,6 +18,7 @@ const HeaderMenu = ({isOpen, className}) => {
     let onClick = (buttonName) => {
         setButtonNameSelected(buttonName);
         navigate(buttonName);
+        window.scrollTo(0, 0);
     }
 
     return (

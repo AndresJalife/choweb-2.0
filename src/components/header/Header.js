@@ -32,6 +32,9 @@ export default function Header({someClass}) {
         $('.opaque').css("opacity", 0.3 + $(window).scrollTop() / 500)
     });
 
+    function scrollTop() {
+        window.scrollTo(0, 0);
+    }
     return (
         <div>
             <div className="header-container">
@@ -41,7 +44,7 @@ export default function Header({someClass}) {
                     </div>
 
                     <div className="logo">
-                        <Link to="/">
+                        <Link to="/" onClick={scrollTop}>
                             <img className="logo-image"
                                  src={"https://d2njbbkhc1pb2y.cloudfront.net/public/resources/chowLogo2.png"}
                                  alt="Main Logo"/>
