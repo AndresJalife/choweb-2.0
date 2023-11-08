@@ -9,6 +9,7 @@ import React from "react";
 import Header from "./components/header/Header";
 import Login from "./views/login/Login";
 import Footer from "./components/footer/Footer";
+import ScreenLoader from "./components/screenLoader/ScreenLoader";
 
 function App() {
     return (
@@ -16,14 +17,14 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Header someClass={"opaque"}/>}>
-                        <Route path="" element={<LandingPage/>}/>
+                        <Route path="" element={<ScreenLoader element={LandingPage}/>}/>
                     </Route>
                     <Route path="/" element={<Header someClass={""}/>}>
                         <Route path=":view/proyecto/:projectName" element={<Project/>}/>
-                        <Route path="publicidad" element={<Advertising/>}/>
-                        <Route path="videoclips" element={<Videoclips/>}/>
-                        <Route path="propio" element={<Ours/>}/>
-                        <Route path="nosotros" element={<Us/>}/>
+                        <Route path="publicidad" element={<ScreenLoader element={Advertising}/>}/>
+                        <Route path="videoclips" element={<ScreenLoader element={Videoclips}/>}/>
+                        <Route path="propio" element={<ScreenLoader element={Ours}/>}/>
+                        <Route path="nosotros" element={<ScreenLoader element={Us}/>}/>
                     </Route>
                     <Route path="gridBuilder" element={<Login/>}/>
                 </Routes>
