@@ -43,13 +43,13 @@ export default function Header({someClass}) {
 
                     <div className="logo">
                         <Link to="/" onClick={scrollTop}>
-                            {/*<img className="logo-image"*/}
-                            {/*     src={"https://d2njbbkhc1pb2y.cloudfront.net/public/resources/chowLogo2.png"}*/}
-                            {/*     alt="Main Logo"/>*/}
-                            <video id="logo-animation" muted className="className">
-                                <source src={LogoAnimation} type="video/mp4"/>
-                                Your browser does not support the video tag.
-                            </video>
+                            <img className="logo-image"
+                                 src={"https://d2njbbkhc1pb2y.cloudfront.net/public/resources/chowLogo2.png"}
+                                 alt="Main Logo"/>
+                            {/*<video id="logo-animation" muted className="className">*/}
+                            {/*    <source src={LogoAnimation} type="video/mp4"/>*/}
+                            {/*    Your browser does not support the video tag.*/}
+                            {/*</video>*/}
                         </Link>
                     </div>
                     <img src={"https://d2njbbkhc1pb2y.cloudfront.net/public/resources/instagram.png"}
