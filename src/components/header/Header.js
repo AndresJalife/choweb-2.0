@@ -4,7 +4,7 @@ import BurgerButton from "./BurgerButton";
 import HeaderMenu from "./HeaderMenu";
 import {Link, Outlet} from "react-router-dom";
 import $ from 'jquery';
-import LogoAnimation from "../../resources/logo-animation.mp4";
+// import LogoAnimation from "../../resources/logo-animation.mp4";
 
 export default function Header({someClass}) {
     const [burgerIsOpen, setBurgerIsOpen] = useState(false);
