@@ -1,0 +1,41 @@
+@font-face {
+    font-family: "ChowFont";
+    src: url("../../resources/go3v2.ttf");
+}
+
+.screen-loader-container {
+    flex-direction: column;
+    width: 100vw;
+    height: 102vh;
+    color:white;
+    font-size: 4vw;
+    font-family: 'ChowFont', serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.94);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensures the loader is on top */
+}
+
+#screen-loader-image {
+    margin-top: -10%;
+    width: 50%;
+}
+
+#screen-loader-text{
+    margin-top: -10%;
+}
+
+@media only screen and (max-width: 600px) {
+    #screen-loader-image {
+        margin-top: -10%;
+        width: 100%;
+    }
+
+    .screen-loader-container {
+        font-size: 10vw;
+    }
+}

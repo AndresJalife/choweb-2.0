@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
 
 
-const HeaderMenu = ({isOpen, className}) => {
+const HeaderMenu = ({isOpen, className, setOpen}) => {
     let navigate = useNavigate();
     const location = useLocation();
     const [buttonNameSelected, setButtonNameSelected] = useState("")
@@ -17,7 +17,9 @@ const HeaderMenu = ({isOpen, className}) => {
 
     let onClick = (buttonName) => {
         setButtonNameSelected(buttonName);
+        setOpen(false);
         navigate(buttonName);
+        window.scrollTo(0, 0);
     }
 
     return (
