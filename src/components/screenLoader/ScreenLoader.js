@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './ScreenLoader.css';
 import Carga from '../../resources/animacion-CARGA-ALPHA.gif';
-export default function ScreenLoader({element: Element}) {
+export default function ScreenLoader({element: Element, seconds}) {
 
     const [loading, setLoading] = useState(true);
 
@@ -12,8 +12,8 @@ export default function ScreenLoader({element: Element}) {
         setTimeout(() => {
             html.style.overflowY = 'unset';
             setLoading(false);
-        }, 7000);
-    }, [Element]);
+        }, seconds * 1000);
+    }, [Element, seconds]);
 
     return (
         <div>

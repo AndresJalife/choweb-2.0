@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import "./video.css";
 
-export default function Video({id, mp4, className}) {
+export default function GridVideo({id, mp4, className}) {
     useEffect(() => {
         document.getElementById(id).play();
     }, [id])

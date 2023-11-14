@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import './Project.css';
 import {useParams} from "react-router-dom";
-import Iframe from "../../components/iFrame/Iframe";
+import GridIFrame from "../../components/gridDisplay/GridIFrame/GridIFrame";
 import LandingPageGridDataHandler from "../../logic/GridDataHandler/LandingPageGridDataHandler";
 import OursGridDataHandler from "../../logic/GridDataHandler/OursGridDataHandler";
 import AdvertisementGridDataHandler from "../../logic/GridDataHandler/AdvertisementGridDataHandler";
@@ -43,7 +43,7 @@ export default function Project() {
                     :
                     <div className="project-container" style={{backgroundColor: projectInfo.bgColor}}>
                         <div className="project-video" style={{backgroundColor: projectInfo.borderColor}}>
-                            <Iframe className="project-iframe" src={projectInfo.vidSrc} title={projectName}></Iframe>
+                            <GridIFrame className="project-iframe" src={projectInfo.vidSrc} title={projectName}></GridIFrame>
                         </div>
                         <p className="project-description" style={{color: projectInfo.fontColor}}>
                             {projectInfo.description}

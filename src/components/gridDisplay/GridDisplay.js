@@ -1,7 +1,25 @@
 import React from 'react';
 import {Box, Grid} from "@mui/material";
-import Video from "../../components/video/Video";
-import Gif from "../../components/gif/Gif";
+import GridVideo from "./GridVideo/GridVideo";
+import GridGif from "./GridGif/GridGif";
+
+function GridImage(props: { src: null | *, id: string }) {
+    return <div>
+               <img id={props.id} src={props.src} alt={props.id}/>
+           </div>;
+}
+
+function GridText(props: { item: * }) {
+    return <div>
+              <p className={props.item.className}>{props.item.text}</p>
+          </div>;
+}
+
+function GridGIFStarted(props: { gifSrc: null | *, id: string }) {
+    return <div>
+
+          </div>;
+}
 
 export default function GridDisplay({layoutHandler, view}) {
 
@@ -14,10 +32,14 @@ export default function GridDisplay({layoutHandler, view}) {
                 return (
                     <Grid key={item.id} xs={12} sm={12 / rowLen} md={12 / rowLen}>
                         {item.type === 'video' ? (
-                            <Video className={item.className} id={item.id} mp4={item.vidSrc}/>
+                            <GridVideo className={item.className} id={item.id} mp4={item.vidSrc}/>
                         ) : item.type === 'gif' ? (
-                            <Gif id={col} gifSrc={item.gifSrc} imgSrc={item.imgSrc} view={view}/>
-                        ) : null}
+                            <GridGif id={col} gifSrc={item.gifSrc} imgSrc={item.imgSrc} view={view}/>
+                        ) : item.type === 'text' ? (
+                            <GridText item={item}/>
+                        ) : item.type === 'gifStarted' ? (
+                            <GridGIFStarted id={col} gifSrc={item.gifSrc} view={view}/>
+                        ) : <GridImage id={col} src={item.imgSrc} view={view}/>}
                     </Grid>
                 );
             });

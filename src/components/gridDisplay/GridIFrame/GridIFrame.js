@@ -1,7 +1,7 @@
 import React from "react";
 import './Iframe.css'
 
-export default function Iframe(props) {
+export default function GridIFrame(props) {
     return (
         <iframe src={props.src}
                 className={'iframe-general ' + props.className}

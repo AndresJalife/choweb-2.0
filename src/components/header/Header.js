@@ -4,15 +4,14 @@ import BurgerButton from "./BurgerButton";
 import HeaderMenu from "./HeaderMenu";
 import {Link, Outlet} from "react-router-dom";
 import $ from 'jquery';
+import LogoAnimation from "../../resources/logo-animation.mp4";
 
 export default function Header({someClass}) {
     const [burgerIsOpen, setBurgerIsOpen] = useState(false);
 
     $("#header").mouseenter(() => {
         $('.opaque').css("opacity", 1)
-    })
-
-    $("#header").mouseleave(() => {
+    }).mouseleave(() => {
         $('.opaque').css("opacity", 0.3 + $(window).scrollTop() / 500)
     })
 
@@ -20,9 +19,7 @@ export default function Header({someClass}) {
         if (burgerIsOpen) {
             $('.opaque').css("opacity", 1)
         }
-    })
-
-    $("#menu-options").mouseleave(() => {
+    }).mouseleave(() => {
         if (burgerIsOpen) {
             $('.opaque').css("opacity", 0.3 + $(window).scrollTop() / 500)
         }
@@ -32,9 +29,10 @@ export default function Header({someClass}) {
         $('.opaque').css("opacity", 0.3 + $(window).scrollTop() / 500)
     });
 
-    function scrollTop() {
+    const scrollTop = (event) => {
         window.scrollTo(0, 0);
     }
+
     return (
         <div>
             <div className="header-container">
@@ -45,9 +43,13 @@ export default function Header({someClass}) {
 
                     <div className="logo">
                         <Link to="/" onClick={scrollTop}>
-                            <img className="logo-image"
-                                 src={"https://d2njbbkhc1pb2y.cloudfront.net/public/resources/chowLogo2.png"}
-                                 alt="Main Logo"/>
+                            {/*<img className="logo-image"*/}
+                            {/*     src={"https://d2njbbkhc1pb2y.cloudfront.net/public/resources/chowLogo2.png"}*/}
+                            {/*     alt="Main Logo"/>*/}
+                            <video id="logo-animation" muted className="className">
+                                <source src={LogoAnimation} type="video/mp4"/>
+                                Your browser does not support the video tag.
+                            </video>
                         </Link>
                     </div>
                     <img src={"https://d2njbbkhc1pb2y.cloudfront.net/public/resources/instagram.png"}
@@ -58,7 +60,7 @@ export default function Header({someClass}) {
                          }}
                     />
                 </div>
-                <HeaderMenu isOpen={burgerIsOpen} className={someClass}/>
+                <HeaderMenu isOpen={burgerIsOpen} className={someClass} setOpen={setBurgerIsOpen}/>
                 <Outlet/>
             </div>
         </div>

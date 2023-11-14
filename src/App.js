@@ -17,14 +17,14 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Header someClass={"opaque"}/>}>
-                        <Route path="" element={<ScreenLoader element={LandingPage}/>}/>
+                        <Route path="" element={<ScreenLoader element={LandingPage} seconds={7}/>}/>
                     </Route>
                     <Route path="/" element={<Header someClass={""}/>}>
                         <Route path=":view/proyecto/:projectName" element={<Project/>}/>
-                        <Route path="publicidad" element={<ScreenLoader element={Advertising}/>}/>
-                        <Route path="videoclips" element={<ScreenLoader element={Videoclips}/>}/>
-                        <Route path="propio" element={<ScreenLoader element={Ours}/>}/>
-                        <Route path="nosotros" element={<ScreenLoader element={Us}/>}/>
+                        <Route path="publicidad" element={<ScreenLoader seconds={7} element={Advertising}/>}/>
+                        <Route path="videoclips" element={<ScreenLoader seconds={7} element={Videoclips}/>}/>
+                        <Route path="propio" element={<ScreenLoader seconds={5} element={Ours}/>}/>
+                        <Route path="nosotros" element={<ScreenLoader seconds={4} element={Us}/>}/>
                     </Route>
                     <Route path="gridBuilder" element={<Login/>}/>
                 </Routes>

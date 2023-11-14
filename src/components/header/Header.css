@@ -19,6 +19,10 @@
     height: 5.5vw;
 }
 
+#logo-animation {
+    height: 5.5vw;
+}
+
 .logo {
     cursor: pointer;
 }
