@@ -1,16 +1,18 @@
 import React, {useEffect, useState} from "react";
 import './Project.css';
-import {useParams} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import GridIFrame from "../../components/gridDisplay/GridIFrame/GridIFrame";
 import LandingPageGridDataHandler from "../../logic/GridDataHandler/LandingPageGridDataHandler";
 import OursGridDataHandler from "../../logic/GridDataHandler/OursGridDataHandler";
 import AdvertisementGridDataHandler from "../../logic/GridDataHandler/AdvertisementGridDataHandler";
 import VideoclipsGridDataHandler from "../../logic/GridDataHandler/VideoclipsGridDataHandler";
 import ProyectsComponents from "../../components/proyects/proyects_components";
-
+import Cruz from "../../resources/Cruz.png";
 export default function Project() {
     const params = useParams();
     const [layoutHandler, setLayoutHandler] = useState(null);
+    const navigate = useNavigate();
+    const location = useLocation();
     const projectName = params.projectName;
     const view = params.view;
 
@@ -47,19 +49,25 @@ export default function Project() {
     };
 
 
+    const goBackPage = () => {
+        const hasPreviousState = location.key !== "default";
+        if (hasPreviousState)
+            navigate(-1);
+        else
+            navigate("/");
+    }
+
     return (
         <div>
             {
                 projectInfo === null ?
                     ""
                     :
-                    <div className="project-container" style={{backgroundColor: projectInfo.bgColor}}>
+                    <div className="project-container" style={{backgroundColor: projectInfo.bgColor, paddingTop: '10%'}}>
+                        <img src={Cruz} className="project-cross" alt="cross" style={{marginRight: '54%', cursor: 'pointer', marginBottom: '1%'}} onClick={goBackPage}/>
                         <div className="project-video" style={{backgroundColor: projectInfo.borderColor}}>
                             <GridIFrame className="project-iframe" src={projectInfo.vidSrc} title={projectName}></GridIFrame>
                         </div>
-                        {/*<p className="project-description" style={{color: projectInfo.fontColor}}>*/}
-                        {/*    {projectInfo.description}*/}
-                        {/*</p>*/}
                         <DynamicComponent componentName={projectName}/>
                     </div>
             }

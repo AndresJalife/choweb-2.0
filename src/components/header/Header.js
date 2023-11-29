@@ -5,10 +5,16 @@ import HeaderMenu from "./HeaderMenu";
 import {Link, Outlet} from "react-router-dom";
 import $ from 'jquery';
 import LogoAnimadoALPHA from "../../resources/LogoAnimadoALPHA.gif";
+import LogoAnimdoIn from "../../resources/LOGOsumo-in.gif";
+import LogoAnimadoOut from "../../resources/LOGOsumo-out.gif";
+import LogoMid from "../../resources/Logo-Sumo-Mid.png";
+import LogoInit from "../../resources/Logo-Sumo-Init.png";
 
 export default function Header({someClass}) {
     const [burgerIsOpen, setBurgerIsOpen] = useState(false);
-    const [logoBeingAnimated, setLogoBeingAnimated] = useState(false);
+
+    let logoEnteringg = false;
+    let logoLeavingg = false;
 
     $("#header").mouseenter(() => {
         $('.opaque').css("opacity", 1)
@@ -34,16 +40,27 @@ export default function Header({someClass}) {
         window.scrollTo(0, 0);
     }
 
-    function onMouseEnterLogo() {
-        if (logoBeingAnimated) {
-            return;
-        }
-        setLogoBeingAnimated(true);
-        $(".logo-image").attr("src", LogoAnimadoALPHA).addClass("logo-gif");
+    const onMouseEnterLogo = () => {
+        if (logoEnteringg) return;
+        logoEnteringg = true;
+        $(".logo-image").attr("src", LogoAnimdoIn);
         setTimeout(() => {
-            setLogoBeingAnimated(false);
-            $(".logo-image").removeClass("logo-gif").attr("src", "https://d2njbbkhc1pb2y.cloudfront.net/public/resources/chowLogo2.png");
-        }, 2500);
+            if (logoLeavingg || !logoEnteringg) return;
+            $(".logo-image").attr("src", LogoMid);
+            logoEnteringg = false;
+        }, 680);
+    }
+
+    const onMouseLeaveLogo = () => {
+        if (logoLeavingg) return;
+        logoLeavingg = true;
+        $(".logo-image").attr("src", LogoAnimadoOut);
+        setTimeout(() => {
+            if (!logoLeavingg) return;
+            $(".logo-image").attr("src", LogoInit);
+            logoLeavingg = false;
+            logoEnteringg = false;
+        }, 300);
     }
 
     return (
@@ -55,9 +72,10 @@ export default function Header({someClass}) {
                     </div>
 
                     <div className="logo">
-                        <Link to="/" onClick={scrollTop} onMouseEnter={onMouseEnterLogo}>
+                        <Link to="/" onClick={scrollTop} onMouseEnter={onMouseEnterLogo} onMouseLeave={onMouseLeaveLogo}>
                             <img className="logo-image"
-                                 src={"https://d2njbbkhc1pb2y.cloudfront.net/public/resources/chowLogo2.png"}
+                                 // src={LogoInit"}
+                                 src={LogoInit}
                                  alt="Main Logo"/>
                             <img className="logo-gif hidden"
                                  src={LogoAnimadoALPHA}
