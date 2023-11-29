@@ -73,6 +73,8 @@ const Us = () => {
             </div>
             <img style={{width: '100%'}} src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/Nosotros2.png'}
                  alt={"Ours"}/>
+            <img style={{width: '100%'}} src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/PELEApixel-min.gif'}
+                 alt={"Ours"}/>
         </div>
     )
 }

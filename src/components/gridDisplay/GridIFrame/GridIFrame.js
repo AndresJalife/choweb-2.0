@@ -6,7 +6,7 @@ export default function GridIFrame(props) {
         <iframe src={props.src}
                 style={{backgroundColor: 'white'}}
                 className={'iframe-general ' + props.className}
-                style={{backgroundColor: 'white'}}
+                // style={{backgroundColor: 'white'}}
                 id={props.id}
                 allowFullScreen
                 title={props.title}

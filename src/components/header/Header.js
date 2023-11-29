@@ -4,10 +4,11 @@ import BurgerButton from "./BurgerButton";
 import HeaderMenu from "./HeaderMenu";
 import {Link, Outlet} from "react-router-dom";
 import $ from 'jquery';
-import LogoAnimation from "../../resources/logo-animation.mp4";
+import LogoAnimadoALPHA from "../../resources/LogoAnimadoALPHA.gif";
 
 export default function Header({someClass}) {
     const [burgerIsOpen, setBurgerIsOpen] = useState(false);
+    const [logoBeingAnimated, setLogoBeingAnimated] = useState(false);
 
     $("#header").mouseenter(() => {
         $('.opaque').css("opacity", 1)
@@ -33,6 +34,18 @@ export default function Header({someClass}) {
         window.scrollTo(0, 0);
     }
 
+    function onMouseEnterLogo() {
+        if (logoBeingAnimated) {
+            return;
+        }
+        setLogoBeingAnimated(true);
+        $(".logo-image").attr("src", LogoAnimadoALPHA).addClass("logo-gif");
+        setTimeout(() => {
+            setLogoBeingAnimated(false);
+            $(".logo-image").removeClass("logo-gif").attr("src", "https://d2njbbkhc1pb2y.cloudfront.net/public/resources/chowLogo2.png");
+        }, 2500);
+    }
+
     return (
         <div>
             <div className="header-container">
@@ -42,14 +55,13 @@ export default function Header({someClass}) {
                     </div>
 
                     <div className="logo">
-                        <Link to="/" onClick={scrollTop}>
-                            {/*<img className="logo-image"*/}
-                            {/*     src={"https://d2njbbkhc1pb2y.cloudfront.net/public/resources/chowLogo2.png"}*/}
-                            {/*     alt="Main Logo"/>*/}
-                            <video id="logo-animation" muted className="className">
-                                <source src={LogoAnimation} type="video/mp4"/>
-                                Your browser does not support the video tag.
-                            </video>
+                        <Link to="/" onClick={scrollTop} onMouseEnter={onMouseEnterLogo}>
+                            <img className="logo-image"
+                                 src={"https://d2njbbkhc1pb2y.cloudfront.net/public/resources/chowLogo2.png"}
+                                 alt="Main Logo"/>
+                            <img className="logo-gif hidden"
+                                 src={LogoAnimadoALPHA}
+                                 alt="Main Logo"/>
                         </Link>
                     </div>
                     <img src={"https://d2njbbkhc1pb2y.cloudfront.net/public/resources/instagram.png"}

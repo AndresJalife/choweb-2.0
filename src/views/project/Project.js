@@ -6,6 +6,7 @@ import LandingPageGridDataHandler from "../../logic/GridDataHandler/LandingPageG
 import OursGridDataHandler from "../../logic/GridDataHandler/OursGridDataHandler";
 import AdvertisementGridDataHandler from "../../logic/GridDataHandler/AdvertisementGridDataHandler";
 import VideoclipsGridDataHandler from "../../logic/GridDataHandler/VideoclipsGridDataHandler";
+import ProyectsComponents from "../../components/proyects/proyects_components";
 
 export default function Project() {
     const params = useParams();
@@ -35,6 +36,17 @@ export default function Project() {
 
     let projectInfo = layoutHandler == null ? null : layoutHandler.getProjectData(projectName);
 
+
+    const DynamicComponent = ({ componentName }) => {
+        const ComponentToRender = ProyectsComponents[componentName];
+
+        if (!ComponentToRender) {
+            return <div>Component not found</div>;
+        }
+        return <ComponentToRender />;
+    };
+
+
     return (
         <div>
             {
@@ -45,9 +57,10 @@ export default function Project() {
                         <div className="project-video" style={{backgroundColor: projectInfo.borderColor}}>
                             <GridIFrame className="project-iframe" src={projectInfo.vidSrc} title={projectName}></GridIFrame>
                         </div>
-                        <p className="project-description" style={{color: projectInfo.fontColor}}>
-                            {projectInfo.description}
-                        </p>
+                        {/*<p className="project-description" style={{color: projectInfo.fontColor}}>*/}
+                        {/*    {projectInfo.description}*/}
+                        {/*</p>*/}
+                        <DynamicComponent componentName={projectName}/>
                     </div>
             }
         </div>

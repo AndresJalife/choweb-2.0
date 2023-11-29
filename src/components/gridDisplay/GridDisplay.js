@@ -5,7 +5,7 @@ import GridGif from "./GridGif/GridGif";
 
 function GridImage(props: { src: null | *, id: string }) {
     return <div>
-               <img id={props.id} src={props.src} alt={props.id}/>
+               <img style={{width: '100%'}} id={props.id} src={props.src} alt={props.id}/>
            </div>;
 }
 
