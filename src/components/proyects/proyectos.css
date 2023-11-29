@@ -1,0 +1,20 @@
+
+.documentales-container{
+
+}
+.documentales-gifs{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#documentales-proceso-1 {
+    margin-right: 15%;
+    width: 100%;
+}
+#documentales-proceso-2 {
+    width: 100%;
+}
