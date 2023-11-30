@@ -44,7 +44,7 @@
 
 @media only screen and (max-width: 600px) {
     .footerContainer {
-        height: 6vw;
+        height: 20vw;
         width: unset;
     }
 
@@ -53,9 +53,16 @@
         font-size: 2vw;
     }
 
+    .logo-image-footer {
+        /*margin-top: auto;*/
+        /*margin-bottom: auto;*/
+        margin-top: 1vh;
+        height: 90%;
+    }
+
     #footer-media {
         width: unset;
-        height: 9vw;
+        /*height: 9vw;*/
     }
 
     .footer-icon {

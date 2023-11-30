@@ -64,7 +64,7 @@ export default function Project() {
                     ""
                     :
                     <div className="project-container" style={{backgroundColor: projectInfo.bgColor, paddingTop: '10%'}}>
-                        <img src={Cruz} className="project-cross" alt="cross" style={{marginRight: '54%', cursor: 'pointer', marginBottom: '1%'}} onClick={goBackPage}/>
+                        <img src={Cruz} className="project-cross" alt="cross" onClick={goBackPage}/>
                         <div className="project-video" style={{backgroundColor: projectInfo.borderColor}}>
                             <GridIFrame className="project-iframe" src={projectInfo.vidSrc} title={projectName}></GridIFrame>
                         </div>

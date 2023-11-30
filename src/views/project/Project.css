@@ -33,3 +33,12 @@
     height: 60vh; /* Viewport-relative units */
     width: 60vw;
 }
+
+.project-cross {
+    position: absolute;
+    margin-right: 54%;
+    cursor: pointer;
+    top: 15%;
+    left: 20%;
+    width: 3%;
+}

@@ -16,25 +16,25 @@ export default function Header({someClass}) {
     let logoEnteringg = false;
     let logoLeavingg = false;
 
-    $("#header").mouseenter(() => {
-        $('.opaque').css("opacity", 1)
-    }).mouseleave(() => {
-        $('.opaque').css("opacity", 0.3 + $(window).scrollTop() / 500)
-    })
+    // $("#header").mouseenter(() => {
+    //     $('.opaque').css("opacity", 1)
+    // }).mouseleave(() => {
+    //     $('.opaque').css("opacity", 0.3 + $(window).scrollTop() / 500)
+    // })
+    //
+    // $("#menu-options").mouseenter(() => {
+    //     if (burgerIsOpen) {
+    //         $('.opaque').css("opacity", 1)
+    //     }
+    // }).mouseleave(() => {
+    //     if (burgerIsOpen) {
+    //         $('.opaque').css("opacity", 0.3 + $(window).scrollTop() / 500)
+    //     }
+    // })
 
-    $("#menu-options").mouseenter(() => {
-        if (burgerIsOpen) {
-            $('.opaque').css("opacity", 1)
-        }
-    }).mouseleave(() => {
-        if (burgerIsOpen) {
-            $('.opaque').css("opacity", 0.3 + $(window).scrollTop() / 500)
-        }
-    })
-
-    $(window).scroll(function () {
-        $('.opaque').css("opacity", 0.3 + $(window).scrollTop() / 500)
-    });
+    // $(window).scroll(function () {
+    //     $('.opaque').css("opacity", 0.3 + $(window).scrollTop() / 500)
+    // });
 
     const scrollTop = (event) => {
         window.scrollTo(0, 0);
@@ -48,7 +48,7 @@ export default function Header({someClass}) {
             if (logoLeavingg || !logoEnteringg) return;
             $(".logo-image").attr("src", LogoMid);
             logoEnteringg = false;
-        }, 680);
+        }, 1000);
     }
 
     const onMouseLeaveLogo = () => {
