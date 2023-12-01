@@ -51,7 +51,7 @@
     cursor: pointer;
     font-family: 'ChowFont', serif;
     letter-spacing: .5rem;
-    width: 20%;
+    width: 10em;
 }
 
 .hide {
@@ -90,7 +90,7 @@
     }
 
     .header {
-        margin-top: 6%;
+        margin-top: 2.5%;
     }
 }
 

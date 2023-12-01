@@ -8,7 +8,7 @@ let project_data = {
     'Solar' : Solar,
     'Documentales': Documentales,
     'SpeedOfSound': SpeedOfSound,
-    'ApetitoDeTina': ApetitoDeTina
+    'ApetitoDeTinas': ApetitoDeTina
 
 }
 

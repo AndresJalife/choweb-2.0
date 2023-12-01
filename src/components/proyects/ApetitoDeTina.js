@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Solar = () => {
+const ApetitoDeTina = () => {
     return (
         <div className={'apetito-de-tina-container'}>
             <img src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/APETITO.png'} alt={'apetito-de-tina'} style={{width: '80%'}}/>
@@ -8,4 +8,4 @@ const Solar = () => {
     )
 }
 
-export default Solar;
+export default ApetitoDeTina;

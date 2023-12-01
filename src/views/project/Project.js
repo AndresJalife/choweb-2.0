@@ -8,6 +8,7 @@ import AdvertisementGridDataHandler from "../../logic/GridDataHandler/Advertisem
 import VideoclipsGridDataHandler from "../../logic/GridDataHandler/VideoclipsGridDataHandler";
 import ProyectsComponents from "../../components/proyects/proyects_components";
 import Cruz from "../../resources/Cruz.png";
+import GenericProjectDetails from "../../components/proyects/GenericProjectDetails";
 export default function Project() {
     const params = useParams();
     const [layoutHandler, setLayoutHandler] = useState(null);
@@ -43,7 +44,7 @@ export default function Project() {
         const ComponentToRender = ProyectsComponents[componentName];
 
         if (!ComponentToRender) {
-            return <div>Component not found</div>;
+            return <GenericProjectDetails className="apetito-de-tina-container" src={"https://d2njbbkhc1pb2y.cloudfront.net/public/resources/APETITO.png"}></GenericProjectDetails>;
         }
         return <ComponentToRender />;
     };
