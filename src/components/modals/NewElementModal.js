@@ -3,7 +3,7 @@ import {useEffect} from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import {CircularProgress, FormControl, Input, InputLabel, MenuItem, Select} from "@mui/material";
+import {FormControl, Input, InputLabel, MenuItem, Select} from "@mui/material";
 import './Modal.css';
 import {normalizeAndUnSpace} from "../../logic/Util";
 
@@ -15,9 +15,7 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
     const [vidSrc, setVidSrc] = React.useState(actualElement == null ? '' : actualElement.vidSrc);
     const [bgColor, setBgColor] = React.useState(actualElement == null ? '' : actualElement.bgColor);
     const [description, setDescription] = React.useState(actualElement == null ? '' : actualElement.description);
-    const [fontColor, setFontColor] = React.useState(actualElement == null ? '' : actualElement.fontColor);
-    const [borderColor, setBorderColor] = React.useState(actualElement == null ? '' : actualElement.borderColor);
-    const [isLoading, setLoading] = React.useState(false);
+    // const [isLoading, setLoading] = React.useState(false);
 
     useEffect(() => {
         if (actualElement == null) {
@@ -28,8 +26,6 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
             setVidSrc('');
             setBgColor('');
             setDescription('');
-            setFontColor('');
-            setBorderColor('');
             return;
         }
         setName(actualElement.id);
@@ -39,8 +35,6 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
         setVidSrc(actualElement.vidSrc);
         setBgColor(actualElement.bgColor);
         setDescription(actualElement.description);
-        setFontColor(actualElement.fontColor);
-        setBorderColor(actualElement.borderColor);
     }, [actualElement]);
     const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         let actName = event.target.value;
@@ -70,9 +64,7 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
             gifSrc: gifSrc,
             vidSrc: vidSrc,
             bgColor: bgColor,
-            description: description,
-            fontColor: fontColor,
-            borderColor: borderColor
+            description: description
         };
         if (actualElement == null) {
             layoutHandler.newProject(row, data);
@@ -87,7 +79,6 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
         <div>
             <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description" style={{overflow: 'scroll'}}>
                  <Box className="box-new-element-modal">
-                     {isLoading ? <CircularProgress /> :
                     <div className="container-new-element-modal">
                          <FormControl className="formControl" style={{marginTop: '3%'}} variant="standard">
                              <InputLabel error htmlFor="name-input">Nombre</InputLabel>
@@ -119,23 +110,16 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
                              <InputLabel htmlFor="bg-color-input">Color de fondo (en hexa, incluir '#')</InputLabel>
                              <Input id="bg-color-input" aria-describedby="my-helper-text" value={bgColor} onChange={(event) => handleGeneric(event, setBgColor)}/>
                          </FormControl>
-                         <FormControl className="formControl" variant="standard">
-                             <InputLabel htmlFor="font-color-input">Color de fuente (en hexa, incluir '#')</InputLabel>
-                             <Input id="font-color-input" aria-describedby="my-helper-text" value={fontColor} onChange={(event) => handleGeneric(event, setFontColor)}/>
-                         </FormControl>
-                         <FormControl className="formControl" variant="standard">
-                             <InputLabel htmlFor="border-color-input">Color de borde (en hexa, incluir '#')</InputLabel>
-                             <Input id="border-color-input" aria-describedby="my-helper-text" value={borderColor} onChange={(event) => handleGeneric(event, setBorderColor)}/>
-                         </FormControl>
                          <FormControl className="formControl" style={{height: '15%'}} variant="standard">
-                             <InputLabel htmlFor="description-input">Descripción</InputLabel>
-                             <Input multiline={true} minRows="5" id="description-input" aria-describedby="my-helper-text" value={description} onChange={(event) => handleGeneric(event, setDescription)}/>
+                             <InputLabel htmlFor="description-input">URL de descripción</InputLabel>
+                             <Input id="bg-color-input" aria-describedby="my-helper-text" value={description} onChange={(event) => handleGeneric(event, setDescription)}/>
+                             {/*<Input multiline={true} minRows="5" id="description-input" aria-describedby="my-helper-text" value={description} onChange={(event) => handleGeneric(event, setDescription)}/>*/}
                          </FormControl>
                          <div>
                              <Button onClick={handleClose}>Cancelar</Button>
                              <Button onClick={create}>Guardar</Button>
                          </div>
-                    </div>}
+                    </div>
                 </Box>
             </Modal>
         </div>

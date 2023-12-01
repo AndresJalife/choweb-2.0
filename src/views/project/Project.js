@@ -6,7 +6,7 @@ import LandingPageGridDataHandler from "../../logic/GridDataHandler/LandingPageG
 import OursGridDataHandler from "../../logic/GridDataHandler/OursGridDataHandler";
 import AdvertisementGridDataHandler from "../../logic/GridDataHandler/AdvertisementGridDataHandler";
 import VideoclipsGridDataHandler from "../../logic/GridDataHandler/VideoclipsGridDataHandler";
-import ProyectsComponents from "../../components/proyects/proyects_components";
+import ProyectsComponents from "../../components/proyects/particular_proyect_components";
 import Cruz from "../../resources/Cruz.png";
 import GenericProjectDetails from "../../components/proyects/GenericProjectDetails";
 export default function Project() {
@@ -43,8 +43,10 @@ export default function Project() {
     const DynamicComponent = ({ componentName }) => {
         const ComponentToRender = ProyectsComponents[componentName];
 
-        if (!ComponentToRender) {
-            return <GenericProjectDetails className="apetito-de-tina-container" src={"https://d2njbbkhc1pb2y.cloudfront.net/public/resources/APETITO.png"}></GenericProjectDetails>;
+        if (!ComponentToRender && (projectInfo.description || projectInfo.description !== "")) {
+            return <GenericProjectDetails src={projectInfo.description}></GenericProjectDetails>;
+        } else if (!ComponentToRender) {
+            return <div></div>;
         }
         return <ComponentToRender />;
     };
@@ -64,7 +66,7 @@ export default function Project() {
                 projectInfo === null ?
                     ""
                     :
-                    <div className="project-container" style={{backgroundColor: projectInfo.bgColor, paddingTop: '10%'}}>
+                    <div className="project-container" style={{paddingTop: '10%'}}>
                         <img src={Cruz} className="project-cross" alt="cross" onClick={goBackPage}/>
                         <div className="project-video" style={{backgroundColor: projectInfo.borderColor}}>
                             <GridIFrame className="project-iframe" src={projectInfo.vidSrc} title={projectName}></GridIFrame>

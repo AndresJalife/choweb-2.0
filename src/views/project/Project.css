@@ -44,6 +44,6 @@
         width: 7%;
     }
     .project-container {
-        padding-top: 21%;
+        padding-top: 19% !important;
     }
 }
