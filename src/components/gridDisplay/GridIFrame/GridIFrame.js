@@ -4,6 +4,7 @@ import './Iframe.css'
 export default function GridIFrame(props) {
     return (
         <iframe src={props.src}
+                style={{backgroundColor: 'white'}}
                 className={'iframe-general ' + props.className}
                 // style={{backgroundColor: 'white'}}
                 id={props.id}
