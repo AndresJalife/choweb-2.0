@@ -51,3 +51,9 @@ html {
 .tarro-right-eye {
     margin-left: 10.5% !important;
 }
+
+@media only screen and (max-width: 600px) {
+    .us-container {
+        padding-top: 11%;
+    }
+}

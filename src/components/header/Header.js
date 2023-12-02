@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./Header.css"
 import BurgerButton from "./BurgerButton";
 import HeaderMenu from "./HeaderMenu";
@@ -12,29 +12,31 @@ import LogoInit from "../../resources/Logo-Sumo-Init.png";
 
 export default function Header({someClass}) {
     const [burgerIsOpen, setBurgerIsOpen] = useState(false);
+    const [scroll, setScroll] = useState(window.scrollY);
+    const [opacity, setOpacity] = useState(1);
+
+    useEffect(() => {
+        if (burgerIsOpen) {
+            $('html').css('overflow', 'hidden');
+        } else {
+            $('html').css('overflow', 'unset');
+        }
+    }, [burgerIsOpen]);
 
     let logoEnteringg = false;
     let logoLeavingg = false;
 
-    // $("#header").mouseenter(() => {
-    //     $('.opaque').css("opacity", 1)
-    // }).mouseleave(() => {
-    //     $('.opaque').css("opacity", 0.3 + $(window).scrollTop() / 500)
-    // })
-    //
-    // $("#menu-options").mouseenter(() => {
-    //     if (burgerIsOpen) {
-    //         $('.opaque').css("opacity", 1)
-    //     }
-    // }).mouseleave(() => {
-    //     if (burgerIsOpen) {
-    //         $('.opaque').css("opacity", 0.3 + $(window).scrollTop() / 500)
-    //     }
-    // })
-
-    // $(window).scroll(function () {
-    //     $('.opaque').css("opacity", 0.3 + $(window).scrollTop() / 500)
-    // });
+    $(window).scroll(function () {
+        let opaque = $('#header');
+        if (scroll > window.scrollY) {
+            setOpacity(opacity + 0.15 > 1 ? 1 : opacity + 0.15)
+            opaque.css("opacity", opacity)
+        } else {
+            setOpacity(opacity - 0.07 < 0 ? 0 : opacity - 0.07)
+            opaque.css("opacity", opacity)
+        }
+        setScroll(window.scrollY)
+    });
 
     const scrollTop = (event) => {
         window.scrollTo(0, 0);
