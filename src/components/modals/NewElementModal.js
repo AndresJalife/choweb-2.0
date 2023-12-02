@@ -14,7 +14,7 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
     const [gifSrc, setGifSrc] = React.useState(actualElement == null ? 'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/' : actualElement.gifSrc);
     const [vidSrc, setVidSrc] = React.useState(actualElement == null ? '' : actualElement.vidSrc);
     const [bgColor, setBgColor] = React.useState(actualElement == null ? '' : actualElement.bgColor);
-    const [description, setDescription] = React.useState(actualElement == null ? '' : actualElement.description);
+    const [description, setDescription] = React.useState(actualElement == null || actualElement === '' ? 'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/' : actualElement.description);
     // const [isLoading, setLoading] = React.useState(false);
 
     useEffect(() => {
@@ -25,7 +25,7 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
             setGifSrc('https://d2njbbkhc1pb2y.cloudfront.net/public/resources/');
             setVidSrc('');
             setBgColor('');
-            setDescription('');
+            setDescription('https://d2njbbkhc1pb2y.cloudfront.net/public/resources/');
             return;
         }
         setName(actualElement.id);
