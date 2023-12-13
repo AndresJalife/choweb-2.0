@@ -1,14 +1,35 @@
 
-.documentales-container{
-
-}
-.documentales-gifs{
+.horizontal-gifs-container{
     display: flex;
     flex-direction: row;
     justify-content: center;
     width: 25%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.vertical-gifs-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.vertical-gif{
+    margin-bottom: 5%;
+}
+
+#in-project-video{
+    height: 25.3vw;
+    width: 45vw;
+    margin-bottom: 5%;
+}
+
+#diabla-proceso{
+    width: 100%;
+    margin-right: 3%;
 }
 
 #documentales-proceso-1 {

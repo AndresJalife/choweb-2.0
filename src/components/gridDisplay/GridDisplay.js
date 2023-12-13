@@ -2,26 +2,33 @@ import React from 'react';
 import {Box, Grid} from "@mui/material";
 import GridVideo from "./GridVideo/GridVideo";
 import GridGif from "./GridGif/GridGif";
-
-function GridImage(props: { src: null | *, id: string }) {
-    return <div>
-               <img style={{width: '100%'}} id={props.id} src={props.src} alt={props.id}/>
-           </div>;
-}
-
-function GridText(props: { item: * }) {
-    return <div>
-              <p className={props.item.className}>{props.item.text}</p>
-          </div>;
-}
-
-function GridGIFStarted(props: { gifSrc: null | *, id: string }) {
-    return <div>
-
-          </div>;
-}
+import {useNavigate} from "react-router-dom";
 
 export default function GridDisplay({layoutHandler, view}) {
+
+    let navigate = useNavigate();
+
+    const goToProyect = (id) => {
+        navigate(`/${view}/proyecto/${id}`);
+    }
+
+    function GridImage(props: { src: null | *, id: string }) {
+        return <div>
+            <img style={{width: '100%', cursor: 'pointer'}} id={props.id} src={props.src} alt={props.id} onClick={() => goToProyect(props.id)}/>
+        </div>;
+    }
+
+    function GridText(props: { item: * }) {
+        return <div>
+            <p className={props.item.className}>{props.item.text}</p>
+        </div>;
+    }
+
+    function GridGIFStarted(props: { gifSrc: null | *, id: string }) {
+        return <div>
+
+        </div>;
+    }
 
     const getGrid = () => {
         const gridLayout = layoutHandler.getGridLayout();

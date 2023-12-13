@@ -4,7 +4,7 @@ const LosSonidos = () => {
     return (
         <div className={'los-sonidos-container'}>
             <img src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/LosSonidos-ventana.png'} alt={'los-sonidos-img'} style={{width: '80%'}}/>
-            <div className={'documentales-gifs'}>
+            <div className={'horizontal-gifs-container'}>
                 <img src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/LosSonidos_proceso1.gif'} alt={'los-sonidos-img'} id={'los-sonidos-proceso-1'}/>
                 <img src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/LosSonidos_proceso2.gif'} alt={'los-sonidos-img'} id={'los-sonidos-proceso-1'}/>
             </div>

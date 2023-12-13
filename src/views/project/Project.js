@@ -9,6 +9,7 @@ import VideoclipsGridDataHandler from "../../logic/GridDataHandler/VideoclipsGri
 import ProyectsComponents from "../../components/proyects/particular_proyect_components";
 import Cruz from "../../resources/Cruz.png";
 import GenericProjectDetails from "../../components/proyects/GenericProjectDetails";
+
 export default function Project() {
     const params = useParams();
     const [layoutHandler, setLayoutHandler] = useState(null);
@@ -60,6 +61,14 @@ export default function Project() {
             navigate("/");
     }
 
+    function Video() {
+        if (projectInfo.vidSrc === "")
+            return <div></div>;
+        return  <div className="project-video" style={{backgroundColor: projectInfo.borderColor}}>
+            <GridIFrame className="project-iframe" src={projectInfo.vidSrc} title={projectName}></GridIFrame>
+        </div>;
+    }
+
     return (
         <div>
             {
@@ -68,9 +77,7 @@ export default function Project() {
                     :
                     <div className="project-container" style={{paddingTop: '10%'}}>
                         <img src={Cruz} className="project-cross" alt="cross" onClick={goBackPage}/>
-                        <div className="project-video" style={{backgroundColor: projectInfo.borderColor}}>
-                            <GridIFrame className="project-iframe" src={projectInfo.vidSrc} title={projectName}></GridIFrame>
-                        </div>
+                        <Video/>
                         <DynamicComponent componentName={projectName}/>
                     </div>
             }
