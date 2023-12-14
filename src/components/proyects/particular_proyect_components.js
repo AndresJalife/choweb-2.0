@@ -12,6 +12,12 @@ import Axion from "./Axion";
 import Bimbo from "./Bimbo";
 import DesafioContado from "./DesafioContado";
 import Diabla from "./Diabla";
+import Ginebra from "./Ginebra";
+import Spotify from "./Spotify";
+import Roland from "./Roland";
+import HSM from "./HSM";
+import Corona from "./Corona";
+import Ursi from "./Ursi";
 
 let project_data = {
     'Documentales': Documentales,
@@ -26,8 +32,13 @@ let project_data = {
     'Axion' : Axion,
     'BIMBO' : Bimbo,
     'DesafioContado' : DesafioContado,
-    'Diabla' : Diabla
-
+    'Diabla' : Diabla,
+    'Ginebra' : Ginebra,
+    'Spotify' : Spotify,
+    'Roland' : Roland,
+    'HSM' : HSM,
+    'Corona' : Corona,
+    'Ursi' : Ursi
 }
 
 export default project_data;
