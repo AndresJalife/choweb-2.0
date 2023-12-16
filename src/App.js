@@ -14,13 +14,13 @@ import ScreenLoader from "./components/screenLoader/ScreenLoader";
 
 function App() {
     let determineSeconds = () => {
-        const justEntered = document.cookie.includes("visited=true");
-        if (!justEntered){
-            console.log("HDP");
-            document.cookie = "visited=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
+        const visitedBefore = document.cookie.includes("visited=true");
+        if (visitedBefore){
+            console.log("Asumo que nos conocemos. Un Gusto, Andrés Jalife.");
             return 2;
         } else {
             console.log("Bienvenido");
+            document.cookie = "visited=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
             return 6;
         }
     }
