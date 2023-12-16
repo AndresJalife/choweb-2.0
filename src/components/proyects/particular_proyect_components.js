@@ -18,6 +18,8 @@ import Roland from "./Roland";
 import HSM from "./HSM";
 import Corona from "./Corona";
 import Ursi from "./Ursi";
+import BabyRuth from "./BabyRuth";
+import UMU from "./UMU";
 
 let project_data = {
     'Documentales': Documentales,
@@ -38,7 +40,9 @@ let project_data = {
     'Roland' : Roland,
     'HSM' : HSM,
     'Corona' : Corona,
-    'Ursi' : Ursi
+    'Ursi' : Ursi,
+    'BabyRuth' : BabyRuth,
+    'MafiaUnicorn' : UMU
 }
 
 export default project_data;
