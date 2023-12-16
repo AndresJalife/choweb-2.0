@@ -15,10 +15,10 @@ import ScreenLoader from "./components/screenLoader/ScreenLoader";
 function App() {
     let determineSeconds = () => {
         const justEntered = document.cookie.includes("visited=true");
-        if (justEntered){
+        if (!justEntered){
             console.log("HDP");
             document.cookie = "visited=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
-            return 3;
+            return 2;
         } else {
             console.log("Bienvenido");
             return 6;
