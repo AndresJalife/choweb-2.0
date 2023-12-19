@@ -8,10 +8,10 @@ const Branca = () => {
                 <img src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/Propuesta1Branca.gif'}
                      alt={'branca-img'}
                      id={'branca-proceso-1'} style={{width: '100%'}} className='vertical-gif'/>
-                <img src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/Propuesta2-comp.gif'}
+                <img src={'https://chowjuan.pages.dev/Propuesta2-comp.gif'}
                      alt={'branca-img'}
                      id={'branca-proceso-2'} style={{width: '100%'}} className='vertical-gif'/>
-                <img src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/Propuesta3-compo.gif'}
+                <img src={'https://chowjuan.pages.dev/Propuesta3-compo.gif'}
                      alt={'branca-img'}
                      id={'branca-proceso-3'} style={{width: '100%'}} className='vertical-gif'/>
                 <img src={'https://d2njbbkhc1pb2y.cloudfront.net/public/resources/Propuesta4-Compo.gif'}
