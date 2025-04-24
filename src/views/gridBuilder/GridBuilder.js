@@ -13,16 +13,20 @@ function GridBuilder({signOut}) {
     const [rows, setRows] = useState();
     const [type, setType] = useState('landing');
     const [layoutHandler, setLayoutHandler] = useState(LandingPageGridDataHandler);
+    const [refreshTrigger, setRefreshTrigger] = useState(0);
 
     // initialize rows
     useEffect(() => {
         const parse = () => {
-            return rowIds.map((row) => {
-                return <GridRow key={row} id={row} rowIds={rowIds} setRowIds={setRowIds} layoutHandler={layoutHandler}/>
+            // Get fresh row IDs from the layout handler
+            const currentRowIds = Object.keys(layoutHandler.getGridLayout()).sort((a, b) => parseInt(a) - parseInt(b));
+            return currentRowIds.map((row) => {
+                return <GridRow key={row} id={row} rowIds={currentRowIds} setRowIds={setRowIds} 
+                              layoutHandler={layoutHandler} setRefreshTrigger={setRefreshTrigger}/>
             })
         }
         setRows(parse());
-    }, [layoutHandler, rowIds]);
+    }, [layoutHandler, refreshTrigger]);
 
     const refreshRowsIds = (handler) => {
         setRowIds(Object.keys(handler.getGridLayout()).map((row) => row));

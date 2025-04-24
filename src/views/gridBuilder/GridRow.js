@@ -1,53 +1,76 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import GridElement from "./GridElement";
 import NewElementModal from "../../components/modals/NewElementModal";
 import {GrFormTrash} from "react-icons/gr";
+import {FaArrowUp, FaArrowDown} from "react-icons/fa";
 import SureToDeleteModal from "../../components/modals/SureToDeleteModal";
 
-export default function GridRow({id, setRowIds, rowIds, layoutHandler}) {
-    const [elements, setElements] = useState();
+export default function GridRow({id, setRowIds, rowIds, layoutHandler, setRefreshTrigger}) {
     const [open, setOpen] = React.useState(false);
     const [actualElement, setActualElement] = React.useState(null);
     const [isEditing, setIsEditing] = React.useState(false);
     const [deleteModalOpen, setDeleteModalOpen] = React.useState(false);
-
-    useEffect(() => {
-        setElements(Object.keys(layoutHandler.getGridLayout()[id]).map((col) => col))
-    }, [id, layoutHandler]);
+    const [timestamp, setTimestamp] = React.useState(Date.now());
 
     const parseElements = () => {
-        if (!elements) return;
-        return elements.map((col) => {
-            return (<GridElement layoutHandler={layoutHandler} key={col} row={id} id={col} elements={elements}
-                                 setElements={setElements} setOpen={setOpen} setActualElement={setActualElement}
-                                 setIsEditing={setIsEditing}></GridElement>)
+        const currentElements = Object.keys(layoutHandler.getGridLayout()[id] || {});
+        return currentElements.map((col) => {
+            return (<GridElement 
+                key={`${col}-${timestamp}`}
+                layoutHandler={layoutHandler} 
+                row={id} 
+                id={col} 
+                setOpen={setOpen} 
+                setActualElement={setActualElement}
+                setIsEditing={setIsEditing} 
+                setRefreshTrigger={setRefreshTrigger}
+                setTimestamp={setTimestamp}
+            />)
         });
     }
 
     const onClickAddNewElement = () => {
-        if (elements.length > 3) return;
+        const currentElements = Object.keys(layoutHandler.getGridLayout()[id] || {});
+        if (currentElements.length > 3) return;
         setIsEditing(false);
         setActualElement(null);
         setOpen(true);
     };
 
     const setNewElement = (elementId) => {
-        const newElementList = [...elements, elementId];
-        setElements(newElementList);
+        setTimestamp(Date.now());
+        setRefreshTrigger(prev => prev + 1);
     }
 
     const deleteRow = () => {
         layoutHandler.deleteRow(id);
-        setRowIds(rowIds.filter((row) => row !== id));
+        setRowIds(Object.keys(layoutHandler.getGridLayout()));
+        setRefreshTrigger(prev => prev + 1);
     }
 
     const handleDeleteRow = () => {
         setDeleteModalOpen(true);
     }
 
+    const moveRowUp = () => {
+        layoutHandler.moveRowUp(id);
+        setRowIds(Object.keys(layoutHandler.getGridLayout()));
+        setRefreshTrigger(prev => prev + 1);
+    };
+
+    const moveRowDown = () => {
+        layoutHandler.moveRowDown(id);
+        setRowIds(Object.keys(layoutHandler.getGridLayout()));
+        setRefreshTrigger(prev => prev + 1);
+    };
+
     return (
         <div className="grid-row">
-            <GrFormTrash style={{cursor: "pointer", fontSize: "50"}} onClick={handleDeleteRow}>ELIMINAR</GrFormTrash>
+            <div className="row-controls">
+                <FaArrowUp style={{cursor: "pointer", fontSize: "20px", marginRight: "10px"}} onClick={moveRowUp} />
+                <FaArrowDown style={{cursor: "pointer", fontSize: "20px", marginRight: "10px"}} onClick={moveRowDown} />
+                <GrFormTrash style={{cursor: "pointer", fontSize: "20px"}} onClick={handleDeleteRow} />
+            </div>
             <div className="grid-row-elements-container" id={`grid-elements-container-${id}`}>
                 {parseElements()}
             </div>

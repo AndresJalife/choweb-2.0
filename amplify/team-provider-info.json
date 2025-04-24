@@ -19,5 +19,18 @@
         "chowjuanstorage": {}
       }
     }
+  },
+  "andrespc": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-choweb-andrespc-154357-authRole",
+      "UnauthRoleArn": "arn:aws:iam::101758295797:role/amplify-choweb-andrespc-154357-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::101758295797:role/amplify-choweb-andrespc-154357-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-choweb-andrespc-154357-deployment",
+      "UnauthRoleName": "amplify-choweb-andrespc-154357-unauthRole",
+      "StackName": "amplify-choweb-andrespc-154357",
+      "StackId": "arn:aws:cloudformation:us-east-1:101758295797:stack/amplify-choweb-andrespc-154357/748c23b0-781d-11ee-9dda-12d457cbab57",
+      "AmplifyAppId": "d2n95mrj62hsjm"
+    }
   }
 }
