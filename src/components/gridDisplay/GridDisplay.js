@@ -3,6 +3,7 @@ import {Box, Grid} from "@mui/material";
 import GridVideo from "./GridVideo/GridVideo";
 import GridGif from "./GridGif/GridGif";
 import {useNavigate} from "react-router-dom";
+import GridProjectVideo from "./GridProjectVideo/GridProjectVideo";
 
 export default function GridDisplay({layoutHandler, view}) {
 
@@ -46,6 +47,8 @@ export default function GridDisplay({layoutHandler, view}) {
                             <GridText item={item}/>
                         ) : item.type === 'gifStarted' ? (
                             <GridGIFStarted id={col} gifSrc={item.gifSrc} view={view}/>
+                        ) : item.type === 'projectVideo' ? (
+                            <GridProjectVideo className={item.className} id={item.id} mp4={item.vidSrc} view={view} imgSrc={item.imgSrc}/>
                         ) : <GridImage id={col} src={item.imgSrc} view={view}/>}
                     </Grid>
                 );

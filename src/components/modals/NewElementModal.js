@@ -89,9 +89,10 @@ export default function NewElementModal({open, setOpen, row, setNewElement, actu
                              <Select labelId="type-input" id="demo-simple-select" value={type} label="Age" onChange={(event) => handleGeneric(event, setType)}>
                                  <MenuItem value={'gif'}>GIF</MenuItem>
                                  <MenuItem value={'gifStarted'}>GIF Iniciado</MenuItem>
-                                 <MenuItem value={'video'}>Video</MenuItem>
+                                 <MenuItem value={'video'}>Video de Inicio</MenuItem>
                                  <MenuItem value={'text'}>Texto</MenuItem>
                                  <MenuItem value={'image'}>Imagen</MenuItem>
+                                 <MenuItem value={'projectVideo'}>Video de Proyecto</MenuItem>
                              </Select>
                          </FormControl>
                         <FormControl className="formControl" variant='standard'>
