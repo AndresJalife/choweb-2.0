@@ -9,7 +9,7 @@ export default function GridProjectVideo({id, mp4, className, imgSrc, view}) {
     const containerId = "#" + id + "-container";
 
     useEffect(() => {
-        document.getElementById(id).play();
+        document.getElementById(id+ "GridProjectVideo").play();
     }, [id])
 
     useEffect(() => {
