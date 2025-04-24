@@ -18,7 +18,7 @@ export default function GridProjectVideo({id, mp4, className, imgSrc, view}) {
                 const isHidden = $("#" + id).is(":hidden");
                 if (!isHidden) {
                     $("#" + id).attr('hidden', !isHidden)
-                    $("#" + id + 'GridGif').attr('hidden', isHidden)
+                    $("#" + id + 'GridProjectVideo').attr('hidden', isHidden)
                 }
             });
         $(containerId).mouseleave(
@@ -26,7 +26,7 @@ export default function GridProjectVideo({id, mp4, className, imgSrc, view}) {
                 const isHidden = $("#" + id).is(":hidden");
                 if (isHidden) {
                     $("#" + id).attr('hidden', !isHidden)
-                    $("#" + id + 'GridGif').attr('hidden', isHidden)
+                    $("#" + id + 'GridProjectVideo').attr('hidden', isHidden)
                 }
             }
         );
@@ -38,8 +38,8 @@ export default function GridProjectVideo({id, mp4, className, imgSrc, view}) {
 
     return (
         <div className="project-video-container" id={id + "-container"} onClick={goToProyect} style={{backgroundImage: imgSrc}}>
-            <img src={imgSrc} className="image" alt="Loading"/>
-            <video id={id} autoPlay hidden muted loop className={className} >
+            <img id={id} src={imgSrc} className="image" alt="Loading"/>
+            <video id={id + "GridProjectVideo"}  autoPlay hidden muted loop className={className} >
                 <source src={mp4} type="video/mp4"/>
                 Your browser does not support the video tag.
             </video>
